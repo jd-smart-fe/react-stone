@@ -24,14 +24,14 @@ import { Button } from 'ceshi-stone';
 ## 文档
 ceshi-stone 组件库提供了下述组件，每个组件都带有详细的文档:
 
-- [Button](https://www.zybuluo.com/zhangning16/note/1075856)
-- [Textarea](https://www.zybuluo.com/zhangning16/note/1075857)
-- [Input](https://www.zybuluo.com/zhangning16/note/1075859)
-- [Checkbox](https://www.zybuluo.com/zhangning16/note/1075861)
-- [CheckboxGroup](https://www.zybuluo.com/zhangning16/note/1075861)
-- [Radio](https://www.zybuluo.com/zhangning16/note/1075862)
-- [RadioGroup](https://www.zybuluo.com/zhangning16/note/1075862)
-- [Toast](https://www.zybuluo.com/zhangning16/note/1075863)
-- [Select](https://www.zybuluo.com/zhangning16/note/1075868)
-- [Model](https://www.zybuluo.com/zhangning16/note/1075869)
+- [Button](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Button)
+- [Textarea](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Textarea)
+- [Input](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Input)
+- [Checkbox](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/CheckboxGroup)
+- [CheckboxGroup](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/CheckboxGroup)
+- [Radio](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/RadioGroup)
+- [RadioGroup](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/RadioGroup)
+- [Toast](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Toast)
+- [Select](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Select)
+- [Model](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Modal)
 

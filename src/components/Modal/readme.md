@@ -1,18 +1,7 @@
-##  支持属性
-1. mask:Boolean 是否展示遮罩层。
-2. closeable:Boolean  是否展示右上角关闭按钮
-3. footer:Boolean  是否展示底部按钮（确认、取消）
-4. cancelBtn:Booean 是否显示取消按钮
-5. okText：string  确定按钮文字
-6. cancelText：string  取消按钮文字
-7.  size:['sm','','lg']或false  模态框的大小 默认'sm'  'sm' {width:'400px',height:'300px'}， size 为空或false时 大小为{width:'600px',height:'400px'}  'lg' {width:'900px',height:'600px'}
-8. template: Component 模态框内部内容
-##  支持事件
-1. onCancel:传入模态框的回调函数，关闭时触发
-2. onOk:传入模态框的回调函数，点击确认时触发
+标签（空格分隔）： 组件库文档 已完善组件
 
 
-# Modal对话框
+# Modal 对话框
 模态对话框。
 
 
