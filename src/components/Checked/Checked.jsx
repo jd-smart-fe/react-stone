@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './checked.css';
+import './checked.scss';
 let classNames = require('classnames');
 
 class Checked extends Component {

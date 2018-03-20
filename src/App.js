@@ -96,18 +96,51 @@ class App extends Component {
           <Button radius='circle' icon="delete" />
           <Button icon="delete">delect</Button>
           <Button htmlType='submit'>Button Submit</Button>
-          <Textarea value='zhangning' name="zhang" maxLength={10} onText={onText}/>
-          <Input />
-          <Input value={ 123 }/>
-          <Input type="password" />
-          <Input disabled={true} placeholder="不可输入" />
-          <Input placeholder="placeholder" />
-          <Input size="small" />
-          <Input size="base" />
-          <Input size="large" />
-          <Input maxLength={5} />
-          <Input addonBefore="http://" addonAfter=".cn" />
-          <Input addonBefore="搜索框" addonAfter={<Icon type='search' />} size="large"/>
+
+          <div className="code-box-demo">
+            <Textarea value='zhangning' name="zhang" maxLength={10} onText={onText}/>
+          </div>
+          <div className="code-box-demo">
+            <Input radius="radius" placeholder="圆角"/>
+          </div>
+          <div className="code-box-demo">
+            <Input value={ 123 }/>
+          </div>
+          <div className="code-box-demo">
+            <Input type="password" placeholder="密码"/>
+          </div>
+          <div className="code-box-demo">
+            <Input disabled={true} placeholder="不可输入" />
+          </div>
+          <div className="code-box-demo">
+            <Input size="small" placeholder="小"/>
+          </div>
+          <div className="code-box-demo">
+            <Input size="base" placeholder="中"/> 
+          </div>
+          <div className="code-box-demo">
+            <Input size="large" placeholder="大"/>
+          </div>
+          <div className="code-box-demo">
+            <Input maxLength={5}  placeholder="最多输入五个"/>
+          </div>
+          <div className="code-box-demo">
+            <Input addonBefore="http://" addonAfter=".cn" />
+          </div>
+          <div className="code-box-demo">
+            <Input addonBefore="搜索框gg" addonAfter={<Icon type='search' />} size="large"/>
+          </div>
+          <div className="code-box-demo">
+            <Input addonBefore="搜索框gg" addonAfter={<Icon type='search' />} size="large"/>
+          </div>
+          
+        
+          
+          
+          
+          
+          
+          
           <Textarea />
           <Textarea placeholder="未输入时的提示信息"/>
           <Textarea value="value"/>

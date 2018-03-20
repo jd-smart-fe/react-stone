@@ -38,24 +38,17 @@ class Input extends Component {
     }
   }
   render() {
-    const { name, value, placeholder, type, maxLength, size, addonBefore, addonAfter, disabled } = this.props;
+    const { name, radius, value, placeholder, type, maxLength, size, addonBefore, addonAfter, disabled } = this.props;
     const { valid, errorMessage } = this.state;
     const classInput = classNames({
       'input': true,
-      [` input-${size}`]: size
+      [`input-${size}`]: size,
+      [`input-${radius}`]:radius,
     });
-    const classBefore = classNames({
-      'input-before': true,
-      [` input-before-${size}`]: size,
-    });
-    const classAfter = classNames({
-      'input-after': true,
-      [` input-after-${size}`]: size,
-    })
     return (
-      <span className='input-wrap'>
+      <span className='input-wrap input-group'>
         { addonBefore ?
-          <span className={ classBefore }>{ addonBefore }</span>
+          <span className='input-before'>{ addonBefore }</span>
           : null
         }
         <input
@@ -69,7 +62,7 @@ class Input extends Component {
           placeholder={ placeholder } />
         {valid ? '' : (<div className="error-public"><i className="icon-error"></i><span>{errorMessage}</span></div>)}
         { addonAfter ?
-          <span className={ classAfter }>{ addonAfter }</span>
+          <span className="input-after">{ addonAfter }</span>
           : null
         }
       </span>
