@@ -15,6 +15,7 @@ class App extends Component {
     return (
       <div>
         <Input />
+        <Input radius="radius"/>
         <Input value={ 123 }/>
         <Input type="password" />
         <Input disabled={true} placeholder="不可输入" />
@@ -50,6 +51,7 @@ maxLength | String | 无 | 输入框可输入的最大长度
 required（待做） | Boolean | false | 是否必填
 customMessage（待做） | String | 无 | 验证不通过时的错误提示
 testRule（待做） | RegExp | 无 | 字段的验证规则
+radius | String | 无 | 输入框为圆角，选值为：radius
 
 ## Events
 方法名称   |    说明    |    参数    |

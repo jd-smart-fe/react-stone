@@ -98,7 +98,8 @@ Input.propTypes = {
   required: PropTypes.bool,
   customMessage: PropTypes.string,
   testRule: PropTypes.string,
-  onInput: PropTypes.func
+  onInput: PropTypes.func,
+  radius: PropTypes.string
 }
 
 export default Input;
