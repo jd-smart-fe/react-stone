@@ -1,0 +1,98 @@
+.modal-mask{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #373737;
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 100%;
+    z-index: 1000;
+    filter: alpha(opacity=50);
+}
+.modal-wrap{
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    .modal{
+        position: fixed;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        width:600px;
+        min-height: 200px;
+        &.modal-top{
+            top:20px;
+        }
+        &.modal-bottom{
+            bottom:20px;
+        }
+        &.modal-sm{
+            width:400px;
+            min-height: 200px;
+        }
+        &.modal-lg{
+            width:900px;
+            height: 600px;
+        }
+        .modal-content{
+            position: relative;
+            height:100%;
+            width:100%;
+            background:#fff;
+            border:none;
+            box-shadow:0 0 5px rgba(0,0,0,.15);
+            overflow: auto;
+            .modal-close{
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                line-height: 24px;
+                font-size: 18px;
+                cursor: pointer;
+                -webkit-transition: transform 0.2s ease;
+                -moz-transition: transform 0.2s ease;
+                -ms-transition: transform 0.2s ease;
+                -o-transition: transform 0.2s ease;
+                transition: transform 0.2s ease;
+                &:hover {
+                    -webkit-transform: rotate(90deg);;
+                    -moz-transform: rotate(90deg);;
+                    -ms-transform: rotate(90deg);;
+                    -o-transform: rotate(90deg);;
+                    transform: rotate(90deg);
+                }
+            }
+            .modal-header{
+                font-size: 14px;
+                text-align: left;
+                padding:10px;
+                height:40px;
+            }
+            .modal-body{
+                font-size: 14px;
+                line-height: 1.5;
+                padding:20px;
+                .message{
+                    padding-bottom: 10px;
+                }
+            }
+            .modal-footer{
+                
+                padding:0 0 20px 0px;
+                text-align: center;
+                button{
+                    display: inline-block;
+                    border-radius:0!important;
+                    margin:0 8px;
+                }
+            }
+        }
+    }
+}

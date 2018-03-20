@@ -1,0 +1,86 @@
+@import '../../style/color.scss';
+
+.btn-base,
+.btn-blue {
+  background: $white;
+  border: $gray-lighter 1px solid;
+  color: $gray;
+  text-align: center;
+  display: inline-block;
+  margin: 0 5px;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  position: relative;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-font-smoothing: subpixel-antialiased;
+  &::before {
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-size: $bigFontSize;
+    position: relative;
+    margin-right:5px;
+    line-height: 0px;
+    bottom: -1px;
+  }
+  &:hover {
+    background: #f3f3f3;
+  }
+  &.btn-base-blue {
+    background: $blue;
+    border: $blue 1px solid;
+    color: $white;
+    &:hover{
+      background: #3277d2;
+    }
+  }
+  &.btn-base-gray {
+    background: #ededed;
+    border: 0;
+    padding: 0 16px;
+    &:hover{
+      background: #e6e6e6;
+    }
+  }
+  &.btn-size-small {
+    padding: 0 7px;
+    font-size: 14px;
+    border-radius: 4px;
+    height: 24px;
+  }
+  &.btn-size-base {
+    padding: 0 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    height: 32px;
+  }
+  &.btn-size-large {
+    padding: 0 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    height: 40px;
+  }
+  &.btn-radius-small {
+    border-radius: 5px;
+  }
+  &.btn-radius-half {
+    border-radius: 18px;
+  }
+  &.btn-radius-circle {
+    border-radius: 50%;
+    padding: 0;
+    min-width: 36px;
+    &::before{
+      margin: 0;
+    }
+  }
+  &:disabled {
+    color: #626262;
+    border-style: none;
+    background-color: #ECECEC;
+    &:hover{
+      background-color: #DEDEDE;
+      cursor: not-allowed;
+    }
+  }
+}
