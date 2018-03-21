@@ -8,7 +8,7 @@ import { Checkbox, CheckboxGroup } from './components/CheckboxGroup/CheckboxGrou
 import { Radio, RadioGroup } from './components/RadioGroup/RadioGroup.jsx';
 import Toast from './components/Toast/toast.jsx';
 import modal from './components/Modal/modal.jsx';
-import Pagination from './components/Pagination/Pagination.jsx';
+import Paginations from './components/Pagination/Pagination.jsx';
 import iconfonts from './components/Fonts/icofonts.css';
 import './App.css';
 
@@ -85,7 +85,7 @@ class App extends Component {
     return (
       <div className="App">
         <p className="App-intro">
-          <Pagination total={80} pageSize={10} current={this.state.currentPage} onChange={this.pageChange}></Pagination>
+          <Paginations total={9} pageSize={10} current={this.state.currentPage} onChange={this.pageChange}></Paginations>
           <Icon type='delete' />
           <span className="icon-delete"></span>
           <Button>Button Base</Button>

@@ -1,7 +1,14 @@
 # ceshi-stone
 [![npm](https://img.shields.io/npm/v/ceshi-stone.svg?style=flat-square)](https://www.npmjs.com/package/ceshi-stone)
 [![npm](https://img.shields.io/npm/dm/ceshi-stone.svg?style=flat-square)](https://www.npmjs.com/package/ceshi-stone)
+[![GitHub issues](https://img.shields.io/github/issues/JD-Smart-FE/react-stone.svg?style=flat-square)](https://github.com/JD-Smart-FE/rect-stone/issues)
+[![npm](https://img.shields.io/npm/l/react-stone.svg?style=flat-square)](https://github.com/JD-Smart-FE/react-stone/blob/master/LICENSE)
 > A components library for React. 一个基于 React 的PC组件库
+
+
+## 说明
+
+目前这个组件库还处于开发阶段，组件数量比较少，欢迎大家提建议，贡献组件！/:rose
 
 
 ## 安装
@@ -33,5 +40,6 @@ ceshi-stone 组件库提供了下述组件，每个组件都带有详细的文�
 - [RadioGroup](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/RadioGroup)
 - [Toast](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Toast)
 - [Select](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Select)
-- [Model](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Modal)
+- [Modal](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Modal)
+- [Pagination](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Pagination)
 
