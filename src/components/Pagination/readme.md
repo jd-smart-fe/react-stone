@@ -24,7 +24,7 @@ class App extends Component {
   render(){
     return (
       <div>
-        <Paginations total={100} pageSize={10} current={this.state.currentPage} onChange={this.pageChange}></Paginations>
+        <Pagination total={100} pageSize={10} current={this.state.currentPage} onChange={this.pageChange}></Pagination>
       </div>
     )
   }

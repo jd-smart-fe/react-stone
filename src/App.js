@@ -8,7 +8,7 @@ import { Checkbox, CheckboxGroup } from './components/CheckboxGroup/CheckboxGrou
 import { Radio, RadioGroup } from './components/RadioGroup/RadioGroup.jsx';
 import Toast from './components/Toast/toast.jsx';
 import modal from './components/Modal/modal.jsx';
-import Paginations from './components/Pagination/Pagination.jsx';
+import Pagination from './components/Pagination/Pagination.jsx';
 import iconfonts from './components/Fonts/icofonts.css';
 import './App.css';
 
@@ -85,7 +85,7 @@ class App extends Component {
     return (
       <div className="App">
         <p className="App-intro">
-          <Paginations total={9} pageSize={10} current={this.state.currentPage} onChange={this.pageChange}></Paginations>
+          <Pagination total={9} pageSize={10} current={this.state.currentPage} onChange={this.pageChange} />
           <Icon type='delete' />
           <span className="icon-delete"></span>
           <Button>Button Base</Button>
@@ -116,7 +116,7 @@ class App extends Component {
             <Input size="small" placeholder="小"/>
           </div>
           <div className="code-box-demo">
-            <Input size="base" placeholder="中"/> 
+            <Input size="base" placeholder="中"/>
           </div>
           <div className="code-box-demo">
             <Input size="large" placeholder="大"/>
@@ -133,14 +133,14 @@ class App extends Component {
           <div className="code-box-demo">
             <Input addonBefore="搜索框gg" addonAfter={<Icon type='search' />} size="large"/>
           </div>
-          
-        
-          
-          
-          
-          
-          
-          
+
+
+
+
+
+
+
+
           <Textarea />
           <Textarea placeholder="未输入时的提示信息"/>
           <Textarea value="value"/>
