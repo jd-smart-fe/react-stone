@@ -1,3 +1,4 @@
+@import '../../style/color.scss';
 .input-wrap {
   display: table;
   box-sizing: border-box;
@@ -6,29 +7,59 @@
   list-style: none;
   position: relative;
   width: 100%;
+  &.input-group{
+    .input{
+      display:table-cell;
+    }
+    .input-before{
+      width: 1px;
+      display:table-cell;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+    .input-after{
+      width: 1px;
+      display:table-cell;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+  }
 }
 .input{
-  width: 300px;
+  width: 100%;
   height: 36px;
   line-height: 24px;
   padding: 0 10px;
-  border: #d8d8d8 solid 1px;
+  border: $gray-lighter solid 1px;
   font-size: 14px;
   color: #626262;
   background: #fff;
   outline: none;
   vertical-align: top;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  &:hover {
+    border-color: $blue;
+  }
+  &:focus {
+    border-color: $blue;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  }
   &.input-small {
-    width: 100px;
     height: 24px;
+    font-size: 12px;
   }
   &.input-base {
-    width: 400px;
     height: 32px
   }
   &.input-large {
-    width: 600px;
     height: 40px;
+  }
+  &.input-radius{
+    border-radius: 4px;
   }
 }
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
@@ -58,18 +89,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   border-right: none;
   border-radius: 4px 0 0 4px;
   position: relative;
-  &.input-before-small {
-    height: 24px;
-    line-height: 24px;
-  }
-  &.input-before-base {
-    height: 32px;
-    line-height: 32px;
-  }
-  &.input-before-large {
-    height: 40px;
-    line-height: 40px;
-  }
+  box-sizing: border-box;
  }
  .input-after {
   padding: 0 11px;
@@ -82,16 +102,5 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   border-left: none;
   border-radius: 0 4px 4px 0;
   position: relative;
-  &.input-after-small {
-    height: 24px;
-    line-height: 24px;
-  }
-  &.input-after-base {
-    height: 32px;
-    line-height: 32px;
-  }
-  &.input-after-large {
-    height: 40px;
-    line-height: 40px;
-  }
+  box-sizing: border-box;
  }
