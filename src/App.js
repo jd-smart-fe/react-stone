@@ -85,7 +85,7 @@ class App extends Component {
     return (
       <div className="App">
         <p className="App-intro">
-          <Pagination total={9} pageSize={10} current={this.state.currentPage} onChange={this.pageChange} />
+          <Pagination total={218} pageSize={10} current={this.state.currentPage} onChange={this.pageChange} />
           <Icon type='delete' />
           <span className="icon-delete"></span>
           <Button>Button Base</Button>
