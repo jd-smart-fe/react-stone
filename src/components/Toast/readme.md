@@ -6,11 +6,12 @@
 import Toast from 'cesi-stone';
 
 不同的方法 toast出现和消失的效果不同
-- Toast.show('普通文字--渐入上部滑出', 3000);
-- Toast.info('普通文字--翻转', 3000);
-- Toast.success('普通文字--爆炸进入', 3000);
-- Toast.warning('普通文字--从底部滑入', 3000);
-- Toast.error('普通文字--摇晃', 3000);
+- Toast.top('普通文字--从头渐出', 2000);
+- Toast.middle('普通文字--中间渐出',2000);
+- Toast.bottom('普通文字--从底渐出',2000);
+- Toast.errorTopico('带错误图标--从头渐出',22000);
+- Toast.yesTopico('带正确图标--从头渐出',2000);
+
 ```
 
 

@@ -81,24 +81,48 @@ class App extends Component {
       currentPage: page
     })
   }
+  openToast = () =>{
+    Toast.top('普通文字--从头渐出', 2000);
+  }
+  openMiddle = () =>{
+    Toast.middle('普通文字--中间渐出',2000)
+  }
+  openBottom = () =>{
+    Toast.bottom('普通文字--从底渐出',2000)
+  }
+  openErrorTopico = () =>{
+    Toast.errorTopico('带错误图标--从头渐出',2000)
+  }
+  openYesTopico = () =>{
+    Toast.yesTopico('带正确图标--从头渐出',2000)
+  }
   render() {
     return (
       <div className="App">
         <p className="App-intro">
           <Pagination total={218} pageSize={10} current={this.state.currentPage} onChange={this.pageChange} />
-          <Icon type='delete' />
-          <span className="icon-delete"></span>
-          <Button>Button Base</Button>
-          <Button size='small' theme='gray'>Button small</Button>
-          <Button size='base'>Button base</Button>
-          <Button size='large'>Button large</Button>
-          <Button disabled={true}>Button Disabled</Button>
-          <Button radius='circle' icon="delete" />
-          <Button icon="delete">delect</Button>
-          <Button htmlType='submit'>Button Submit</Button>
-
+          <br/>
+          <div>
+            <Icon type='delete' />
+            <span className="icon-delete"></span>
+            <Button>Button Base</Button>
+            <Button size='small' theme='gray'>Button small</Button>
+            <Button size='base'>Button base</Button>
+            <Button size='large'>Button large</Button>
+            <Button disabled={true}>Button Disabled</Button>
+            <Button radius='circle' icon="delete" />
+            <Button icon="delete">delect</Button>
+            <Button htmlType='submit'>Button Submit</Button>
+          </div>
           <div className="code-box-demo">
             <Textarea value='zhangning' name="zhang" maxLength={10} onText={onText}/>
+          </div>
+          <div className="code-box-demo">
+            <Button onClick={this.openToast} >top</Button>
+            <Button onClick={this.openMiddle} >middle</Button>
+            <Button onClick={this.openBottom} >bottom</Button>
+            <Button onClick={this.openErrorTopico} >errorTopico</Button>
+            <Button onClick={this.openYesTopico} >yesTopico</Button>
           </div>
           <div className="code-box-demo">
             <Input radius="radius" placeholder="圆角"/>

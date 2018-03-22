@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import './toast.scss';
+import '../Fonts/icofonts.css';
 
 class NoticeDom extends React.Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class NoticeDom extends React.Component {
   render() {
     const noticeCls = classNames({
       'toast-box': true,
+      [`icon-${this.props.type}`]: this.props.type,
       [`toast-${this.props.type}`]: this.props.type
     })
     return (
@@ -85,10 +87,12 @@ class Notice {
   }
 }
 export default {
-  info: (text, timeout) => (Notice.add(text, 'info', timeout)),
-  success: (text, timeout) => (Notice.add(text, 'success', timeout)),
-  warning: (text, timeout) => (Notice.add(text, 'warning', timeout)),
-  error: (text, timeout) => (Notice.add(text, 'error', timeout)),
-  show: (text, timeout) => (Notice.add(text, 'show', timeout)),
-  loading: (text, timeout) => (Notice.add(text, 'loading', timeout)),
+
+  top: (text, timeout) => (Notice.add(text, 'top', timeout)),
+  middle: (text, timeout) => (Notice.add(text, 'middle', timeout)),
+  bottom: (text, timeout) => (Notice.add(text, 'bottom', timeout)),
+
+  errorTopico: (text, timeout) => (Notice.add(text, 'errorTopico', timeout)),
+  yesTopico: (text, timeout) => (Notice.add(text, 'yesTopico', timeout)),
+
 }
