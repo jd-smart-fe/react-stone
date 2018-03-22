@@ -5,29 +5,28 @@
     -o-transform: $transforms;
     transform: $transforms;
   }
-  @mixin transition($transitions) {
-    -webkit-transition: $transitions;
-    -moz-transition: $transitions;
-    -ms-transition: $transitions;
-    -o-transition: $transitions;
-    transition: $transitions;
+@mixin transition($transitions) {
+  -webkit-transition: $transitions;
+  -moz-transition: $transitions;
+  -ms-transition: $transitions;
+  -o-transition: $transitions;
+  transition: $transitions;
+}
+@mixin animation($animations) {
+  -webkit-animation: $animations;
+  -moz-animation: $animations;
+  -ms-animation: $animations;
+  -o-animation: $animations;
+  animation: $animations;
+}
+@mixin keyframes($a) {
+  @-webkit-keyframes #{$a} {
+    @content;
   }
-  @mixin animation($animations) {
-    -webkit-animation: $animations;
-    -moz-animation: $animations;
-    -ms-animation: $animations;
-    -o-animation: $animations;
-    animation: $animations;
+  @-moz-keyframes #{$a} {
+    @content;
   }
-  @mixin keyframes($a) {
-    @-webkit-keyframes #{$a} {
-      @content;
-    }
-    @-moz-keyframes #{$a} {
-      @content;
-    }
-    @keyframes #{$a} {
-      @content;
-    }
+  @keyframes #{$a} {
+    @content;
   }
-  
+}

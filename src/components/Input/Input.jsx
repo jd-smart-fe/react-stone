@@ -56,7 +56,7 @@ class Input extends Component {
         }
         <input
           type={ type }
-          readonly={ disabled ? 'readonly' : false }
+          readOnly={ disabled ? 'readonly' : false }
           maxLength={ maxLength }
           name={ name }
           className={ classInput }

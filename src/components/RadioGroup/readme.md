@@ -8,7 +8,7 @@
 ```javascript
 import { Radio } from 'ceshi-stone';
 
-<Radio value={'5'} defaultChecked={true} id="voiceTypezn" textname="硬件设备" />
+<Radio value={'5'} checked={true} id="voiceTypezn" textname="硬件设备" />
 ```
 
 ### 引入按钮组
@@ -28,7 +28,6 @@ import { Radio, RadioGroup } from 'ceshi-stone';
 属性名   |    类型   |     默认值     |     说明
 ----    | ----    | ----    | ----    |
 id  | String  | 无 |  必填，定义按钮的id。
-defaultChecked | Boolean | false | 初始是否选中
 checked | Boolean | false | 指定当前是否选中
 value | String | '' | 定义按钮的值。
 textname  | String  | ''  |  必填，定义按钮的文字。

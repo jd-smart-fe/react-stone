@@ -29,14 +29,14 @@ class Pagination extends Component {
         // 如果当前的选择的页码大于等于5，则必定显示左边第一页+左边一个省略符
         if (i === 0) {
           liArr.push(<li className={this.getClassName(i, current)} onClick={this.pageClick} key={i}>{ i + 1 }</li>);
-          liArr.push(<span className="page-num disabled">...</span>);
+          liArr.push(<span className="page-num disabled" key={new Date()}>...</span>);
         }
         // 如果当前选择的页码，距离结尾还有5页以上，则显示左边第一页+左边一个省略符+中间五页+右边省略符+最后一页
         if (current <= (pageTotle - 5)) {
           if (i >= (current - 3) && i < (current + 2)) {
             liArr.push(<li className={this.getClassName(i, current)} onClick={this.pageClick} key={i}>{ i + 1 }</li>);
           } else if ((i + 1) === pageTotle) {
-            liArr.push(<span className="page-num disabled">...</span>);
+            liArr.push(<span className="page-num disabled" key={new Date()}>...</span>);
             liArr.push(<li className={this.getClassName(i, current)} onClick={this.pageClick} key={i}>{ i + 1 }</li>);
           }
         }
@@ -45,7 +45,7 @@ class Pagination extends Component {
           if ((i + 1) > pageTotle - 6) {
             liArr.push(<li className={this.getClassName(i, current)} onClick={this.pageClick} key={i}>{ i + 1 }</li>);
           } else if ((i + 1) === pageTotle) {
-            liArr.push(<span className="page-num disabled">...</span>);
+            liArr.push(<span className="page-num disabled" key={new Date()}>...</span>);
             liArr.push(<li className={this.getClassName(i, current)} onClick={this.pageClick} key={i}>{ i + 1 }</li>);
           }
         }

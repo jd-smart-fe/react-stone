@@ -82,7 +82,7 @@ class App extends Component {
       this.setState({
         inputValue: 'ajaxInp'
       });
-      Toast.errorTopico('带错误图标--从头渐出',22000);
+      Toast.errorTopico('带错误图标--从头渐出',2000);
       // Toast.info('图片仅支持上传 JPG、PNG格式', 'info', 500000);
     }, 2000)
   }
@@ -111,12 +111,12 @@ class App extends Component {
     return (
       <div className="App">
         <p className="App-intro">
-          <DragSort type="table" onDragEnd={this.handleDragEnd} onChange={this.handleDragMove}>
-            <div>list1</div>
+          {/* <DragSort type="table" onDragEnd={this.handleDragEnd} onChange={this.handleDragMove}>
+            <div key>list1</div>
             <div>list2</div>
             <div>list3</div>
             <div>list4</div>
-          </DragSort>
+          </DragSort> */}
           <Button icon="delete" onClick={this.openModal}>Open Modal</Button>
           <Pagination total={218} pageSize={10} current={this.state.currentPage} onChange={this.pageChange} />
           <br/>

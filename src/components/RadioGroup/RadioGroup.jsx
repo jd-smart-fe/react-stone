@@ -4,7 +4,7 @@ import './radio.scss';
 
 export class Radio extends Component {
   render() {
-    const { defaultChecked, checked, value } = this.props;
+    const { checked, value } = this.props;
     const defaultContext = {
       name: undefined,
       selectedValue: undefined,
@@ -12,7 +12,7 @@ export class Radio extends Component {
     };
     const { name, selectedValue, onChange } = this.context.radioGroup || defaultContext;
     const optional = {};
-    if (defaultChecked === true || checked === true) {
+    if (checked === true) {
       optional.checked = true;
     }
     if (selectedValue !== undefined) {

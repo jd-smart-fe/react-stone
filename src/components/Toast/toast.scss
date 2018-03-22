@@ -3,7 +3,7 @@
 
 .toast-root{
   position: fixed;
-  padding:30px;
+  padding: 30px;
   top:0;
   left: 0;
   bottom: 0;
@@ -64,30 +64,30 @@
   from {
     opacity: 0;
     top: -20%
-  } 
+  }
   to {
     top: 10%;
     opacity: 1;
-  } 
+  }
 }
 
 @include keyframes (openBottom){
   from {
     opacity: 0;
     top: 120%
-  } 
+  }
 
   to {
     top: 90%;
     opacity: 1;
-  } 
+  }
 }
 @include keyframes (openMiddle){
   from{
     opacity: 0;
-  } 
+  }
 
   to {
     opacity: 1;
-  } 
+  }
 }
