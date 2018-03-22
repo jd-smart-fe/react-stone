@@ -4,16 +4,18 @@ import PropTypes from 'prop-types';
 import './button.scss';
 
 const Button = (props) => {
-  let { theme, radius, icon, disabled, className, onClick, size, htmlType } = props;
+  let {
+    theme, radius, icon, disabled, className, onClick, size, htmlType,
+  } = props;
   let classArr = classNames({
     'btn-base': true,
     [` btn-base-${theme}`]: theme,
     [` btn-size-${size}`]: size,
     'btn-radius': false,
     [` btn-radius-${radius}`]: radius,
-    'icon': false,
+    icon: false,
     [` icon-${icon}`]: icon,
-    'btn-disabled': disabled
+    'btn-disabled': disabled,
   });
   return (
     <button
@@ -23,16 +25,16 @@ const Button = (props) => {
       onClick={ onClick }>
       { props.children }
     </button>
-  )
-}
+  );
+};
 
 Button.defaultProps = {
   size: 'base',
   radius: 'small',
   disabled: false,
   htmlType: 'button',
-  theme: 'blue'
-}
+  theme: 'blue',
+};
 
 Button.propTypes = {
   size: PropTypes.oneOf(['base', 'small', 'large']),
@@ -41,7 +43,7 @@ Button.propTypes = {
   icon: PropTypes.string,
   htmlType: PropTypes.string,
   theme: PropTypes.string,
-  onClick: PropTypes.func
-}
+  onClick: PropTypes.func,
+};
 
 export default Button;

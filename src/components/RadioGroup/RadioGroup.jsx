@@ -8,17 +8,17 @@ export class Radio extends Component {
     const defaultContext = {
       name: undefined,
       selectedValue: undefined,
-      onChange: () => {}
-    }
-    const {name, selectedValue, onChange} = this.context.radioGroup || defaultContext;
+      onChange: () => {},
+    };
+    const { name, selectedValue, onChange } = this.context.radioGroup || defaultContext;
     const optional = {};
-    if (defaultChecked == true || checked == true) {
-      optional.checked = true
+    if (defaultChecked === true || checked === true) {
+      optional.checked = true;
     }
-    if(selectedValue !== undefined) {
+    if (selectedValue !== undefined) {
       optional.checked = (this.props.value === selectedValue);
     }
-    if(typeof onChange === 'function') {
+    if (typeof onChange === 'function') {
       optional.onChange = onChange.bind(null, this.props);
     }
 
@@ -34,10 +34,10 @@ export class Radio extends Component {
       </span>
     );
   }
-};
+}
 
 Radio.contextTypes = {
-  radioGroup: PropTypes.object
+  radioGroup: PropTypes.object,
 };
 
 export class RadioGroup extends React.Component {
@@ -45,19 +45,21 @@ export class RadioGroup extends React.Component {
     const { name, selectedValue, onChange } = this.props;
     return {
       radioGroup: {
-        name, selectedValue, onChange
-      }
-    }
+        name, selectedValue, onChange,
+      },
+    };
   }
 
   render() {
-    const { Component, name, selectedValue, onChange, children, ...rest } = this.props;
-    return <Component {...rest}>{children}</Component>;
+    const {
+      Tag, name, selectedValue, onChange, children, ...rest
+    } = this.props;
+    return <Tag {...rest}>{children}</Tag>;
   }
-};
+}
 
 RadioGroup.defaultProps = {
-  Component: "div"
+  Tag: 'div',
 };
 
 RadioGroup.propTypes = {
@@ -73,9 +75,9 @@ RadioGroup.propTypes = {
     PropTypes.string,
     PropTypes.func,
     PropTypes.object,
-  ])
+  ]),
 };
 
 RadioGroup.childContextTypes = {
-  radioGroup: PropTypes.object
+  radioGroup: PropTypes.object,
 };

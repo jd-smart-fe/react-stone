@@ -2,6 +2,13 @@ import React from 'react';
 
 let curDragIndex = null;
 
+const arrMove = (arr, fromIndex, toIndex) => {
+  arr = [].concat(arr);
+  let item = arr.splice(fromIndex, 1)[0];
+  arr.splice(toIndex, 0, item);
+  return arr;
+};
+
 const EasyDragSort = (props) => {
   let container = props.children;
   function onChange(from, to) {
@@ -9,39 +16,32 @@ const EasyDragSort = (props) => {
     let curValue = props.data;
     let newValue = arrMove(curValue, from, to);
     if (typeof props.onChange === 'function') {
-      return props.onChange(newValue, from, to);
+      props.onChange(newValue, from, to);
     }
   }
   return <div>
     {container.map((item, index) => {
       if (React.isValidElement(item)) {
         return React.cloneElement(item, {
-          draggable: "true",
-          onDragStart: function () {
-            curDragIndex = index
-          },
-          onDragEnter: function () {
-            onChange(curDragIndex, index)
+          draggable: 'true',
+          onDragStart() {
             curDragIndex = index;
           },
-          onDragEnd: function () {
+          onDragEnter() {
+            onChange(curDragIndex, index);
+            curDragIndex = index;
+          },
+          onDragEnd() {
             curDragIndex = null;
             if (typeof props.onDragEnd === 'function') {
-              props.onDragEnd()
+              props.onDragEnd();
             }
-          }
-        })
+          },
+        });
       }
       return item;
     })}
   </div>;
-}
-
-const arrMove = (arr, fromIndex, toIndex) => {
-  arr = [].concat(arr);
-  let item = arr.splice(fromIndex, 1)[0];
-  arr.splice(toIndex, 0, item);
-  return arr;
-}
+};
 
 export default EasyDragSort;

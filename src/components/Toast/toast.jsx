@@ -6,14 +6,14 @@ import '../Fonts/icofonts.css';
 
 class NoticeDom extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {};
   }
   componentDidMount() {
     if (this.props.duration > 0) {
       this.closeTimer = setTimeout(() => {
-        this.close()
-      }, this.props.duration - 300)
+        this.close();
+      }, this.props.duration - 300);
     }
   }
   componentWillUnmount() {
@@ -43,11 +43,11 @@ class NoticeDom extends React.Component {
     const noticeCls = classNames({
       'toast-box': true,
       [`icon-${this.props.type}`]: this.props.type,
-      [`toast-${this.props.type}`]: this.props.type
-    })
+      [`toast-${this.props.type}`]: this.props.type,
+    });
     return (
       <div className={noticeCls} id={this.props.id}>{this.props.text}</div>
-    )
+    );
   }
 }
 class Notice {
@@ -56,7 +56,7 @@ class Notice {
     text: '',
     type: 'info',
     timeout: 2000,
-  }
+  };
   static add(text, type, timeout) {
     const toastText = text || this.defaultOptions.text;
     const toastType = type || this.defaultOptions.type;
@@ -67,32 +67,31 @@ class Notice {
     ToastDiv = document.getElementById('toast-root');
     if (!ToastDiv) {
       ToastDiv = document.createElement('div');
-      ToastDiv.id = "toast-root";
-      ToastDiv.classList.add("toast-root");
+      ToastDiv.id = 'toast-root';
+      ToastDiv.classList.add('toast-root');
       document.body.appendChild(ToastDiv);
     }
-    Notice.notices.push({ text: toastText, type: toastType, duration: duration, id: toastId, onClose: onClose })
-    const NoticesDom = Notice.notices.map(notice => <NoticeDom key={notice.id} {...notice} />)
-    ReactDOM.render(NoticesDom, ToastDiv)
+    Notice.notices.push({
+      text: toastText, type: toastType, duration, id: toastId, onClose,
+    });
+    const NoticesDom = Notice.notices.map(notice => <NoticeDom key={notice.id} {...notice} />);
+    ReactDOM.render(NoticesDom, ToastDiv);
   }
   static remove(id) {
     Notice.notices = Notice.notices.filter(item => item.id !== id);
-    const NoticesDom = Notice.notices.map(notice => <NoticeDom key={notice.id} {...notice} />)
+    const NoticesDom = Notice.notices.map(notice => <NoticeDom key={notice.id} {...notice} />);
     let ToastDiv = document.getElementById('toast-root');
     if (NoticesDom.length) {
-      ReactDOM.render(NoticesDom, ToastDiv)
+      ReactDOM.render(NoticesDom, ToastDiv);
     } else {
       document.body.removeChild(ToastDiv);
     }
   }
 }
 export default {
-
   top: (text, timeout) => (Notice.add(text, 'top', timeout)),
   middle: (text, timeout) => (Notice.add(text, 'middle', timeout)),
   bottom: (text, timeout) => (Notice.add(text, 'bottom', timeout)),
-
   errorTopico: (text, timeout) => (Notice.add(text, 'errorTopico', timeout)),
   yesTopico: (text, timeout) => (Notice.add(text, 'yesTopico', timeout)),
-
-}
+};

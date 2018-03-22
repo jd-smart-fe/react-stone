@@ -82,6 +82,7 @@ class App extends Component {
       this.setState({
         inputValue: 'ajaxInp'
       });
+      Toast.errorTopico('带错误图标--从头渐出',22000);
       // Toast.info('图片仅支持上传 JPG、PNG格式', 'info', 500000);
     }, 2000)
   }

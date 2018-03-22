@@ -6,10 +6,10 @@ import './select.css';
 
 class OptionPanel extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      options: props.optionData
-    }
+      options: props.optionData,
+    };
   }
   handleClick(option, e) {
     e.preventDefault();
@@ -18,26 +18,25 @@ class OptionPanel extends Component {
     this.props.optionData.map((item) => {
       if (item.value === option.value) {
         return item.active = true;
-      } else {
-        return item.active = false;
       }
-    })
+      return item.active = false;
+    });
   }
   render() {
     const optionArr = [];
     this.props.optionData.forEach((option) => {
       const itemClass = classNames({
         'option-item': true,
-        'active': option.active
-      })
+        'active': option.active,
+      });
       optionArr.push(
         <li className={itemClass} key={option.value} value={option.value} onClick={this.handleClick.bind(this, option)}>{option.label}</li>
-      )
+      );
     })
     const optionPanelClass = classNames({
       "option-panel": true,
       "option-panel-show": !this.props.closeStatus,
-    })
+    });
 
     return (
       <div className={optionPanelClass}>
@@ -52,7 +51,7 @@ class OptionPanel extends Component {
 
 }
 OptionPanel.defaultProps = {
-  placeholder: '请选择任意选项'
+  placeholder: '请选择任意选项',
 };
 class Select extends Component {
   constructor(props) {
@@ -60,8 +59,8 @@ class Select extends Component {
     this.state = {
       closeStatus: true,
       selectedItem: '',
-      count: 0
-    }
+      count: 0,
+    };
     this.showOptionPanel = this.showOptionPanel.bind(this);
     this.selectSomeOne = this.selectSomeOne.bind(this);
   }
@@ -69,8 +68,6 @@ class Select extends Component {
     let count = this.state.count;
     let dom = document.getElementById('optionPanelWrap');
     if (count !== 0) {
-      console.log(dom.parentNode.id)
-      console.log(this.props.name)
       if (dom && dom.parentNode.id !== this.props.name) {
         ReactDOM.unmountComponentAtNode(dom);
         dom.parentNode.removeChild(dom);
@@ -80,25 +77,25 @@ class Select extends Component {
         count++;
         this.setState(prevState => ({
           closeStatus: false,
-          count: count
+          count: count,
         }), () => {
           ReactDOM.render(<OptionPanel optionData={this.props.optionData}
             onSelect={this.selectSomeOne}
             closeStatus={this.state.closeStatus}
             placeholder={this.props.placeholder} />,
             dom)
-        })
+        });
       } else {
         this.setState(prevState => ({
           closeStatus: !prevState.closeStatus,
-          count: 0
+          count: 0,
         }), () => {
           ReactDOM.render(<OptionPanel optionData={this.props.optionData}
             onSelect={this.selectSomeOne}
             closeStatus={this.state.closeStatus}
             placeholder={this.props.placeholder} />,
             dom)
-        })
+        });
       }
     } else {
       if (!!dom) {
@@ -106,26 +103,26 @@ class Select extends Component {
         dom.parentNode.removeChild(dom);
       }
       dom = document.createElement('div');
-      dom.id = 'optionPanelWrap'
+      dom.id = 'optionPanelWrap';
       this.select.appendChild(dom);
       count++;
       this.setState(prevState => ({
         closeStatus: false,
-        count: count
+        count: count,
       }), () => {
         ReactDOM.render(<OptionPanel optionData={this.props.optionData}
           onSelect={this.selectSomeOne}
           closeStatus={this.state.closeStatus}
           placeholder={this.props.placeholder} />,
           dom)
-      })
+      });
     }
     event.nativeEvent.stopImmediatePropagation();
   }
   selectSomeOne(selectedOption) {
     this.setState(prevState => ({
       selectedItem: selectedOption,
-      closeStatus: true
+      closeStatus: true,
     }), () => {
       let dom = document.getElementById('optionPanelWrap');
       ReactDOM.render(<OptionPanel optionData={this.props.optionData}
@@ -133,7 +130,7 @@ class Select extends Component {
         closeStatus={this.state.closeStatus}
         placeholder={this.props.placeholder} />,
         dom)
-    })
+    });
     this.props.onChange({ [this.props.name]: selectedOption });
   }
   componentWillReceiveProps(nextProps, props) {
@@ -143,12 +140,12 @@ class Select extends Component {
       if (typeof dfOption === 'number') {
         console.log(1757);
         nextProps.optionData.forEach((option) => {
-          if (option.value == dfOption) {
+          if (option.value === dfOption) {
             console.log(1758);
             option.active = true;
             this.setState(prevState => ({
-              selectedItem: option
-            }))
+              selectedItem: option,
+            }));
           } else {
             option.active = false;
           }
@@ -158,15 +155,15 @@ class Select extends Component {
           if (option.value === dfOption.value) {
             option.active = true;
             this.setState(prevState => ({
-              selectedItem: dfOption
-            }))
+              selectedItem: dfOption,
+            }));
           } else {
             option.active = false;
           }
         })
       } else {
         this.setState({
-          selectedItem: { 'label': this.props.placeholder }
+          selectedItem: { 'label': this.props.placeholder },
         })
       }
     }
@@ -176,12 +173,12 @@ class Select extends Component {
       if (typeof dfOption === 'number') {
         console.log(1757);
         nextProps.optionData.forEach((option) => {
-          if (option.value == dfOption) {
+          if (option.value === dfOption) {
             console.log(1758);
             option.active = true;
             this.setState(prevState => ({
-              selectedItem: option
-            }))
+              selectedItem: option,
+            }));
           } else {
             option.active = false;
           }
@@ -191,16 +188,16 @@ class Select extends Component {
           if (option.value === dfOption.value) {
             option.active = true;
             this.setState(prevState => ({
-              selectedItem: dfOption
-            }))
+              selectedItem: dfOption,
+            }));
           } else {
             option.active = false;
           }
         })
       } else {
         this.setState({
-          selectedItem: { 'label': this.props.placeholder }
-        })
+          selectedItem: { 'label': this.props.placeholder },
+        });
       }
     }
   }
@@ -209,11 +206,11 @@ class Select extends Component {
     // console.log(this.refs);
     if (typeof dfOption === 'number') {
       this.props.optionData.forEach((option) => {
-        if (option.value == dfOption) {
+        if (option.value === dfOption) {
           option.active = true;
           this.setState(prevState => ({
-            selectedItem: option
-          }))
+            selectedItem: option,
+          }));
         } else {
           option.active = false;
         }
@@ -223,16 +220,16 @@ class Select extends Component {
         if (option.value === dfOption.value) {
           option.active = true;
           this.setState(prevState => ({
-            selectedItem: dfOption
-          }))
+            selectedItem: dfOption,
+          }));
         } else {
           option.active = false;
         }
       })
     } else {
       this.setState({
-        selectedItem: { 'label': this.props.placeholder }
-      })
+        selectedItem: { 'label': this.props.placeholder },
+      });
     }
     this.documentClickHandler = (e) => {
       this.setState({ closeStatus: true }, () => {
@@ -255,11 +252,11 @@ class Select extends Component {
     const iconClass = classNames({
       'select-arrow': true,
       'icon-dowico': this.state.closeStatus,
-      'icon-upico': !this.state.closeStatus
+      'icon-upico': !this.state.closeStatus,
     });
     const selectControlClass = classNames({
       'select-control': true,
-      [`select-control-${this.props.size}`]: this.props.size
+      [`select-control-${this.props.size}`]: this.props.size,
     });
     return (
       <div className="select" id={this.props.name} ref={(select) => this.select = select}>
@@ -271,11 +268,14 @@ class Select extends Component {
     )
   }
 }
+
 Select.defaultProps = {
   placeholder: '请选择任意选项'
 };
+
 Select.propTypes = {
   optionData: PropTypes.array,
-  onChange: PropTypes.func
-}
+  onChange: PropTypes.func,
+};
+
 export default Select;

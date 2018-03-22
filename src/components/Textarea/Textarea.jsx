@@ -7,48 +7,49 @@ class Textarea extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value
-    }
+      value: props.value,
+    };
     this.handleChange = this.handleChange.bind(this);
   }
   componentWillReceiveProps(nextProps, props) {
     if (nextProps.value !== props.value) {
       this.setState({
-        value: nextProps.value
-      })
+        value: nextProps.value,
+      });
     }
   }
   handleChange(e) {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name, value } = e.target;
     if (name) {
       this.setState({
         [name]: value,
-        value
+        value,
       }, () => {
         this.props.onText({ [name]: value });
-      })
+      });
     } else {
       this.setState({
-        value
+        value,
       }, () => {
         this.props.onText(value);
-      })
+      });
     }
   }
   render() {
-    const { name, maxLength, width, height, size, fontSize, placeholder } = this.props;
+    const {
+      name, maxLength, width, height, size, fontSize, placeholder,
+    } = this.props;
     const textareaClass = classNames({
       'textarea-base': true,
       [`textarea-size-${size}`]: size,
-    })
+    });
     return (
       <div
         className={textareaClass}
         style={{
-          'width': width,
-          'height': height,
-          'fontSize': fontSize
+          width,
+          height,
+          fontSize,
         }}>
         <textarea
           className="textarea-inner"
@@ -62,14 +63,14 @@ class Textarea extends Component {
           <div className="cha-limit">{ this.state.value.length }/<span className="max-cha-num">{ maxLength }</span></div>
           : null}
       </div>
-    )
+    );
   }
 }
 
 Textarea.defaultProps = {
   size: 'base',
   value: '',
-  onText: () => {}
+  onText: () => {},
 };
 
 Textarea.propTypes = {
@@ -81,7 +82,7 @@ Textarea.propTypes = {
   fontSize: PropTypes.string,
   maxLength: PropTypes.number,
   name: PropTypes.string,
-  onText: PropTypes.func
-}
+  onText: PropTypes.func,
+};
 
 export default Textarea;

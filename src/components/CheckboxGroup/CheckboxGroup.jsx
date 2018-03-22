@@ -6,27 +6,27 @@ class CheckboxGroup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.defaultValue
-    }
+      value: this.props.defaultValue,
+    };
   }
   componentWillReceiveProps(nextProps) {
-    if (this.props.value && (nextProps.value !== this.state.value )) {
+    if (this.props.value && (nextProps.value !== this.state.value)) {
       this.setState({
-        value: nextProps.value
-      })
+        value: nextProps.value,
+      });
     }
   }
   onChange = (e) => {
     let arr = this.state.value;
-    let index = this.state.value.indexOf(e.target.id)
+    let index = this.state.value.indexOf(e.target.id);
     if (index === -1) {
-      arr.push(e.target.id)
+      arr.push(e.target.id);
     } else {
       arr.splice(index, 1);
     }
     this.setState({
-      value: arr
-    })
+      value: arr,
+    });
     if (typeof this.props.onChange === 'function') {
       this.props.onChange(arr, e.target.id);
     }
@@ -41,16 +41,16 @@ class CheckboxGroup extends Component {
           key={index}
           id={option.value}
           onChange={this.onChange}
-          checked={ this.state.value.indexOf(option.value) === -1 ? false : true } />
+          checked={this.state.value.indexOf(option.value) !== -1} />
         <label htmlFor={option.value}>{option.label}</label>
-      </span>)
+      </span>);
     });
-    return (<div>{checkboxArr}</div>)
+    return (<div>{checkboxArr}</div>);
   }
-};
+}
 
 CheckboxGroup.defaultProps = {
-  defaultValue: []
+  defaultValue: [],
 };
 
 CheckboxGroup.propTypes = {
@@ -58,6 +58,6 @@ CheckboxGroup.propTypes = {
   defaultValue: PropTypes.array,
   value: PropTypes.array,
   onChange: PropTypes.func,
-}
+};
 
 export default CheckboxGroup;
