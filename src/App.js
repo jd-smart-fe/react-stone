@@ -91,23 +91,20 @@ class App extends Component {
       currentPage: page
     })
   }
-  // 拖动时触发
-  handleDragMove = (data, from, to) => {
-    console.log(to);
-    // this.setState({
-    //   curMoveItem: to,
-    //   goodsList: data
-    // })
+  openToast = () =>{
+    Toast.top('普通文字--从头渐出', 2000);
   }
-  // 拖动结束触发
-  handleDragEnd = ()=>{
-    // this.setState({
-    //   curMoveItem: null
-    // })
+  openMiddle = () =>{
+    Toast.middle('普通文字--中间渐出',2000)
   }
-  checkedBoxChange = (arr, checkedValue) => {
-    console.log(arr);
-    console.log(checkedValue);
+  openBottom = () =>{
+    Toast.bottom('普通文字--从底渐出',2000)
+  }
+  openErrorTopico = () =>{
+    Toast.errorTopico('带错误图标--从头渐出',2000)
+  }
+  openYesTopico = () =>{
+    Toast.yesTopico('带正确图标--从头渐出',2000)
   }
   render() {
     return (
@@ -121,27 +118,28 @@ class App extends Component {
           </DragSort>
           <Button icon="delete" onClick={this.openModal}>Open Modal</Button>
           <Pagination total={218} pageSize={10} current={this.state.currentPage} onChange={this.pageChange} />
-          <Icon type='delete' />
-          <span className="icon-delete"></span>
-          <Button>Button Base</Button>
-          <Button size='small' theme='gray'>Button small</Button>
-          <Button size='base'>Button base</Button>
-          <Button size='large'>Button large</Button>
-          <Button disabled={true}>Button Disabled</Button>
-          <Button radius='circle' icon="delete" />
-          <Button icon="delete">delect</Button>
-          <Button htmlType='submit'>Button Submit</Button>
-          {/* <Checkbox textname="Checkbox" /> */}
-          {/* <CheckboxGroup selectedValue={this.state.checkedVal} onChange={this.checkboxGroupChange}>
-            <p><Checkbox value='first' id="voiceType1" textname="手动发起" /></p>
-            <p><Checkbox value='second' id="voiceType2" textname="近场语音唤醒" /></p>
-            <p><Checkbox value='third' id="voiceType3" textname="远场语音唤醒" /></p>
-          </CheckboxGroup> */}
-          <CheckboxGroup
-            options={this.state.options}
-            onChange={this.checkedBoxChange}/>
+          <br/>
+          <div>
+            <Icon type='delete' />
+            <span className="icon-delete"></span>
+            <Button>Button Base</Button>
+            <Button size='small' theme='gray'>Button small</Button>
+            <Button size='base'>Button base</Button>
+            <Button size='large'>Button large</Button>
+            <Button disabled={true}>Button Disabled</Button>
+            <Button radius='circle' icon="delete" />
+            <Button icon="delete">delect</Button>
+            <Button htmlType='submit'>Button Submit</Button>
+          </div>
           <div className="code-box-demo">
             <Textarea value='zhangning' name="zhang" maxLength={10} onText={onText}/>
+          </div>
+          <div className="code-box-demo">
+            <Button onClick={this.openToast} >top</Button>
+            <Button onClick={this.openMiddle} >middle</Button>
+            <Button onClick={this.openBottom} >bottom</Button>
+            <Button onClick={this.openErrorTopico} >errorTopico</Button>
+            <Button onClick={this.openYesTopico} >yesTopico</Button>
           </div>
           <div className="code-box-demo">
             <Input radius="radius" placeholder="圆角"/>
