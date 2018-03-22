@@ -34,7 +34,6 @@ ceshi-stone 组件库提供了下述组件，每个组件都带有详细的文�
 - [Button](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Button)
 - [Textarea](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Textarea)
 - [Input](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Input)
-- [Checkbox](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/CheckboxGroup)
 - [CheckboxGroup](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/CheckboxGroup)
 - [Radio](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/RadioGroup)
 - [RadioGroup](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/RadioGroup)

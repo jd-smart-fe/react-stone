@@ -6,14 +6,15 @@ import './modal.scss';
 
 class Modal extends Component {
   cancel = () => {
-    if (typeof this.props.onOk === 'object') {
+    if (typeof this.props.onCancel === 'function') {
+      console.log(this.props.onCancel)
       this.props.onCancel()
     } else {
       modal.close()
     }
   }
   modalOK = () => {
-    if (typeof this.props.onOk === 'object') {
+    if (typeof this.props.onOk === 'function') {
       this.props.onOk()
     } else {
       modal.close()

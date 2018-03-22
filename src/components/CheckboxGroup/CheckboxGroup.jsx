@@ -1,74 +1,63 @@
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
 import './checkbox.css';
 
-export class Checkbox extends React.Component {
-  render() {
-    let name, selectedValue, onChange;
-    if (this.context.checkboxGroup) {
-      name = this.context.checkboxGroup.name;
-      selectedValue = this.context.checkboxGroup.selectedValue;
-      onChange = this.context.checkboxGroup.onChange;
+class CheckboxGroup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: this.props.defaultValue
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.value && (nextProps.value !== this.state.value )) {
+      this.setState({
+        value: nextProps.value
+      })
+    }
+  }
+  onChange = (e) => {
+    let arr = this.state.value;
+    let index = this.state.value.indexOf(e.target.id)
+    if (index === -1) {
+      arr.push(e.target.id)
     } else {
-      onChange = this.props.onChange
-    };
-    const optional = {};
-    if(selectedValue !== undefined) {
-      optional.checked = (selectedValue.indexOf(String(this.props.value)) !== -1);
+      arr.splice(index, 1);
     }
-    if(typeof onChange === 'function') {
-      optional.onChange = onChange.bind(null, this.props.value);
-    }
-
-    return (
-      <span>
-        <input
-          {...this.props}
-          type="checkbox"
-          name={name}
-          className="magic magic-checkbox"
-          {...optional} />
-        <label htmlFor={this.props.id}>{this.props.textname}</label>
-      </span>
-    );
-  }
-};
-
-Checkbox.contextTypes = {
-  checkboxGroup: PropTypes.object
-};
-
-export class CheckboxGroup extends React.Component {
-  getChildContext() {
-    const {name, selectedValue, onChange} = this.props;
-    return {
-      checkboxGroup: {
-        name, selectedValue, onChange
-      }
+    this.setState({
+      value: arr
+    })
+    if (typeof this.props.onChange === 'function') {
+      this.props.onChange(arr, e.target.id);
     }
   }
-
   render() {
-    const {Component, name, selectedValue, onChange, children, ...rest} = this.props;
-    return <Component {...rest}>{children}</Component>;
+    const { options, defaultValue, onChange } = this.props;
+    let checkboxArr = options.map((option, index) => {
+      return (<span>
+        <input
+          type="checkbox"
+          className="magic magic-checkbox"
+          key={index}
+          id={option.value}
+          onChange={this.onChange}
+          checked={ this.state.value.indexOf(option.value) === -1 ? false : true } />
+        <label htmlFor={option.value}>{option.label}</label>
+      </span>)
+    });
+    return (<div>{checkboxArr}</div>)
   }
 };
 
 CheckboxGroup.defaultProps = {
-  Component: "div"
+  defaultValue: []
 };
 
 CheckboxGroup.propTypes = {
-  name: PropTypes.string,
+  options: PropTypes.array,
+  defaultValue: PropTypes.array,
+  value: PropTypes.array,
   onChange: PropTypes.func,
-  children: PropTypes.node.isRequired,
-  Component: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-    PropTypes.object,
-  ])
-};
+}
 
-CheckboxGroup.childContextTypes = {
-  checkboxGroup: PropTypes.object
-};
+export default CheckboxGroup;

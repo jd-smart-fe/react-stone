@@ -4,12 +4,14 @@ import Icon from './components/Icon/Icon.jsx';
 import Textarea from './components/Textarea/Textarea.jsx';
 import Select from './components/Select/Select.jsx';
 import Input from './components/Input/Input.jsx';
-import { Checkbox, CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup.jsx';
+// import { Checkbox, CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup.jsx';
+import CheckboxGroup from './components/CheckboxGroup/CheckboxGroup.jsx';
 import { Radio, RadioGroup } from './components/RadioGroup/RadioGroup.jsx';
 import Toast from './components/Toast/toast.jsx';
 import modal from './components/Modal/modal.jsx';
 import Pagination from './components/Pagination/Pagination.jsx';
 import iconfonts from './components/Fonts/icofonts.css';
+import DragSort from './components/DragSort/DragSort.jsx';
 import './App.css';
 
 // 已整理组件
@@ -62,9 +64,17 @@ class App extends Component {
     super(props)
     this.state = {
       inputValue: '',
-      checkedVal: '1,2',
+      checkedVal: ['first', 'second'],
       productType: 1,
-      currentPage: 1
+      currentPage: 1,
+      options: [
+        { label: 'Apple', value: 'Apple' },
+        { label: 'Pear', value: 'Pear' },
+        { label: 'Orange', value: 'Orange' },
+      ],
+      checkedBox: [
+        'Pear'
+      ]
     }
   }
   componentDidMount() {
@@ -81,10 +91,35 @@ class App extends Component {
       currentPage: page
     })
   }
+  // 拖动时触发
+  handleDragMove = (data, from, to) => {
+    console.log(to);
+    // this.setState({
+    //   curMoveItem: to,
+    //   goodsList: data
+    // })
+  }
+  // 拖动结束触发
+  handleDragEnd = ()=>{
+    // this.setState({
+    //   curMoveItem: null
+    // })
+  }
+  checkedBoxChange = (arr, checkedValue) => {
+    console.log(arr);
+    console.log(checkedValue);
+  }
   render() {
     return (
       <div className="App">
         <p className="App-intro">
+          <DragSort type="table" onDragEnd={this.handleDragEnd} onChange={this.handleDragMove}>
+            <div>list1</div>
+            <div>list2</div>
+            <div>list3</div>
+            <div>list4</div>
+          </DragSort>
+          <Button icon="delete" onClick={this.openModal}>Open Modal</Button>
           <Pagination total={218} pageSize={10} current={this.state.currentPage} onChange={this.pageChange} />
           <Icon type='delete' />
           <span className="icon-delete"></span>
@@ -96,7 +131,15 @@ class App extends Component {
           <Button radius='circle' icon="delete" />
           <Button icon="delete">delect</Button>
           <Button htmlType='submit'>Button Submit</Button>
-
+          {/* <Checkbox textname="Checkbox" /> */}
+          {/* <CheckboxGroup selectedValue={this.state.checkedVal} onChange={this.checkboxGroupChange}>
+            <p><Checkbox value='first' id="voiceType1" textname="手动发起" /></p>
+            <p><Checkbox value='second' id="voiceType2" textname="近场语音唤醒" /></p>
+            <p><Checkbox value='third' id="voiceType3" textname="远场语音唤醒" /></p>
+          </CheckboxGroup> */}
+          <CheckboxGroup
+            options={this.state.options}
+            onChange={this.checkedBoxChange}/>
           <div className="code-box-demo">
             <Textarea value='zhangning' name="zhang" maxLength={10} onText={onText}/>
           </div>
@@ -155,22 +198,16 @@ class App extends Component {
             size="normal"
             optionData={saleVolumes}
             onChange={selectChange}/>
-          <CheckboxGroup selectedValue={this.state.checkedVal} name="productType" onChange={this.checkboxGroupChange}>
-            <p><Checkbox value='1' id="voiceType1" textname="手动发起" /></p>
-            <p><Checkbox value='2' id="voiceType2" textname="近场语音唤醒" /></p>
-            <p><Checkbox value='3' id="voiceType3" textname="远场语音唤醒" /></p>
-          </CheckboxGroup>
           <Radio
             value={111}
             id="productType111"
             textname="hello硬件设备"
             defaultChecked={true}></Radio>
-          <Button icon="delete" onClick={this.openModal}>Open Modal</Button>
-          {/* <RadioGroup selectedValue={this.state.productType} onChange={this.productTypeChange}>
+          <RadioGroup selectedValue={this.state.productType} onChange={this.productTypeChange}>
             <Radio value={1} id="productType1" textname="硬件设备"></Radio>
             <Radio value={2} id="productType2" textname="软件应用"></Radio>
-          </RadioGroup> */}
-          {/* <Checkbox value={'5'} id="voiceTypezn" textname="手动发起" onChange={this.oneCheckbox} /> */}
+            <Radio value={3} id="productType3" textname="软件应用"></Radio>
+          </RadioGroup>
         </p>
       </div>
     );
@@ -183,7 +220,10 @@ class App extends Component {
   oneCheckbox = (val) => {
     console.log(val);
   }
-  checkboxGroupChange = (val) => {
+  checkboxGroupChange = (val, second) => {
+    let newCheckboxGroup = [];
+    console.log(val);
+    console.log(second);
     this.setState({
       checkedVal: val
     })
@@ -197,6 +237,29 @@ class App extends Component {
   MyModal = () => {
     return (
       <div>
+        h
+    </div>
+    )
+  }
+  openModal = () => {
+    this.myModal = modal.open({
+      "size": 'sm',
+      "template": this.getContentComponent(),
+      "onCancel": this.closeModal,
+      "onOk": this.okModal
+    });
+    // 该组件提供代码关闭弹框的手段，调用close方法即可！
+    // setTimeout(() => {
+    //   myModal.close()
+    // }, 2000);
+  }
+  okModal = () => {
+    console.log(456);
+    this.myModal.close();
+  }
+  getContentComponent = () => {
+    return (
+      <div>
         <div className="modal-header">
             <span>提示</span>
         </div>
@@ -205,17 +268,6 @@ class App extends Component {
         </div>
     </div>
     )
-  }
-  openModal = () => {
-    const a = modal.open({
-      "size": 'sm',
-      "template": this.MyModal(),
-      "onCancel": this.closeModal,
-      "onOk": this.okModal
-    });
-    setTimeout(() => {
-      a.close()
-    }, 2000);
   }
 }
 

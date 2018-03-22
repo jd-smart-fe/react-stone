@@ -1,38 +1,60 @@
-# Checkbox && Checkboxgroup
+# CheckboxGroup 多选框组
+多选框。
 
-## Usage
+## 何时使用
 
-### 引用单独的checkbox
+- 在一组可选项中进行多项选择时
+
+
+## How to use?
+
 ```javascript
-import { Checkbox } from 'ceshi-stone';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { CheckboxGroup } from from 'ceshi-stone';
 
-<Checkbox value={'5'} id="voiceTypezn" textname="手动发起" onChange={this.oneCheckbox} />
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      options: [
+        { label: 'Apple', value: 'Apple' },
+        { label: 'Pear', value: 'Pear' },
+        { label: 'Orange', value: 'Orange' },
+      ],
+      checkedBox: [
+        'Pear'
+      ]
+    }
+  }
+  checkedBoxChange = (checkedList, targetValue) => {
+    console.log(checkedList);
+    console.log(targetValue);
+  }
+  render(){
+    return (
+      <CheckboxGroup
+        options={this.state.options}
+        onChange={this.checkedBoxChange}
+        defaultValue={['Apple']}
+        value={this.state.checkedBox}/>
+    )
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
-### 引入按钮组
-```javascript
-import { Checkbox, CheckboxGroup } from 'ceshi-stone';
-
-<CheckboxGroup
-  selectedValue='2'
-  name="productType"
-  onChange={this.checkboxGroupChange}>
-  <Checkbox value='1' id="voiceType1" textname="手动发起" />
-  <Checkbox value='2' id="voiceType2" textname="近场语音唤醒" />
-  <Checkbox value='3' id="voiceType3" textname="远场语音唤醒" />
-</CheckboxGroup>
-```
 
 ## Options
 
 属性名   |    类型   |     默认值     |     说明
 ----    | ----    | ----    | ----    |
-id  | String  | '' |  必填，定义按钮的id。
-textname  | String  | ''  |  必填，定义按钮的文字。
-value | String | '' | 必填，定义按钮的值。
-selectedValue | String | '' | 非必填，定义当前按钮组被选择的值。
+options  | Array  | '' |  指定可选项
+defaultValue | Array | '' | 默认选中的选项
+value | Array | '' | 指定选中的选项
 
 ## Events
 方法名称   |    说明    |    参数    |
 ----    | ----      | ----        |
-onChange | 用于CheckboxGroup上，在选项发生变化时触发 | 参数为点击的选项的值
+onChange | 用于CheckboxGroup上，在选项发生变化时触发 | 参数为(checkedList, targetValue), 被选中的列表和刚刚被点击的值
