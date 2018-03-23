@@ -82,7 +82,7 @@ class App extends Component {
       this.setState({
         inputValue: 'ajaxInp'
       });
-      // Toast.errorTopico('带错误图标--从头渐出',2000);
+      Toast.errorTopico('带错误图标--从头渐出',2000);
       // Toast.info('图片仅支持上传 JPG、PNG格式', 'info', 500000);
     }, 2000)
   }
@@ -117,9 +117,6 @@ class App extends Component {
             <div>list3</div>
             <div>list4</div>
           </DragSort> */}
-          <Select
-            optionData={saleVolumes}
-            onChange={selectChange}/>
           <Button icon="delete" onClick={this.openModal}>Open Modal</Button>
           <Pagination total={218} pageSize={10} current={this.state.currentPage} onChange={this.pageChange} />
           <br/>
@@ -178,14 +175,13 @@ class App extends Component {
           <div className="code-box-demo">
             <Input addonBefore="搜索框gg" addonAfter={<Icon type='search' />} size="large"/>
           </div>
-
-
-
-
-
-
-
-
+          <div className="code-box-demo">
+            <Select
+              size="normal"
+              optionData={saleVolumes}
+              onChange={selectChange}/>
+          </div>
+          
           <Textarea />
           <Textarea placeholder="未输入时的提示信息"/>
           <Textarea value="value"/>
@@ -196,6 +192,7 @@ class App extends Component {
           <Textarea height="1000px" placeholder="自定义高度"/>
           <Textarea fontSize="30px" placeholder="自定义字体大小"/>
           <Textarea maxLength={30} placeholder="设置最小字符长度"/>
+          
           <Radio
             value={111}
             id="productType111"
