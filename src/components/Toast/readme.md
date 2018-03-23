@@ -1,6 +1,16 @@
-# Toast
+# Toast 吐司
 
-## Usage
+全局展示操作反馈信息。
+
+## 何时使用
+
+可提供成功、警告和错误等反馈信息。
+
+三种显示方式：顶部，居中，底部显示
+
+Toast自动消失，是一种不打断用户操作的轻量级提示方式。
+
+## How to use?
 
 ```javascript
 import { Toast } from 'ceshi-stone';
@@ -15,6 +25,10 @@ import { Toast } from 'ceshi-stone';
 ```
 
 
-## 参数
+## 方法
 
-Toast.show('吐司文字', '吐司停留时长, 默认2000毫秒');
+- Toast.top('说明文字--从头渐入', 停留时间);
+- Toast.middle('说明文字--中间渐入', 停留时间);
+- Toast.bottom('说明文字--从底渐入', 停留时间);
+- Toast.errorTopico('带错误图标--从头渐入', 停留时间);
+- Toast.yesTopico('带正确图标--从头渐入', 停留时间);
