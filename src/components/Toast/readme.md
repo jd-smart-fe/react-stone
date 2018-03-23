@@ -3,7 +3,7 @@
 ## Usage
 
 ```javascript
-import Toast from 'cesi-stone';
+import { Toast } from 'ceshi-stone';
 
 不同的方法 toast出现和消失的效果不同
 - Toast.top('普通文字--从头渐出', 2000);

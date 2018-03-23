@@ -1,0 +1,103 @@
+ul,li{
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+
+.select{
+  width: 180px;
+  height: 36px;
+  position:relative;
+  overflow: visible;
+  &.select-small{
+    width: 100px;
+  }
+  &.select-large{
+    width: 260px;
+  }
+  &:hover{
+      .select-control{
+          border-color: #4b8de5;
+      }
+  }
+  .select-control{
+      width: 180px;
+      height: 36px;
+      position:relative;
+      line-height: 36px;
+      padding:0 9px;
+      text-align: left;
+      border: #d8d8d8 solid 1px;
+      font-size: 14px;
+      color: #626262;
+      background: #fff;
+      outline: none;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      &.select-control-large{
+          height: 40px;
+      }
+      &.select-control-normal{
+          height: 36px;
+      }
+      &.select-control-small{
+          height: 30px;
+      }
+  }
+  .select-arrow{
+      display: inline-block;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      font-size: 12px;
+      top: 10px;
+      right:5px;
+      color: #333;
+  }
+  .option-panel{
+      width: 180px;
+      box-shadow:0 0 5px rgba(0,0,0,0.3);
+      overflow: hidden;
+      background: transparent;
+      transition: .3s  background ease, .3s  height linear;
+      height:0;
+      position: absolute;
+      top: 36px;
+      left: 0;
+      z-index: 1000;
+      &.option-panel-show{
+          height: 206px;
+          background : #FFFFFF;
+      }
+      .option-panel-content{
+          max-height: 206px;
+          overflow: auto;
+           z-index:11;
+      }
+  }
+.option-item{
+    height: 40px;
+    padding:0 5px 0 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 40px;
+    text-align: left;
+    background: #fff;
+    cursor: pointer;
+    &:hover,&.active{
+      background: #F8F9F9;
+    }
+}
+.option-placeholder{
+  height: 40px;
+  padding:0 5px 0 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 40px;
+  text-align: left;
+  background: #fff;
+}
+}
