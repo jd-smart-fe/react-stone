@@ -99,7 +99,8 @@
     "react-for-markdown-loader": "^1.1.0",
     "react-markdown": "^3.3.0",
     "react-router-dom": "^4.2.2",
-    "sass-loader": "^6.0.7"
+    "sass-loader": "^6.0.7",
+    "text-loader": "0.0.1"
   },
   "keywords": [
     "react",

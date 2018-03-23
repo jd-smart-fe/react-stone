@@ -197,20 +197,14 @@ module.exports = {
           },
           {
             test: /\.(md)$/,
-            use: {
-              loader: 'react-for-markdown-loader',
-              options: {
-                preprocess: function (MarkdownIt, Source) {
-                  MarkdownIt.renderer.rules.table_open = function () {
-                    return '<div class="table-container"><table class="table">'
+            use: [
+              {
+                  loader: "text-loader",
+                  options: {
+                      /* your options here */
                   }
-                  MarkdownIt.renderer.rules.table_close = function () {
-                    return '</table></div>'
-                  }
-                  return Source
-                }
               }
-            }
+            ]
             // loader: 'my-loader',
 
           },

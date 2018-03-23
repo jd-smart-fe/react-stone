@@ -14,14 +14,17 @@ class SlideBar extends Component {
   }
 
   render() {
-    const componentsArr = ['Button', 'Input', 'Textarea', 'Radio', 'Checkbox', 'Toast', 'Select', 'Modal'];
+    const componentsArr = ['Button', 'Input', 'Textarea', 'Radio', 'Checkbox', 'Toast', 'Select', 'Modal', 'Pagination'];
     return (
       <aside className="aside-wrap">
         {
           componentsArr.map((item, index) => {
             return (
               <div key={index}>
-                <Link to={`/${item}`}>{ item }</Link>
+                <Link to={{
+                  pathname: `/${item}`,
+                  state: { fromDashboard: true }
+                }}>{ item }</Link>
               </div>
             )
           })

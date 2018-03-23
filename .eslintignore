@@ -3,6 +3,7 @@ config/*.js
 src/registerServiceWorker.js
 src/App.js
 src/Components/Select/Select.jsx
-examples/*.js
+src/examples/*/*/*.jsx
+src/examples/*.js
 node_modules/*.js
 scripts/*.js
