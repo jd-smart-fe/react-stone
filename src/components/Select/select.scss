@@ -1,0 +1,123 @@
+@import '../../style/color';
+@import '../../style/mixins';
+ul,li{
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+    
+.select{
+    width: 180px;
+    height: 36px;
+    position:relative;
+    overflow: visible;
+    font-size: 14px;
+    &.select-small{
+      width: 100px;
+    }
+    &.select-large{
+      width: 260px;
+    }
+    .select-control{
+        width: 180px;
+        height: 36px;
+        position:relative;
+        line-height: 36px;
+        padding:0 9px;
+        text-align: left;
+        border: #d8d8d8 solid 1px;
+        font-size: 14px;
+        color: #626262;
+        background: #fff;
+        box-sizing: border-box;
+        outline: none;
+        &.select-control-large{
+            height: 40px;
+        }
+        &.select-control-normal{
+            height: 36px;
+        }
+        &.select-control-small{
+            height: 30px;
+        }
+    }
+    .select-arrow{
+        display: inline-block;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        font-size: 12px;
+        top: 10px;
+        right:5px;
+        text-align: center;
+        color: #333;
+        @include transition(all .4s ease);
+        @include transform(rotate(0deg));
+        &.upico{
+            @include transition(all .4s ease);
+            @include transform(rotate(180deg));
+        }
+    }
+    .option-panel{
+        width: 180px;
+        box-shadow:0 0 5px rgba(0,0,0,0.3);
+        background: transparent;
+        // @include transition(height .2s linear);
+        height: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 36px;
+        left: 0;
+        opacity: 0;
+        z-index: 1000;
+        @include transition(all .4s ease);
+        .option-panel-content{
+            max-height: 206px;
+            overflow: auto;
+             z-index:11;
+             width: 100%;
+        }
+        
+        &.option-panel-show{
+            height: 206px;
+            opacity: 1;
+            @include animation(panelShow .4s);
+        }
+    }
+  .option-item{
+      height: 40px;
+      padding:0 5px 0 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 40px;
+      text-align: left;
+      background: #fff;
+      cursor: pointer;
+      &:hover,&.active{
+        background: #F8F9F9;
+      }
+  }
+  .option-placeholder{
+    height: 40px;
+    padding:0 5px 0 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 40px;
+    text-align: left;
+    background: #fff;
+  }
+}
+
+@include keyframes(panelShow){
+    from {
+        height: 0;
+        opacity: 0;
+    }
+    to {
+        height: 206px;
+        opacity: 1;
+    }
+  }
