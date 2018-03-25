@@ -9,7 +9,7 @@ class Header extends Component {
           react-stone
         </div>
         <div>
-          <a href="https://www.github.com">github</a>
+          <a href="https://github.com/jd-smart-fe/react-stone">github</a>
         </div>
       </header>
     );

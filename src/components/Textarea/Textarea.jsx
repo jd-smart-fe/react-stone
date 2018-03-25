@@ -11,8 +11,8 @@ class Textarea extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
-  componentWillReceiveProps(nextProps, props) {
-    if (nextProps.value !== props.value) {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value !== this.props.value) {
       this.setState({
         value: nextProps.value,
       });

@@ -177,11 +177,11 @@ class App extends Component {
           </div>
           <div className="code-box-demo">
             <Select
-              size="normal"
+              size="small"
               optionData={saleVolumes}
               onChange={selectChange}/>
           </div>
-          
+
           <Textarea />
           <Textarea placeholder="未输入时的提示信息"/>
           <Textarea value="value"/>
@@ -192,7 +192,7 @@ class App extends Component {
           <Textarea height="1000px" placeholder="自定义高度"/>
           <Textarea fontSize="30px" placeholder="自定义字体大小"/>
           <Textarea maxLength={30} placeholder="设置最小字符长度"/>
-          
+
           <Radio
             value={111}
             id="productType111"

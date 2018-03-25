@@ -133,9 +133,11 @@ class Select extends Component {
     });
     this.props.onChange({ [this.props.name]: selectedOption });
   }
-  componentWillReceiveProps(nextProps, props) {
-    if (nextProps.optionData !== props.optionData) {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.optionData !== this.props.optionData) {
       const dfOption = this.props.defaultValue;
+      console.log(nextProps.optionData);
+      console.log(this.props.optionData);
       console.log(typeof dfOption);
       if (typeof dfOption === 'number') {
         console.log(1757);
@@ -167,7 +169,7 @@ class Select extends Component {
         })
       }
     }
-    if (nextProps.defaultValue !== props.defaultValue) {
+    if (nextProps.defaultValue !== this.props.defaultValue) {
       const dfOption = nextProps.defaultValue;
       console.log(typeof dfOption);
       if (typeof dfOption === 'number') {

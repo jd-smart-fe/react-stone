@@ -12,8 +12,8 @@ class Input extends Component {
       errorMessage: '',
     };
   }
-  componentWillReceiveProps(nextProps, props) {
-    if (nextProps.value !== props.value) {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value !== this.props.value) {
       this.setState({
         value: nextProps.value,
       });

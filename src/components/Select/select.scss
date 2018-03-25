@@ -1,29 +1,30 @@
 @import '../../style/color';
 @import '../../style/mixins';
-ul,li{
+ul,
+li {
     list-style: none;
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
 }
-    
-.select{
+
+.select {
     width: 180px;
     height: 36px;
-    position:relative;
+    position: relative;
     overflow: visible;
     font-size: 14px;
-    &.select-small{
-      width: 100px;
+    &.select-small {
+        width: 100px;
     }
-    &.select-large{
-      width: 260px;
+    &.select-large {
+        width: 260px;
     }
-    .select-control{
+    .select-control {
         width: 180px;
         height: 36px;
-        position:relative;
+        position: relative;
         line-height: 36px;
-        padding:0 9px;
+        padding: 0 9px;
         text-align: left;
         border: #d8d8d8 solid 1px;
         font-size: 14px;
@@ -31,17 +32,17 @@ ul,li{
         background: #fff;
         box-sizing: border-box;
         outline: none;
-        &.select-control-large{
+        &.select-control-large {
             height: 40px;
         }
-        &.select-control-normal{
+        &.select-control-normal {
             height: 36px;
         }
-        &.select-control-small{
+        &.select-control-small {
             height: 30px;
         }
     }
-    .select-arrow{
+    .select-arrow {
         display: inline-block;
         position: absolute;
         width: 16px;
@@ -49,21 +50,20 @@ ul,li{
         line-height: 16px;
         font-size: 12px;
         top: 10px;
-        right:5px;
+        right: 5px;
         text-align: center;
         color: #333;
         @include transition(all .4s ease);
         @include transform(rotate(0deg));
-        &.upico{
+        &.upico {
             @include transition(all .4s ease);
             @include transform(rotate(180deg));
         }
     }
-    .option-panel{
+    .option-panel {
         width: 180px;
-        box-shadow:0 0 5px rgba(0,0,0,0.3);
-        background: transparent;
-        // @include transition(height .2s linear);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        background: transparent; // @include transition(height .2s linear);
         height: 0;
         overflow: hidden;
         position: absolute;
@@ -72,46 +72,46 @@ ul,li{
         opacity: 0;
         z-index: 1000;
         @include transition(all .4s ease);
-        .option-panel-content{
+        .option-panel-content {
             max-height: 206px;
             overflow: auto;
-             z-index:11;
-             width: 100%;
+            z-index: 11;
+            width: 100%;
         }
-        
-        &.option-panel-show{
+        &.option-panel-show {
             height: 206px;
             opacity: 1;
             @include animation(panelShow .4s);
         }
     }
-  .option-item{
-      height: 40px;
-      padding:0 5px 0 10px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      line-height: 40px;
-      text-align: left;
-      background: #fff;
-      cursor: pointer;
-      &:hover,&.active{
-        background: #F8F9F9;
-      }
-  }
-  .option-placeholder{
-    height: 40px;
-    padding:0 5px 0 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    line-height: 40px;
-    text-align: left;
-    background: #fff;
-  }
+    .option-item {
+        height: 40px;
+        padding: 0 5px 0 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 40px;
+        text-align: left;
+        background: #fff;
+        cursor: pointer;
+        &:hover,
+        &.active {
+            background: #F8F9F9;
+        }
+    }
+    .option-placeholder {
+        height: 40px;
+        padding: 0 5px 0 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 40px;
+        text-align: left;
+        background: #fff;
+    }
 }
 
-@include keyframes(panelShow){
+@include keyframes(panelShow) {
     from {
         height: 0;
         opacity: 0;
@@ -120,4 +120,4 @@ ul,li{
         height: 206px;
         opacity: 1;
     }
-  }
+}
