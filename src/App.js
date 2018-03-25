@@ -74,15 +74,17 @@ class App extends Component {
       ],
       checkedBox: [
         'Pear'
-      ]
+      ],
+      selectArr: []
     }
   }
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        inputValue: 'ajaxInp'
+        inputValue: 'ajaxInp',
+        selectArr: saleVolumes
       });
-      Toast.errorTopico('带错误图标--从头渐出',2000);
+      // Toast.errorTopico('带错误图标--从头渐出',2000);
       // Toast.info('图片仅支持上传 JPG、PNG格式', 'info', 500000);
     }, 2000)
   }
@@ -179,6 +181,10 @@ class App extends Component {
             <Select
               size="small"
               optionData={saleVolumes}
+              onChange={selectChange}/>
+            <Select
+              optionData={this.state.selectArr}
+              defaultValue={2}
               onChange={selectChange}/>
           </div>
 

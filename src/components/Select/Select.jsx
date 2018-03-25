@@ -11,15 +11,16 @@ class OptionPanel extends Component {
       options: props.optionData,
     };
   }
-  handleClick(option, e) {
-    e.preventDefault();
-    console.log(option);
+  handleClick(option, event) {
+    event.preventDefault();
     this.props.onSelect(option);
     this.props.optionData.map((item) => {
       if (item.value === option.value) {
-        return item.active = true;
+        item.active = true;
+      } else {
+        item.active = false;
       }
-      return item.active = false;
+      return item;
     });
   }
   render() {
@@ -27,32 +28,30 @@ class OptionPanel extends Component {
     this.props.optionData.forEach((option) => {
       const itemClass = classNames({
         'option-item': true,
-        'active': option.active,
+        active: option.active,
       });
-      optionArr.push(
-        <li className={itemClass} key={option.value} value={option.value} onClick={this.handleClick.bind(this, option)}>{option.label}</li>
-      );
-    })
-    const optionPanelClass = classNames({
-      "option-panel": true,
-      "option-panel-show": !this.props.closeStatus,
+      optionArr.push(<li className={itemClass} key={option.value} value={option.value} onClick={this.handleClick.bind(this, option)}>{option.label}</li>);
     });
-
+    const optionPanelClass = classNames({
+      'option-panel': true,
+      'option-panel-show': !this.props.closeStatus,
+    });
     return (
       <div className={optionPanelClass}>
         <ul className="option-panel-content">
-          {/* <li className="option-placeholder">{this.props.placeholder}</li> */}
           {optionArr}
         </ul>
       </div>
-
-    )
+    );
   }
-
 }
-OptionPanel.defaultProps = {
-  placeholder: '请选择任意选项',
+
+OptionPanel.propTypes = {
+  optionData: PropTypes.array.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  closeStatus: PropTypes.bool.isRequired,
 };
+
 class Select extends Component {
   constructor(props) {
     super(props);
@@ -61,153 +60,96 @@ class Select extends Component {
       selectedItem: '',
       count: 0,
     };
-    this.showOptionPanel = this.showOptionPanel.bind(this);
-    this.selectSomeOne = this.selectSomeOne.bind(this);
   }
-  showOptionPanel(event) {
-    let count = this.state.count;
+  showOptionPanel = (event) => {
+    let { count } = this.state;
     let dom = document.getElementById('optionPanelWrap');
     if (count !== 0) {
       if (dom && dom.parentNode.id !== this.props.name) {
         ReactDOM.unmountComponentAtNode(dom);
         dom.parentNode.removeChild(dom);
         dom = document.createElement('div');
-        dom.id = 'optionPanelWrap'
+        dom.id = 'optionPanelWrap';
         this.select.appendChild(dom);
-        count++;
+        count += 1;
         this.setState(prevState => ({
           closeStatus: false,
-          count: count,
+          count,
         }), () => {
-          ReactDOM.render(<OptionPanel optionData={this.props.optionData}
+          ReactDOM.render(
+          <OptionPanel optionData={this.props.optionData}
             onSelect={this.selectSomeOne}
             closeStatus={this.state.closeStatus}
             placeholder={this.props.placeholder} />,
-            dom)
+          dom,
+          );
         });
       } else {
         this.setState(prevState => ({
           closeStatus: !prevState.closeStatus,
           count: 0,
         }), () => {
-          ReactDOM.render(<OptionPanel optionData={this.props.optionData}
+          ReactDOM.render(
+          <OptionPanel optionData={this.props.optionData}
             onSelect={this.selectSomeOne}
             closeStatus={this.state.closeStatus}
             placeholder={this.props.placeholder} />,
-            dom)
+          dom,
+          );
         });
       }
     } else {
-      if (!!dom) {
+      if (dom) {
         ReactDOM.unmountComponentAtNode(dom);
         dom.parentNode.removeChild(dom);
       }
       dom = document.createElement('div');
       dom.id = 'optionPanelWrap';
       this.select.appendChild(dom);
-      count++;
+      count += 1;
       this.setState(prevState => ({
         closeStatus: false,
-        count: count,
+        count,
       }), () => {
-        ReactDOM.render(<OptionPanel optionData={this.props.optionData}
+        ReactDOM.render(
+        <OptionPanel optionData={this.props.optionData}
           onSelect={this.selectSomeOne}
           closeStatus={this.state.closeStatus}
           placeholder={this.props.placeholder} />,
-          dom)
+        dom,
+        );
       });
     }
     event.nativeEvent.stopImmediatePropagation();
   }
-  selectSomeOne(selectedOption) {
+  selectSomeOne = (selectedOption) => {
     this.setState(prevState => ({
       selectedItem: selectedOption,
       closeStatus: true,
     }), () => {
       let dom = document.getElementById('optionPanelWrap');
-      ReactDOM.render(<OptionPanel optionData={this.props.optionData}
-        onSelect={this.selectSomeOne}
-        closeStatus={this.state.closeStatus}
-        placeholder={this.props.placeholder} />,
-        dom)
+      ReactDOM.render(
+        <OptionPanel optionData={this.props.optionData}
+          onSelect={this.selectSomeOne}
+          closeStatus={this.state.closeStatus}
+          placeholder={this.props.placeholder} />,
+        dom,
+      );
     });
-    this.props.onChange({ [this.props.name]: selectedOption });
-  }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.optionData !== this.props.optionData) {
-      const dfOption = this.props.defaultValue;
-      console.log(nextProps.optionData);
-      console.log(this.props.optionData);
-      console.log(typeof dfOption);
-      if (typeof dfOption === 'number') {
-        console.log(1757);
-        nextProps.optionData.forEach((option) => {
-          if (option.value === dfOption) {
-            console.log(1758);
-            option.active = true;
-            this.setState(prevState => ({
-              selectedItem: option,
-            }));
-          } else {
-            option.active = false;
-          }
-        })
-      } else if (Object.prototype.toString.call(dfOption) === "[object Object]" && dfOption.value) {
-        nextProps.optionData.forEach((option) => {
-          if (option.value === dfOption.value) {
-            option.active = true;
-            this.setState(prevState => ({
-              selectedItem: dfOption,
-            }));
-          } else {
-            option.active = false;
-          }
-        })
-      } else {
-        this.setState({
-          selectedItem: { 'label': this.props.placeholder },
-        })
-      }
+    let params;
+    if (this.props.name) {
+      params = {
+        [this.props.name]: selectedOption,
+      };
+    } else {
+      params = selectedOption;
     }
-    if (nextProps.defaultValue !== this.props.defaultValue) {
-      const dfOption = nextProps.defaultValue;
-      console.log(typeof dfOption);
-      if (typeof dfOption === 'number') {
-        console.log(1757);
-        nextProps.optionData.forEach((option) => {
-          if (option.value === dfOption) {
-            console.log(1758);
-            option.active = true;
-            this.setState(prevState => ({
-              selectedItem: option,
-            }));
-          } else {
-            option.active = false;
-          }
-        })
-      } else if (Object.prototype.toString.call(dfOption) === "[object Object]" && dfOption.value) {
-        nextProps.optionData.forEach((option) => {
-          if (option.value === dfOption.value) {
-            option.active = true;
-            this.setState(prevState => ({
-              selectedItem: dfOption,
-            }));
-          } else {
-            option.active = false;
-          }
-        })
-      } else {
-        this.setState({
-          selectedItem: { 'label': this.props.placeholder },
-        });
-      }
-    }
+    this.props.onChange(params);
   }
-  componentDidMount() {
-    const dfOption = this.props.defaultValue;
-    // console.log(this.refs);
+  getSelectedItem = (defaultValue, props) => {
+    const dfOption = defaultValue;
     if (typeof dfOption === 'number') {
-      this.props.optionData.forEach((option) => {
+      props.optionData.forEach((option) => {
         if (option.value === dfOption) {
           option.active = true;
           this.setState(prevState => ({
@@ -216,9 +158,9 @@ class Select extends Component {
         } else {
           option.active = false;
         }
-      })
-    } else if (Object.prototype.toString.call(dfOption) === "[object Object]" && dfOption.value) {
-      this.props.optionData.forEach((option) => {
+      });
+    } else if (Object.prototype.toString.call(dfOption) === '[object Object]' && dfOption.value) {
+      props.optionData.forEach((option) => {
         if (option.value === dfOption.value) {
           option.active = true;
           this.setState(prevState => ({
@@ -227,56 +169,74 @@ class Select extends Component {
         } else {
           option.active = false;
         }
-      })
+      });
     } else {
       this.setState({
-        selectedItem: { 'label': this.props.placeholder },
+        selectedItem: { label: this.props.placeholder },
       });
     }
+  }
+  componentWillReceiveProps(nextProps) {
+    if ((nextProps.optionData !== this.props.optionData) || (nextProps.defaultValue !== this.props.defaultValue)) {
+      this.getSelectedItem(nextProps.defaultValue, nextProps);
+    }
+  }
+  componentDidMount() {
+    this.getSelectedItem(this.props.defaultValue, this.props);
     this.documentClickHandler = (e) => {
       this.setState({ closeStatus: true }, () => {
         let dom = document.getElementById('optionPanelWrap');
         if (dom) {
-          ReactDOM.render(<OptionPanel optionData={this.props.optionData}
+          ReactDOM.render(
+          <OptionPanel optionData={this.props.optionData}
             onSelect={this.selectSomeOne}
             closeStatus={this.state.closeStatus}
             placeholder={this.props.placeholder} />,
-            dom)
+          dom,
+          );
         }
-      })
-    }
-    document.addEventListener('click', this.documentClickHandler)
+      });
+    };
+    document.addEventListener('click', this.documentClickHandler);
   }
   componentWillUnmount() {
-    document.removeEventListener('click', this.documentClickHandler)
+    document.removeEventListener('click', this.documentClickHandler);
   }
   render() {
     const iconClass = classNames({
       'select-arrow': true,
       'icon-dowico': true,
-      'upico': !this.state.closeStatus,
+      upico: !this.state.closeStatus,
     });
     const selectControlClass = classNames({
       'select-control': true,
       [`select-control-${this.props.size}`]: this.props.size,
     });
     return (
-      <div className="select" id={this.props.name} ref={(select) => this.select = select}>
+      <div className="select" id={this.props.name} ref={(select) => { this.select = select; }}>
         <div className={selectControlClass} onClick={this.showOptionPanel} >
           {this.state.selectedItem.label}
           <span className={iconClass}></span>
         </div>
       </div>
-    )
+    );
   }
 }
 
 Select.defaultProps = {
-  placeholder: '请选择任意选项'
+  placeholder: '请选择任意选项',
 };
 
 Select.propTypes = {
   optionData: PropTypes.array,
+  size: PropTypes.string,
+  placeholder: PropTypes.string,
+  name: PropTypes.string,
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.object,
+  ]),
   onChange: PropTypes.func,
 };
 

@@ -2,7 +2,6 @@ public/*.js
 config/*.js
 src/registerServiceWorker.js
 src/App.js
-src/Components/Select/Select.jsx
 src/examples/*/*/*.jsx
 src/examples/*.js
 node_modules/*.js

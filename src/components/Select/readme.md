@@ -1,16 +1,6 @@
-##  支持属性
-1. defaultValue:obj  select的默认值 传入一个对象 如：{'value':'1','label':'3个月'}
-2. size:选择框的尺寸，可选值 'large', 'normal', 'small',三个尺寸的高度分别为40px、36px和30px。
-3. placeholder 选择类目提示 placeholder
-4. optionData 必填 select选项
-##  支持事件
-1. onChange:在选择下拉选项变化时触发，接受一个参数，参数为选项对象{'value':'','label':''}
-
-
-
 # Select 下拉组件
 
- - 采用分页的形式分隔长列表，每次只加载一个页面。
+   下拉组件，用于较多选项让用户选择
 
 ## 何时使用
 
@@ -24,6 +14,31 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Select from 'ceshi-stone';
 
+const saleVolumes = [
+  {
+    label: '<1000',
+    value: 1
+  },
+  {
+    label: '1001~10000',
+    value: 2
+  },
+  {
+    label: '10001~100000',
+    value: 3
+  },
+  {
+    label: '100001~1000000',
+    value: 4
+  },
+  {
+    label: '>1000000',
+    value: 5
+  }
+];
+const selectChange = (params) => {
+  console.log(params);
+}
 class App extends Component {
   constructor(props) {
     super(props)
@@ -34,15 +49,16 @@ class App extends Component {
   render(){
     return (
       <Select
-        size="normal"
+        size="large"
+        placeholder="请选择"
+        optionData={saleVolumes}
+        onChange={selectChange}/>
+      <Select
+        size="large"
+        defaultValue={3}
         optionData={saleVolumes}
         onChange={selectChange}/>
     )
-  }
-  pageChange = (page) => {
-    this.setState({
-      currentPage: page
-    })
   }
 }
 
@@ -55,13 +71,15 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 属性名   |    类型   |     默认值     |     说明
 ----    | ----    | ----    | ----    |
-total  | Number  | 无 |  定义总条数
-pageSize | Number | 10 | 定义每页显示的size
-current | Number | 1 | 当前被选中的页码
+defaultValue  | Object或Number或String  | 无 |  select的默认值 传入一个对象 如：{'value':'1','label':'3个月'}，也可单独传入一个值
+size | String | 'normal' | 定义select组件的大小，可选值 'large', 'normal', 'small',三个尺寸的高度分别为40px、36px和30px。
+placeholder | String | 无 | 当用户没有选择的提示
+optionData | Object | 无 | 数据源，用于渲染选项
+name | String | 无 | 定义表单字段，为form组件预留
 
 
 
 ## Events
 方法名称   |    说明    |    参数    |
 ----    | ----      | ----        |
-onChange | 页码改变的回调 | 参数是改变后的页码
+onChange | 在选择下拉选项变化时触发 | 接收到的参数为选项对象{'value':'','label':''}
