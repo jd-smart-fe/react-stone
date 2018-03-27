@@ -2,10 +2,8 @@ public/*.js
 config/*.js
 src/registerServiceWorker.js
 src/App.js
-src/components/Form/createForm.jsx
-src/components/Form/validationRules.jsx
-src/components/Form/SubmissionError.jsx
-src/components/Form/handleSubmit.jsx
+src/components/Form/*.jsx
+src/components/Form/form-components/*.jsx
 src/examples/*/*/*.jsx
 src/examples/*.js
 node_modules/*.js

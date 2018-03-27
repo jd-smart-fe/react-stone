@@ -23,6 +23,7 @@ Import ceshi-stone
 
 ```js
 import { Button } from 'ceshi-stone';
+import 'ceshi-stone/build/static/css/main.css';
 
 <Button className="delPic" icon="delete"></Button>
 

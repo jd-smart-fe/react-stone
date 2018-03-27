@@ -15,7 +15,7 @@ import DragSort from './components/DragSort/DragSort.jsx';
 import Form from './components/Form/index.js';
 import './App.css';
 
-const { InputField } = Form;
+const { InputField, FieldInput } = Form;
 
 // 已整理组件
 // 1. Button
@@ -87,7 +87,7 @@ class App extends Component {
         inputValue: 'ajaxInp',
         selectArr: saleVolumes
       });
-      // Toast.errorTopico('带错误图标--从头渐出',2000);
+      Toast.errorTopico('带错误图标--从头渐出',2000000);
       // Toast.info('图片仅支持上传 JPG、PNG格式', 'info', 500000);
     }, 2000)
   }
@@ -121,7 +121,7 @@ class App extends Component {
       <div className="App">
         <p className="App-intro">
           <Form onSubmit={this.formSubmit} ref = { (instance) => { this.Form = instance; } }>
-            <InputField
+            <FieldInput
               required
               name="name"
               label="姓名"/>
