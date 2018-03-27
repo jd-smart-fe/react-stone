@@ -21,7 +21,7 @@ class Input extends Component {
   }
   isInput = (event) => {
     let { name } = this.props;
-    if (typeof this.props.onInput === 'function') {
+    if (typeof this.props.onChange === 'function') {
       if (name) {
         let params = {
           [name]: {
@@ -29,9 +29,9 @@ class Input extends Component {
           },
           value: event.target.value,
         };
-        this.props.onInput(params, name);
+        this.props.onChange(params, name);
       } else {
-        this.props.onInput({
+        this.props.onChange({
           value: event.target.value,
         });
       }
@@ -101,7 +101,7 @@ Input.propTypes = {
   required: PropTypes.bool,
   customMessage: PropTypes.string,
   testRule: PropTypes.string,
-  onInput: PropTypes.func,
+  onChange: PropTypes.func,
   radius: PropTypes.string,
 };
 

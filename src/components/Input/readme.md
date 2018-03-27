@@ -56,4 +56,4 @@ radius | String | 无 | 输入框为圆角，选值为：radius
 ## Events
 方法名称   |    说明    |    参数    |
 ----    | ----      | ----        |
-onInput	 | 在input的值改变时触发 | 待确认
+onChange	 | 在input的值改变时触发 | 待确认

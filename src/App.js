@@ -12,7 +12,10 @@ import modal from './components/Modal/modal.jsx';
 import Pagination from './components/Pagination/Pagination.jsx';
 import iconfonts from './components/Fonts/icofonts.css';
 import DragSort from './components/DragSort/DragSort.jsx';
+import Form from './components/Form/index.js';
 import './App.css';
+
+const { InputField } = Form;
 
 // 已整理组件
 // 1. Button
@@ -31,7 +34,7 @@ import './App.css';
 // 待开发组件
 // 1. 分页组件
 
-const onText = (val) => {
+const onChange = (val) => {
   console.log(val);
 }
 const saleVolumes = [
@@ -109,10 +112,26 @@ class App extends Component {
   openYesTopico = () =>{
     Toast.yesTopico('带正确图标--从头渐出',2000)
   }
+  formSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.Form);
+  }
   render() {
     return (
       <div className="App">
         <p className="App-intro">
+          <Form onSubmit={this.formSubmit} ref = { (instance) => { this.Form = instance; } }>
+            <InputField
+              required
+              name="name"
+              label="姓名"/>
+            <InputField
+              required
+              name="password"
+              type="password"
+              label="密码"/>
+            <Button htmlType="submit">提交</Button>
+          </Form>
           {/* <DragSort type="table" onDragEnd={this.handleDragEnd} onChange={this.handleDragMove}>
             <div key>list1</div>
             <div>list2</div>
@@ -135,7 +154,7 @@ class App extends Component {
             <Button htmlType='submit'>Button Submit</Button>
           </div>
           <div className="code-box-demo">
-            <Textarea value='zhangning' name="zhang" maxLength={10} onText={onText}/>
+            <Textarea value='zhangning' name="zhang" maxLength={10} onChange={onChange}/>
           </div>
           <div className="code-box-demo">
             <Button onClick={this.openToast} >top</Button>

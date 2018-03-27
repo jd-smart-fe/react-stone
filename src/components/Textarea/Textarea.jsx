@@ -25,13 +25,13 @@ class Textarea extends Component {
         [name]: value,
         value,
       }, () => {
-        this.props.onText({ [name]: value });
+        this.props.onChange({ [name]: value });
       });
     } else {
       this.setState({
         value,
       }, () => {
-        this.props.onText(value);
+        this.props.onChange(value);
       });
     }
   }
@@ -70,7 +70,7 @@ class Textarea extends Component {
 Textarea.defaultProps = {
   size: 'base',
   value: '',
-  onText: () => {},
+  onChange: () => {},
 };
 
 Textarea.propTypes = {
@@ -82,7 +82,7 @@ Textarea.propTypes = {
   fontSize: PropTypes.string,
   maxLength: PropTypes.number,
   name: PropTypes.string,
-  onText: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 export default Textarea;
