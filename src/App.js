@@ -15,7 +15,15 @@ import DragSort from './components/DragSort/DragSort.jsx';
 import Form from './components/Form/index.js';
 import './App.css';
 
-const { CreateForm, InputField, FieldInput, FieldCheckbox, FieldSelect, FieldRadioGroup } = Form;
+const {
+  CreateForm,
+  InputField,
+  FieldInput,
+  FieldCheckbox,
+  FieldSelect,
+  FieldRadioGroup,
+  FieldTextarea,
+} = Form;
 
 
 const onChange = (val) => {
@@ -105,7 +113,6 @@ class FieldForm extends React.Component {
           required
           name="name"
           label="姓名"
-          validateOnChange={true}
           validations={{ required: true }}
           validationErrors={{ required: '必填项' }}
           onChange={this.inputChange}/>
@@ -124,6 +131,12 @@ class FieldForm extends React.Component {
           placeholder="请选择"
           optionData={saleVolumes}
           onChange={selectChange}/>
+        <FieldTextarea
+          required
+          name="textarem"
+          label="textarem"
+          validations={{ required: true }}
+          validationErrors={{ required: '必填项' }}/>
         <FieldRadioGroup
           required
           name="danxuan"
