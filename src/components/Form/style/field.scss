@@ -5,11 +5,17 @@
   margin-bottom: $field-margin-bottom;
   color: $gray;
   &.has-error {
-    color: $red;
+    .rs-form__control-label {
+      color: $red;
+    }
+    .rs-input {
+      border: 1px solid #f44;
+      color: #f44;
+    }
   }
   .rs-form__control-label {
     display: inline-block;
-    font-size: 12px;
+    font-size: $baseFontSize;
     line-height: 30px;
     text-align: right;
     vertical-align: top;

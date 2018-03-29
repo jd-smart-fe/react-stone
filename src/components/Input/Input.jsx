@@ -41,14 +41,14 @@ class Input extends Component {
 
     const { valid, errorMessage } = this.state;
     const classInput = classNames({
-      input: true,
-      [`input-${size}`]: size,
-      [`input-${radius}`]: radius,
+      'rs-input': true,
+      [`rs-input-${size}`]: size,
+      [`rs-input-${radius}`]: radius,
     });
     return (
-      <span className='input-wrap input-group'>
+      <span className='rs-input-wrap rs-input-group'>
         { addonBefore ?
-          <span className='input-before'>{ addonBefore }</span>
+          <span className='rs-input-before'>{ addonBefore }</span>
           : null
         }
         <input
@@ -62,7 +62,7 @@ class Input extends Component {
           placeholder={ placeholder } />
         {valid ? '' : (<div className="error-public"><i className="icon-error"></i><span>{errorMessage}</span></div>)}
         { addonAfter ?
-          <span className="input-after">{ addonAfter }</span>
+          <span className="rs-input-after">{ addonAfter }</span>
           : null
         }
       </span>

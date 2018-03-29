@@ -1,7 +1,7 @@
 @import '../../style/color.scss';
 
-.btn-base,
-.btn-blue {
+.rs-btn-base,
+.rs-btn-blue {
   background: $white;
   border: $gray-lighter 1px solid;
   color: $gray;
@@ -26,7 +26,7 @@
   &:hover {
     background: #f3f3f3;
   }
-  &.btn-base-blue {
+  &.rs-btn-base-blue {
     background: $blue;
     border: $blue 1px solid;
     color: $white;
@@ -34,7 +34,7 @@
       background: #3277d2;
     }
   }
-  &.btn-base-gray {
+  &.rs-btn-base-gray {
     background: #ededed;
     border: 0;
     padding: 0 16px;
@@ -42,31 +42,31 @@
       background: #e6e6e6;
     }
   }
-  &.btn-size-small {
+  &.rs-btn-size-small {
     padding: 0 7px;
     font-size: 14px;
     border-radius: 4px;
     height: 24px;
   }
-  &.btn-size-base {
+  &.rs-btn-size-base {
     padding: 0 15px;
     font-size: 14px;
     border-radius: 4px;
     height: 32px;
   }
-  &.btn-size-large {
+  &.rs-btn-size-large {
     padding: 0 15px;
     font-size: 16px;
     border-radius: 4px;
     height: 40px;
   }
-  &.btn-radius-small {
+  &.rs-btn-radius-small {
     border-radius: 5px;
   }
-  &.btn-radius-half {
+  &.rs-btn-radius-half {
     border-radius: 18px;
   }
-  &.btn-radius-circle {
+  &.rs-btn-radius-circle {
     border-radius: 50%;
     padding: 0;
     width: 36px;

@@ -1,5 +1,5 @@
 @import '../../style/color.scss';
-.input-wrap {
+.rs-input-wrap {
   display: table;
   box-sizing: border-box;
   margin: 0;
@@ -7,17 +7,17 @@
   list-style: none;
   position: relative;
   width: 100%;
-  &.input-group{
-    .input{
+  &.rs-input-group{
+    .rs-input{
       display:table-cell;
     }
-    .input-before{
+    .rs-input-before{
       width: 1px;
       display:table-cell;
       white-space: nowrap;
       vertical-align: middle;
     }
-    .input-after{
+    .rs-input-after{
       width: 1px;
       display:table-cell;
       white-space: nowrap;
@@ -25,7 +25,7 @@
     }
   }
 }
-.input{
+.rs-input{
   width: 100%;
   height: 36px;
   line-height: 24px;
@@ -48,17 +48,17 @@
     -webkit-box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
     box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
   }
-  &.input-small {
+  &.rs-input-small {
     height: 24px;
     font-size: 12px;
   }
-  &.input-base {
+  &.rs-input-base {
     height: 32px
   }
-  &.input-large {
+  &.rs-input-large {
     height: 40px;
   }
-  &.input-radius{
+  &.rs-input-radius{
     border-radius: 4px;
   }
 }
@@ -78,7 +78,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   /* Internet Explorer 10+ */
   color: #d0d0d0;
  }
- .input-before {
+ .rs-input-before {
   padding: 0 11px;
   font-size: 14px;
   display: inline-block;
@@ -91,7 +91,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   position: relative;
   box-sizing: border-box;
  }
- .input-after {
+ .rs-input-after {
   padding: 0 11px;
   font-size: 14px;
   display: inline-block;

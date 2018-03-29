@@ -8,14 +8,14 @@ const Button = (props) => {
     theme, radius, icon, disabled, className, onClick, size, htmlType,
   } = props;
   let classArr = classNames({
-    'btn-base': true,
-    [` btn-base-${theme}`]: theme,
-    [` btn-size-${size}`]: size,
-    'btn-radius': false,
-    [` btn-radius-${radius}`]: radius,
+    'rs-btn-base': true,
+    [` rs-btn-base-${theme}`]: theme,
+    [` rs-btn-size-${size}`]: size,
+    'rs-btn-radius': false,
+    [` rs-btn-radius-${radius}`]: radius,
     icon: false,
     [` icon-${icon}`]: icon,
-    'btn-disabled': disabled,
+    'rs-btn-disabled': disabled,
   });
   return (
     <button
