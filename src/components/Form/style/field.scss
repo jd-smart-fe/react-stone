@@ -1,0 +1,26 @@
+@import '../../../style/color.scss';
+.rs-form__control-group {
+  font-family: SourceHanSansCN-Normal;
+  font-size: $baseFontSize;
+  margin-bottom: $field-margin-bottom;
+  color: $gray;
+  &.has-error {
+    color: $red;
+  }
+  .rs-form__control-label {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: right;
+    vertical-align: top;
+    width: 120px;
+  }
+  .rs-form__controls {
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: top;
+    word-break: break-all;
+    min-height: 32px;
+    line-height: 32px;
+  }
+}

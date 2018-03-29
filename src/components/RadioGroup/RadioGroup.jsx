@@ -19,7 +19,11 @@ export class Radio extends Component {
       optional.checked = (this.props.value === selectedValue);
     }
     if (typeof onChange === 'function') {
-      optional.onChange = onChange.bind(null, this.props);
+      if (name) {
+        optional.onChange = onChange.bind(null, { [name]: this.props.value });
+      } else {
+        optional.onChange = onChange.bind(null, this.props);
+      }
     }
 
     return (
@@ -42,17 +46,17 @@ Radio.contextTypes = {
 
 export class RadioGroup extends React.Component {
   getChildContext() {
-    const { name, selectedValue, onChange } = this.props;
+    const { name, value, onChange } = this.props;
     return {
       radioGroup: {
-        name, selectedValue, onChange,
+        name, selectedValue: value, onChange,
       },
     };
   }
 
   render() {
     const {
-      Tag, name, selectedValue, onChange, children, ...rest
+      Tag, name, value, onChange, children, ...rest
     } = this.props;
     return <Tag {...rest}>{children}</Tag>;
   }
@@ -64,7 +68,7 @@ RadioGroup.defaultProps = {
 
 RadioGroup.propTypes = {
   name: PropTypes.string,
-  selectedValue: PropTypes.oneOfType([
+  value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
     PropTypes.bool,

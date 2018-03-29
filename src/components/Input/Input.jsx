@@ -24,10 +24,7 @@ class Input extends Component {
     if (typeof this.props.onChange === 'function') {
       if (name) {
         let params = {
-          [name]: {
-            value: event.target.value,
-          },
-          value: event.target.value,
+          [name]: event.target.value,
         };
         this.props.onChange(params, name);
       } else {

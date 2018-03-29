@@ -15,24 +15,8 @@ import DragSort from './components/DragSort/DragSort.jsx';
 import Form from './components/Form/index.js';
 import './App.css';
 
-const { InputField, FieldInput } = Form;
+const { CreateForm, InputField, FieldInput, FieldCheckbox, FieldSelect, FieldRadioGroup } = Form;
 
-// 已整理组件
-// 1. Button
-// 2. Textarea
-// 3. Input
-// 4. Checkbox（有bug）
-// 5. CheckboxGroup（有bug）
-// 6. Radio
-// 7. RadioGroup
-// 8. Toast
-
-// 待整理组件
-// 1. Select
-// 2. Model
-
-// 待开发组件
-// 1. 分页组件
 
 const onChange = (val) => {
   console.log(val);
@@ -62,6 +46,114 @@ const saleVolumes = [
 const selectChange = (val) => {
   console.log(val);
 }
+class FieldForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      options1: [
+        { label: 'Apple', value: 'Apple' },
+        { label: 'Pear', value: 'Pear' },
+        { label: 'Orange', value: 'Orange' },
+      ],
+      checkedBoxValue: [
+        'Pear'
+      ],
+      formDate: {},
+      productTypexs: null
+    }
+  }
+  formSubmit = (e) => {
+    e.preventDefault();
+    this.props.rsForm.validateForm(true, () => {
+      if (this.props.rsForm.isValid()) {
+        console.log('Yes！表单通过');
+        console.log('可以提交的表单：',this.props.rsForm.getFormValues())
+      } else {
+        console.log('No！表单校验不通过')
+        console.log('错误的表单：', this.props.rsForm.getFormValues())
+      }
+    })
+  }
+  // FormChange = (params) => {
+  //   let state = {
+  //     ...this.state,
+  //     formDate: {
+  //       ...this.state.formDate,
+  //       ...params
+  //     }
+  //   }
+  //   this.setState(state, () => {
+  //     console.log(this.state)
+  //   })
+  //   console.log(this.Form)
+  // }
+  inputChange = (params) => {
+    // this.props.rsForm.handleChange(params);
+    console.log(this.props.rsForm.getFormValues())
+    console.log(this.props.rsForm.getFieldError('name'))
+  }
+  productTypeChangexs = (val) => {
+    console.log(val);
+    this.setState({
+      productType: val.value
+    })
+  }
+  render() {
+    return (
+      <Form onSubmit={this.formSubmit} ref = { (instance) => { this.Form = instance; } }>
+        <FieldInput
+          required
+          name="name"
+          label="姓名"
+          validateOnChange={true}
+          validations={{ required: true }}
+          validationErrors={{ required: '必填项' }}
+          onChange={this.inputChange}/>
+        <FieldInput
+          required
+          name="email"
+          validations={{ isEmail: true }}
+          validationErrors={{ isEmail: '邮箱格式不正确' }}
+          label="邮箱"/>
+        <FieldInput
+          name="hhhh"
+          label="dizhi"/>
+        <FieldSelect
+          name="xuanzeqi"
+          label="slect"
+          placeholder="请选择"
+          optionData={saleVolumes}
+          onChange={selectChange}/>
+        <FieldRadioGroup
+          required
+          name="danxuan"
+          label="danxuan"
+          value={this.state.productTypexs}
+          onChange={this.productTypeChangexs}
+          validations={{ required: true }}
+          validationErrors={{ required: '必填项' }}>
+          <Radio value={1} id="productType1xx" textname="硬件设备"></Radio>
+          <Radio value={2} id="productType2xx" textname="软件应用"></Radio>
+        </FieldRadioGroup>
+        <FieldCheckbox
+          required
+          name="shuiguo"
+          label="duoxuan"
+          options={this.state.options1}
+          value={this.state.checkedBoxValue}
+          validations={{
+            isMore(values, value) {
+              return value.length >= 2;
+            }
+          }}
+          validationErrors={{ isMore: '不能低于两项' }}/>
+        <Button htmlType="submit">提交</Button>
+      </Form>
+    );
+  }
+}
+
+const WrappedForm = CreateForm()(FieldForm);
 class App extends Component {
   constructor(props) {
     super(props)
@@ -87,7 +179,7 @@ class App extends Component {
         inputValue: 'ajaxInp',
         selectArr: saleVolumes
       });
-      Toast.errorTopico('带错误图标--从头渐出',2000000);
+      // Toast.errorTopico('带错误图标--从头渐出',2000000);
       // Toast.info('图片仅支持上传 JPG、PNG格式', 'info', 500000);
     }, 2000)
   }
@@ -98,7 +190,15 @@ class App extends Component {
     })
   }
   openToast = () =>{
-    Toast.top('普通文字--从头渐出', 2000);
+    this.wrapForm.setFieldsValue({
+      danxuan: 1,
+      hhhh: 'hhh',
+      name: 'zhangning',
+      password: 'mima',
+      shuiguo: ["Pear", "Apple"],
+      xuanzeqi: undefined
+    })
+    // Toast.top('普通文字--从头渐出', 2000);
   }
   openMiddle = () =>{
     Toast.middle('普通文字--中间渐出',2000)
@@ -112,26 +212,15 @@ class App extends Component {
   openYesTopico = () =>{
     Toast.yesTopico('带正确图标--从头渐出',2000)
   }
-  formSubmit = (e) => {
-    e.preventDefault();
-    console.log(this.Form);
+  FieldInputChange = (params) => {
+    console.log(params);
+    console.log(this.props);
   }
   render() {
     return (
       <div className="App">
         <p className="App-intro">
-          <Form onSubmit={this.formSubmit} ref = { (instance) => { this.Form = instance; } }>
-            <FieldInput
-              required
-              name="name"
-              label="姓名"/>
-            <InputField
-              required
-              name="password"
-              type="password"
-              label="密码"/>
-            <Button htmlType="submit">提交</Button>
-          </Form>
+          <WrappedForm ref={ref => { this.wrapForm = ref }}/>
           {/* <DragSort type="table" onDragEnd={this.handleDragEnd} onChange={this.handleDragMove}>
             <div key>list1</div>
             <div>list2</div>

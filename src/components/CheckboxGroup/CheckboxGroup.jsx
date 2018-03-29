@@ -27,8 +27,16 @@ class CheckboxGroup extends Component {
     this.setState({
       value: arr,
     });
+    let params;
+    if (this.props.name) {
+      params = {
+        [this.props.name]: arr,
+      };
+    } else {
+      params = arr;
+    }
     if (typeof this.props.onChange === 'function') {
-      this.props.onChange(arr, e.target.id);
+      this.props.onChange(params, e.target.id);
     }
   }
   render() {

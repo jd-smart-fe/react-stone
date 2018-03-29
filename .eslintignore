@@ -6,5 +6,6 @@ src/components/Form/*.jsx
 src/components/Form/form-components/*.jsx
 src/examples/*/*/*.jsx
 src/examples/*.js
+src/lib/*.js
 node_modules/*.js
 scripts/*.js
