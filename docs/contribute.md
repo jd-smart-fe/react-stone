@@ -49,12 +49,16 @@ src
 * 组件js文件首字母大写，样式文件首字母小写
 * 文件夹名字用驼峰，例如 `DragSort`
 
+### JavaScript规范
 
-## 组件文档如何编写
+本项目采用的是Airbnb的Eslint配置，参考文档：[Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
 
-每个组件根目录下都有一个 README 文件，`readme.md` 。组件文档采用 Markdown 格式，具体书写规范请参考 [组件文档书写规范](markdown)。
-
-
-#### 样式
+### 样式规范
 
 class命名建议参考BEM命名规范，参考文档：[编写模块化CSS：BEM](https://www.w3cplus.com/css/css-architecture-1.html)
+
+### 组件文档如何编写
+
+每个组件根目录下都有一个 README 文件，`readme.md` 。组件文档采用 Markdown 格式，具体书写规范请参考:
+- [react-stone Button组件文档](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Button)
+- [Markdown语法](https://www.zybuluo.com/mdeditor?url=https%3A%2F%2Fwww.zybuluo.com%2Fstatic%2Feditor%2Fmd-help.markdown)
