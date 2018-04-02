@@ -21,12 +21,12 @@ class modal extends Component {
     const modalOptions = Object.assign({}, this.defaultOptions, options);
     const modalDialog = document.createElement('div');
     modalDialog.id = 'modal-dialog';
-    let { template, ...attrOptions } = modalOptions;
+    let { template, title, ...attrOptions } = modalOptions;
     ReactDom.render(
       <Modal {...attrOptions}>
         <div>
           <div className="modal-header">
-              <span>提示</span>
+              <span>{title}</span>
           </div>
           <div className="modal-body">
             {template}
@@ -61,14 +61,14 @@ class modal extends Component {
     });
   }
   render() {
-    const { children, ...rest } = this.props;
+    const { children, title, ...rest } = this.props;
     const modalOptions = Object.assign({}, modal.defaultOptions, rest);
     return (this.state.visible ? (<Modal
       hiddenModal={this.hiddenModal}
       {...modalOptions}>
       <div>
         <div className="modal-header">
-            <span>提示</span>
+            <span>{title}</span>
         </div>
         <div className="modal-body">
           {children}

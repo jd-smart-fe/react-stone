@@ -370,15 +370,15 @@ class App extends Component {
   }
   openModal = () => {
     console.log(123)
-    this.setState({
-      isShowModal: true
-    })
-    // this.myModal = Modal.open({
-    //   "size": 'sm',
-    //   "template": this.getContentComponent(),
-    //   "onCancel": this.closeModal,
-    //   "onOk": this.okModal
-    // });
+    // this.setState({
+    //   isShowModal: true
+    // })
+    this.myModal = Modal.open({
+      "size": 'sm',
+      "template": this.getContentComponent(),
+      "onCancel": this.closeModal,
+      "onOk": this.okModal
+    });
     // 该组件提供代码关闭弹框的手段，调用close方法即可！
     // setTimeout(() => {
     //   myModal.close()
