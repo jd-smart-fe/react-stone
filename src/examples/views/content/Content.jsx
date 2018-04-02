@@ -4,15 +4,26 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import ButtonMd from '../../../components/Button/readme.md';
-import CheckboxGroupMd from '../../../components/CheckboxGroup/readme.md';
-import InputMd from '../../../components/Input/readme.md';
-import ModalMd from '../../../components/Modal/readme.md';
-import PaginationMd from '../../../components/Pagination/readme.md';
-import RadioGroupMd from '../../../components/RadioGroup/readme.md';
-import SelectMd from '../../../components/Select/readme.md';
-import TextareaMd from '../../../components/Textarea/readme.md';
-import ToastMd from '../../../components/Toast/readme.md';
+// import ButtonMd from '../../../components/Button/readme.md';
+// import CheckboxGroupMd from '../../../components/CheckboxGroup/readme.md';
+// import InputMd from '../../../components/Input/readme.md';
+// import ModalMd from '../../../components/Modal/readme.md';
+// import PaginationMd from '../../../components/Pagination/readme.md';
+// import RadioGroupMd from '../../../components/RadioGroup/readme.md';
+// import SelectMd from '../../../components/Select/readme.md';
+// import TextareaMd from '../../../components/Textarea/readme.md';
+// import ToastMd from '../../../components/Toast/readme.md';
+
+import ButtonDev from '../../components/ButtonDev.js';
+import CheckboxDev from '../../components/CheckboxDev.js';
+import FormDev from '../../components/FormDev.js';
+import InputDev from '../../components/InputDev.js';
+import ModalDev from '../../components/ModalDev.js';
+import PaginationDev from '../../components/PaginationDev.js';
+import RadioDev from '../../components/RadioDev.js';
+import SelectDev from '../../components/SelectDev.js';
+import TextareaDev from '../../components/TextareaDev.js';
+import ToastDev from '../../components/ToastDev.js';
 import './content.css';
 const ReactMarkdown = require('react-markdown');
 // const input = '# This is a header\n\nAnd this is a paragraph'
@@ -50,40 +61,40 @@ class Content extends Component {
   }
   getCommponent = ({ match }) => {
     console.log(match.path);
-    let commponentType;
-    console.log(match.path)
+    let CommponentType;
+    console.log(SelectDev)
     switch (match.path)
     {
       case '/Button':
-        commponentType = ButtonMd;
+        CommponentType = ButtonDev;
         break;
       case '/Input':
-        commponentType = InputMd;
+        CommponentType = InputDev;
         break;
       case '/Textarea':
-        commponentType = TextareaMd;
+        CommponentType = TextareaDev;
         break;
       case '/Radio':
-        commponentType = RadioGroupMd;
+        CommponentType = RadioDev;
         break;
       case '/Checkbox':
-        commponentType = CheckboxGroupMd;
+        CommponentType = CheckboxDev;
         break;
       case '/Toast':
-        commponentType = ToastMd;
+        CommponentType = ToastDev;
         break;
       case '/Select':
-        commponentType = SelectMd;
+        CommponentType = SelectDev;
         break;
       case '/Modal':
-        commponentType = ModalMd;
+        CommponentType = ModalDev;
         break;
       case '/Pagination':
-        commponentType = PaginationMd;
+        CommponentType = PaginationDev;
         break;
     }
-    console.log(commponentType)
-    return (<ReactMarkdown source={commponentType} />)
+    console.log(CommponentType)
+    return <CommponentType />
   }
   render() {
     return (

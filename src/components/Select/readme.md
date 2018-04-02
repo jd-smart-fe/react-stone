@@ -12,7 +12,7 @@
 ```javascript
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Select from 'ceshi-stone';
+import { Select } from 'ceshi-stone';
 
 const saleVolumes = [
   {
@@ -48,16 +48,18 @@ class App extends Component {
   }
   render(){
     return (
-      <Select
-        size="large"
-        placeholder="请选择"
-        optionData={saleVolumes}
-        onChange={selectChange}/>
-      <Select
-        size="large"
-        defaultValue={3}
-        optionData={saleVolumes}
-        onChange={selectChange}/>
+      <div>
+        <Select
+          size="large"
+          placeholder="请选择"
+          optionData={saleVolumes}
+          onChange={selectChange}/>
+        <Select
+          size="large"
+          defaultValue={3}
+          optionData={saleVolumes}
+          onChange={selectChange}/>
+      </div>
     )
   }
 }

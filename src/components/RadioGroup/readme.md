@@ -15,7 +15,10 @@ import { Radio } from 'ceshi-stone';
 ```javascript
 import { Radio, RadioGroup } from 'ceshi-stone';
 
-<RadioGroup selectedValue={this.state.productType} onChange={this.productTypeChange}>
+<RadioGroup
+  selectedValue={this.state.productType}
+  onChange={this.productTypeChange}
+  name="device-type">
   <Radio value={1} id="productType1" textname="硬件设备"></Radio>
   <Radio value={2} id="productType2" textname="软件应用"></Radio>
 </RadioGroup>
