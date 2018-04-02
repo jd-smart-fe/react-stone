@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Button from '../Button/Button.jsx';
 import './modal.scss';
 
-class modal {
+class modal extends Component {
   static defaultOptions = {
     mask: true,
     closeable: true,
@@ -23,7 +23,16 @@ class modal {
     modalDialog.id = 'modal-dialog';
     let { template, ...attrOptions } = modalOptions;
     ReactDom.render(
-      <Modal {...attrOptions}>{template}</Modal>,
+      <Modal {...attrOptions}>
+        <div>
+          <div className="modal-header">
+              <span>提示</span>
+          </div>
+          <div className="modal-body">
+            {template}
+          </div>
+        </div>
+      </Modal>,
       modalDialog,
     );
     document.body.appendChild(modalDialog);
@@ -33,12 +42,48 @@ class modal {
     const modalDialog = document.getElementById('modal-dialog');
     document.body.removeChild(modalDialog);
   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: this.props.visible,
+    };
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.visible !== this.state.visible) {
+      this.state = {
+        visible: nextProps.visible,
+      };
+    }
+  }
+  hiddenModal = () => {
+    this.setState({
+      visible: false,
+    });
+  }
+  render() {
+    const { children, ...rest } = this.props;
+    const modalOptions = Object.assign({}, modal.defaultOptions, rest);
+    return (this.state.visible ? (<Modal
+      hiddenModal={this.hiddenModal}
+      {...modalOptions}>
+      <div>
+        <div className="modal-header">
+            <span>提示</span>
+        </div>
+        <div className="modal-body">
+          {children}
+        </div>
+      </div>
+    </Modal>) : null);
+  }
 }
 
 class Modal extends Component {
   cancel = () => {
     if (typeof this.props.onCancel === 'function') {
       this.props.onCancel();
+    } else if (typeof this.props.hiddenModal === 'function') {
+      this.props.hiddenModal();
     } else {
       modal.close();
     }
@@ -46,6 +91,8 @@ class Modal extends Component {
   modalOK = () => {
     if (typeof this.props.onOk === 'function') {
       this.props.onOk();
+    } else if (typeof this.props.hiddenModal === 'function') {
+      this.props.hiddenModal();
     } else {
       modal.close();
     }

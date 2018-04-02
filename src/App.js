@@ -8,7 +8,7 @@ import Input from './components/Input/Input.jsx';
 import CheckboxGroup from './components/CheckboxGroup/CheckboxGroup.jsx';
 import { Radio, RadioGroup } from './components/RadioGroup/RadioGroup.jsx';
 import Toast from './components/Toast/toast.jsx';
-import modal from './components/Modal/modal.jsx';
+import Modal from './components/Modal/modal.jsx';
 import Pagination from './components/Pagination/Pagination.jsx';
 import iconfonts from './components/Fonts/icofonts.css';
 import DragSort from './components/DragSort/DragSort.jsx';
@@ -108,7 +108,7 @@ class FieldForm extends React.Component {
   }
   render() {
     return (
-      <Form onSubmit={this.formSubmit} ref = { (instance) => { this.Form = instance; } }>
+      <Form onSubmit={this.formSubmit}>
         <FieldInput
           required
           name="name"
@@ -183,7 +183,8 @@ class App extends Component {
       checkedBox: [
         'Pear'
       ],
-      selectArr: []
+      selectArr: [],
+      isShowModal: false
     }
   }
   componentDidMount() {
@@ -308,7 +309,11 @@ class App extends Component {
               defaultValue={2}
               onChange={selectChange}/>
           </div>
-
+          <Modal
+            size='sm'
+            visible={this.state.isShowModal}>
+            Hello Modal
+          </Modal>
           <Textarea />
           <Textarea placeholder="未输入时的提示信息"/>
           <Textarea value="value"/>
@@ -325,7 +330,7 @@ class App extends Component {
             id="productType111"
             textname="hello硬件设备"
             defaultChecked={true}></Radio>
-          <RadioGroup selectedValue={this.state.productType} onChange={this.productTypeChange}>
+          <RadioGroup selectedvalue={this.state.productType} onChange={this.productTypeChange}>
             <Radio value={1} id="productType1" textname="硬件设备"></Radio>
             <Radio value={2} id="productType2" textname="软件应用"></Radio>
             <Radio value={3} id="productType3" textname="软件应用"></Radio>
@@ -364,12 +369,16 @@ class App extends Component {
     )
   }
   openModal = () => {
-    this.myModal = modal.open({
-      "size": 'sm',
-      "template": this.getContentComponent(),
-      "onCancel": this.closeModal,
-      "onOk": this.okModal
-    });
+    console.log(123)
+    this.setState({
+      isShowModal: true
+    })
+    // this.myModal = Modal.open({
+    //   "size": 'sm',
+    //   "template": this.getContentComponent(),
+    //   "onCancel": this.closeModal,
+    //   "onOk": this.okModal
+    // });
     // 该组件提供代码关闭弹框的手段，调用close方法即可！
     // setTimeout(() => {
     //   myModal.close()
@@ -381,14 +390,7 @@ class App extends Component {
   }
   getContentComponent = () => {
     return (
-      <div>
-        <div className="modal-header">
-            <span>提示</span>
-        </div>
-        <div className="modal-body">
-            <p>如果没有保存，数据将会丢失，确认取消吗？</p>
-        </div>
-    </div>
+      <p>如果没有保存，数据将会丢失，确认取消吗123？</p>
     )
   }
 }

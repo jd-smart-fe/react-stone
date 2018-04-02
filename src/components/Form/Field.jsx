@@ -61,30 +61,40 @@ class Field extends Component {
     );
   };
   handleChange = (params, options = { merge: false }) => {
-    console.log(params);
+    console.log('handleChange');
     const { onChange, validateOnChange } = this.props;
     this.setValue(params[this.props.name], validateOnChange);
     if (onChange) {
       onChange(params);
     }
-    // const { onChange, validateOnChange } = this.props;
-    // const previousValue = this.getValue();
-    // const currentValue = options.merge
-    //   ? getCurrentValue(getValue(event), previousValue)
-    //   : getValue(event);
-    // const newValue = this.normalize(currentValue);
-    // let preventSetValue = false;
+  };
+  handleBlur = (event, options = { merge: false }) => {
+    console.log('handleBlur');
+    const { onBlur, asyncValidation, validateOnBlur } = this.props;
+    const previousValue = this.getValue();
+    const currentValue = options.merge
+      ? getCurrentValue(getValue(event), previousValue)
+      : getValue(event);
+    const newValue = this.normalize(currentValue);
+    let preventSetValue = false;
 
-    // // 在传入的onChange中可以按需阻止更新value值
-    // if (onChange) {
-    //   onChange(event, newValue, previousValue, () => (preventSetValue = true));
-    // }
+    if (onBlur) {
+      onBlur(event, newValue, previousValue, () => (preventSetValue = true));
+    }
 
-    // if (!preventSetValue) {
-    //   this.setValue(newValue, validateOnChange);
-    //   this.context.rsForm.onChangeFieldArray &&
-    //     this.context.rsForm.onChangeFieldArray(this._name, newValue);
-    // }
+    this.setState({
+      _active: false,
+    });
+
+    if (!preventSetValue) {
+      this.setValue(newValue, validateOnBlur);
+      if (asyncValidation) {
+        this.context.zentForm.asyncValidate(this, newValue).catch(error => {
+          // eslint-disable-next-line
+          console.log(error);
+        });
+      }
+    }
   };
   isValid = () => {
     return this.state._isValid;
@@ -108,6 +118,7 @@ class Field extends Component {
         this.wrappedComponent = ref;
       },
       onChange: this.handleChange,
+      onBlur: this.handleBlur,
       value: this.getValue(),
       isValid: this.isValid(),
       error: this.getErrorMessage(),

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './input.scss';
 
+const noop = () => {
+  console.log('noop');
+};
+
 class Input extends Component {
   constructor(props) {
     super(props);
@@ -59,6 +63,7 @@ class Input extends Component {
           className={ classInput }
           value={ value }
           onChange={ this.isInput }
+          onBlur={noop}
           placeholder={ placeholder } />
         {valid ? '' : (<div className="error-public"><i className="icon-error"></i><span>{errorMessage}</span></div>)}
         { addonAfter ?
