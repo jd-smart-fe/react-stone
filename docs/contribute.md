@@ -57,6 +57,10 @@ src
 
 class命名建议参考BEM命名规范，参考文档：[编写模块化CSS：BEM](https://www.w3cplus.com/css/css-architecture-1.html)
 
+### 其他规范
+
+git规范及其他的规范，参考：[京东智能前端团队代码规范](https://github.com/jd-smart-fe/shared/blob/master/guide.md)
+
 ### 组件文档如何编写
 
 每个组件根目录下都有一个 README 文件，`readme.md` 。组件文档采用 Markdown 格式，具体书写规范请参考:
