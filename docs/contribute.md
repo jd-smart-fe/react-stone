@@ -41,7 +41,7 @@ src
 - 如果想发布该组件，在index.js中引入该组件并导出。
 - 更新package.json里的版本号
 - 执行npm run build
-- 执行npm run publish
+- 执行npm publish
 
 
 #### 文件命名
