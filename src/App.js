@@ -233,7 +233,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <p className="App-intro">
           <WrappedForm ref={ref => { this.wrapForm = ref }}/>
           {/* <DragSort type="table" onDragEnd={this.handleDragEnd} onChange={this.handleDragMove}>
             <div key>list1</div>
@@ -335,7 +334,6 @@ class App extends Component {
             <Radio value={2} id="productType2" textname="软件应用"></Radio>
             <Radio value={3} id="productType3" textname="软件应用"></Radio>
           </RadioGroup>
-        </p>
       </div>
     );
   }
@@ -370,15 +368,15 @@ class App extends Component {
   }
   openModal = () => {
     console.log(123)
-    // this.setState({
-    //   isShowModal: true
-    // })
-    this.myModal = Modal.open({
-      "size": 'sm',
-      "template": this.getContentComponent(),
-      "onCancel": this.closeModal,
-      "onOk": this.okModal
-    });
+    this.setState({
+      isShowModal: true
+    })
+    // this.myModal = Modal.open({
+    //   "size": 'sm',
+    //   "template": this.getContentComponent(),
+    //   "onCancel": this.closeModal,
+    //   "onOk": this.okModal
+    // });
     // 该组件提供代码关闭弹框的手段，调用close方法即可！
     // setTimeout(() => {
     //   myModal.close()

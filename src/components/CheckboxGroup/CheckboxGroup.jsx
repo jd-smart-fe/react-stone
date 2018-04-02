@@ -42,11 +42,10 @@ class CheckboxGroup extends Component {
   render() {
     const { options, defaultValue, onChange } = this.props;
     let checkboxArr = options.map((option, index) => {
-      return (<span>
+      return (<span key={index}>
         <input
           type="checkbox"
           className="magic magic-checkbox"
-          key={index}
           id={option.value}
           onChange={this.onChange}
           checked={this.state.value.indexOf(option.value) !== -1} />

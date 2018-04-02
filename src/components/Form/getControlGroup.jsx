@@ -35,7 +35,7 @@ export default Control => {
             {required ? <em>* </em> : null}
             {label}
           </label>
-          <div class="rs-form__controls">
+          <div className="rs-form__controls">
             <Control {...props} ref={ (instance) => { this.control = instance; } }/>
             {showError && (
               <div style={{
