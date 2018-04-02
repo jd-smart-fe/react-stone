@@ -54,3 +54,7 @@ ceshi-stone 组件库提供了下述组件，每个组件都带有详细的文�
 * [ ] Form 表单组件
 
 * [ ] Date 日历组件
+
+## 贡献指南
+
+[贡献指南草稿](https://github.com/jd-smart-fe/react-stone/tree/master/docs/contribute.md)
