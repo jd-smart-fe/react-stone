@@ -14,7 +14,7 @@ class SlideBar extends Component {
   }
 
   render() {
-    const componentsArr = ['Button', 'Input', 'Textarea', 'Radio', 'Checkbox', 'Toast', 'Select', 'Modal', 'Pagination'];
+    const componentsArr = ['Button', 'Input', 'Textarea', 'Radio', 'Checkbox', 'Toast', 'Select', 'Modal', 'Pagination', 'Transfer'];
     return (
       <aside className="aside-wrap">
         {

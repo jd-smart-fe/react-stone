@@ -24,6 +24,7 @@ import RadioDev from '../../components/RadioDev.js';
 import SelectDev from '../../components/SelectDev.js';
 import TextareaDev from '../../components/TextareaDev.js';
 import ToastDev from '../../components/ToastDev.js';
+import TransferDev from '../../components/TransferDev.js';
 import './content.css';
 const ReactMarkdown = require('react-markdown');
 // const input = '# This is a header\n\nAnd this is a paragraph'
@@ -92,6 +93,9 @@ class Content extends Component {
       case '/Pagination':
         CommponentType = PaginationDev;
         break;
+      case '/Transfer':
+        CommponentType = TransferDev;
+        break;
     }
     console.log(CommponentType)
     return <CommponentType />
@@ -108,6 +112,7 @@ class Content extends Component {
         <Route path="/Select" component={this.getCommponent} />
         <Route path="/Modal" component={this.getCommponent} />
         <Route path="/Pagination" component={this.getCommponent} />
+        <Route path="/Transfer" component={this.getCommponent} />
       </div>
     )
   }
