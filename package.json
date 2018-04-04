@@ -1,6 +1,6 @@
 {
   "name": "ceshi-stone",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "main": "/build/static/js/main.js",
   "dependencies": {
     "autoprefixer": "7.1.6",
@@ -97,7 +97,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.8.3",
     "react-for-markdown-loader": "^1.1.0",
     "react-markdown": "^3.3.0",
     "react-router-dom": "^4.2.2",

@@ -203,29 +203,6 @@ class App extends Component {
       currentPage: page
     })
   }
-  openToast = () =>{
-    this.wrapForm.setFieldsValue({
-      danxuan: 1,
-      hhhh: 'hhh',
-      name: 'zhangning',
-      password: 'mima',
-      shuiguo: ["Pear", "Apple"],
-      xuanzeqi: undefined
-    })
-    // Toast.top('普通文字--从头渐出', 2000);
-  }
-  openMiddle = () =>{
-    Toast.middle('普通文字--中间渐出',2000)
-  }
-  openBottom = () =>{
-    Toast.bottom('普通文字--从底渐出',2000)
-  }
-  openErrorTopico = () =>{
-    Toast.errorTopico('带错误图标--从头渐出',2000)
-  }
-  openYesTopico = () =>{
-    Toast.yesTopico('带正确图标--从头渐出',2000)
-  }
   FieldInputChange = (params) => {
     console.log(params);
     console.log(this.props);
@@ -257,13 +234,6 @@ class App extends Component {
           </div>
           <div className="code-box-demo">
             <Textarea value='zhangning' name="zhang" maxLength={10} onChange={onChange}/>
-          </div>
-          <div className="code-box-demo">
-            <Button onClick={this.openToast} >top</Button>
-            <Button onClick={this.openMiddle} >middle</Button>
-            <Button onClick={this.openBottom} >bottom</Button>
-            <Button onClick={this.openErrorTopico} >errorTopico</Button>
-            <Button onClick={this.openYesTopico} >yesTopico</Button>
           </div>
           <div className="code-box-demo">
             <Input radius="radius" placeholder="圆角"/>
