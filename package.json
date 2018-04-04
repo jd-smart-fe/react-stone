@@ -1,6 +1,6 @@
 {
   "name": "ceshi-stone",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "main": "/build/static/js/main.js",
   "dependencies": {
     "autoprefixer": "7.1.6",
