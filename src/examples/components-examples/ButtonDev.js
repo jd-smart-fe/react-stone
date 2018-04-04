@@ -12,7 +12,17 @@ class ButtonDev extends Component {
   }
   render() {
     return (
-      <Button>button调试区域</Button>
+      <div>
+        <Button>Button Base</Button>
+        <Button theme='gray'>Button theme gray</Button>
+        <Button size='small'>Button small</Button>
+        <Button size='base'>Button base</Button>
+        <Button size='large'>Button large</Button>
+        <Button disabled={true}>Button Disabled</Button>
+        <Button radius='circle' icon="delete" />
+        <Button icon="delete">delect</Button>
+        <Button htmlType='submit'>Button Submit</Button>
+      </div>
     );
   }
 }

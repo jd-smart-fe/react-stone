@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Button from '../Button/Button.jsx';
 import './modal.scss';
 
-class modal extends Component {
+class Modal extends Component {
   static defaultOptions = {
     mask: true,
     closeable: true,
@@ -23,7 +23,7 @@ class modal extends Component {
     modalDialog.id = 'modal-dialog';
     let { template, title, ...attrOptions } = modalOptions;
     ReactDom.render(
-      <Modal {...attrOptions}>
+      <ModalTemplate {...attrOptions}>
         <div>
           <div className="modal-header">
               <span>{title}</span>
@@ -32,7 +32,7 @@ class modal extends Component {
             {template}
           </div>
         </div>
-      </Modal>,
+      </ModalTemplate>,
       modalDialog,
     );
     document.body.appendChild(modalDialog);
@@ -50,9 +50,9 @@ class modal extends Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.visible !== this.state.visible) {
-      this.state = {
+      this.setState({
         visible: nextProps.visible,
-      };
+      });
     }
   }
   hiddenModal = () => {
@@ -62,8 +62,8 @@ class modal extends Component {
   }
   render() {
     const { children, title, ...rest } = this.props;
-    const modalOptions = Object.assign({}, modal.defaultOptions, rest);
-    return (this.state.visible ? (<Modal
+    const modalOptions = Object.assign({}, Modal.defaultOptions, rest);
+    return (this.state.visible ? (<ModalTemplate
       hiddenModal={this.hiddenModal}
       {...modalOptions}>
       <div>
@@ -74,18 +74,18 @@ class modal extends Component {
           {children}
         </div>
       </div>
-    </Modal>) : null);
+    </ModalTemplate>) : null);
   }
 }
 
-class Modal extends Component {
+class ModalTemplate extends Component {
   cancel = () => {
     if (typeof this.props.onCancel === 'function') {
       this.props.onCancel();
     } else if (typeof this.props.hiddenModal === 'function') {
       this.props.hiddenModal();
     } else {
-      modal.close();
+      Modal.close();
     }
   }
   modalOK = () => {
@@ -94,7 +94,7 @@ class Modal extends Component {
     } else if (typeof this.props.hiddenModal === 'function') {
       this.props.hiddenModal();
     } else {
-      modal.close();
+      Modal.close();
     }
   }
   render() {
@@ -130,4 +130,4 @@ class Modal extends Component {
   }
 }
 
-export default modal;
+export default Modal;

@@ -5,7 +5,7 @@ import Input from './components/Input/Input.jsx';
 import CheckboxGroup from './components/CheckboxGroup/CheckboxGroup.jsx';
 import { Radio, RadioGroup } from './components/RadioGroup/RadioGroup.jsx';
 import Toast from './components/Toast/toast.jsx';
-import modal from './components/Modal/modal.jsx';
+import Modal from './components/Modal/modal.jsx';
 import Pagination from './components/Pagination/Pagination.jsx';
 import DragSort from './components/DragSort/DragSort.jsx';
 import iconfonts from './components/Fonts/icofonts.css';
@@ -19,7 +19,7 @@ export {
   Radio,
   RadioGroup,
   Toast,
-  modal,
+  Modal,
   iconfonts,
   Pagination,
   DragSort,
