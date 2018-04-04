@@ -9,7 +9,7 @@
 ```javascript
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { modal } from 'ceshi-stone';
+import { Modal } from 'ceshi-stone';
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class App extends Component {
     };
   }
   openModal = () => {
-    const myModal = modal.open({
+    const myModal = Modal.open({
       "size": 'sm',
       "title": '提示',
       "template": this.getContentComponent(),

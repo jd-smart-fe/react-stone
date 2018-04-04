@@ -14,6 +14,7 @@ import {
 // import TextareaMd from '../../../components/Textarea/readme.md';
 // import ToastMd from '../../../components/Toast/readme.md';
 
+<<<<<<< HEAD
 import ButtonDev from '../../components/ButtonDev.js';
 import CheckboxDev from '../../components/CheckboxDev.js';
 import FormDev from '../../components/FormDev.js';
@@ -25,6 +26,18 @@ import SelectDev from '../../components/SelectDev.js';
 import TextareaDev from '../../components/TextareaDev.js';
 import ToastDev from '../../components/ToastDev.js';
 import TransferDev from '../../components/TransferDev.js';
+=======
+import ButtonDev from '../../components-examples/ButtonDev.js';
+import CheckboxDev from '../../components-examples/CheckboxDev.js';
+import FormDev from '../../components-examples/FormDev.js';
+import InputDev from '../../components-examples/InputDev.js';
+import ModalDev from '../../components-examples/ModalDev.js';
+import PaginationDev from '../../components-examples/PaginationDev.js';
+import RadioDev from '../../components-examples/RadioDev.js';
+import SelectDev from '../../components-examples/SelectDev.js';
+import TextareaDev from '../../components-examples/TextareaDev.js';
+import ToastDev from '../../components-examples/ToastDev.js';
+>>>>>>> 1c2971980dbc9bf816e9e364beb98d7eeeccb3dc
 import './content.css';
 const ReactMarkdown = require('react-markdown');
 // const input = '# This is a header\n\nAnd this is a paragraph'
