@@ -1,0 +1,42 @@
+.side-nav {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  overflow: auto;
+  padding: 25px 0 10px;
+  width: 250px;
+  ul {
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    .nav-group-item {
+      a {
+        color: #455a64;
+        display: block;
+        font-size: 16px;
+        font-weight: 700;
+        height: 44px;
+        line-height: 44px;
+        padding: 0 20px 0 40px;
+      }
+      .nav-group {
+        .nav-group__title {
+          color: rgba(69,90,100,.6);
+          font-size: 13px;
+          line-height: 44px;
+          padding-left: 40px;
+        }
+        .pure-menu-list {
+          .nav-item {
+            a {
+              font-size: 14px;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+    li {
+      list-style: none;
+    }
+  }
+}

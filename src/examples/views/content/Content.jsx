@@ -4,6 +4,8 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import ReadeMd from '../../../../README.md';
+import ContributeMd from '../../../../docs/contribute.md';
 // import ButtonMd from '../../../components/Button/readme.md';
 // import CheckboxGroupMd from '../../../components/CheckboxGroup/readme.md';
 // import InputMd from '../../../components/Input/readme.md';
@@ -25,7 +27,7 @@ import SelectDev from '../../components-examples/SelectDev.js';
 import TextareaDev from '../../components-examples/TextareaDev.js';
 import ToastDev from '../../components-examples/ToastDev.js';
 import TransferDev from '../../components-examples/TransferDev.js';
-import './content.css';
+import './content.scss';
 const ReactMarkdown = require('react-markdown');
 // const input = '# This is a header\n\nAnd this is a paragraph'
 
@@ -36,8 +38,15 @@ class Content extends Component {
   }
   getCommponent = ({ match }) => {
     let CommponentType;
+    console.log(123);
     switch (match.path)
     {
+      case '/Intro':
+        CommponentType = ReadeMd;
+        return (<ReactMarkdown source={CommponentType} />)
+      case '/Contribute':
+        CommponentType = ContributeMd;
+        return (<ReactMarkdown source={CommponentType} />)
       case '/Button':
         CommponentType = ButtonDev;
         break;
@@ -74,6 +83,8 @@ class Content extends Component {
   render() {
     return (
       <div className="content-wrap" id="content">
+        <Route path="/Intro" component={this.getCommponent} />
+        <Route path="/Contribute" component={this.getCommponent} />
         <Route path="/Button" component={this.getCommponent} />
         <Route path="/Input" component={this.getCommponent} />
         <Route path="/Textarea" component={this.getCommponent} />

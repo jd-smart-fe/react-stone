@@ -9,8 +9,7 @@ import SlideBar from './views/sidebar/Sidebar.jsx';
 import Content from './views/content/Content.jsx';
 import iconfonts from '../components/Fonts/icofonts.css';
 
-import './App.css';
-
+import '../style/normalize.css';
 
 class App extends Component {
   render() {
