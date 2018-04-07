@@ -3,7 +3,8 @@
 
 
 ## How to use?
-```javascript
+
+```jsx
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Button } from 'ceshi-stone';
@@ -27,7 +28,6 @@ class App extends Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
 ```
 
 ## Options

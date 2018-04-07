@@ -17,6 +17,7 @@ import ContributeMd from '../../../../docs/contribute.md';
 // import ToastMd from '../../../components/Toast/readme.md';
 
 import ButtonDev from '../../components-examples/ButtonDev.js';
+import ButtonPage from '../../pages/button/ButtonPage.jsx';
 import CheckboxDev from '../../components-examples/CheckboxDev.js';
 import FormDev from '../../components-examples/FormDev.js';
 import InputDev from '../../components-examples/InputDev.js';
@@ -29,7 +30,6 @@ import ToastDev from '../../components-examples/ToastDev.js';
 import TransferDev from '../../components-examples/TransferDev.js';
 import './content.scss';
 const ReactMarkdown = require('react-markdown');
-// const input = '# This is a header\n\nAnd this is a paragraph'
 
 class Content extends Component {
   constructor(props) {
@@ -38,7 +38,6 @@ class Content extends Component {
   }
   getCommponent = ({ match }) => {
     let CommponentType;
-    console.log(123);
     switch (match.path)
     {
       case '/Intro':
@@ -48,7 +47,7 @@ class Content extends Component {
         CommponentType = ContributeMd;
         return (<ReactMarkdown source={CommponentType} />)
       case '/Button':
-        CommponentType = ButtonDev;
+        CommponentType = ButtonPage;
         break;
       case '/Input':
         CommponentType = InputDev;
@@ -82,7 +81,7 @@ class Content extends Component {
   }
   render() {
     return (
-      <div className="content-wrap" id="content">
+      <div className="content-wrap markdown-body" id="content">
         <Route path="/Intro" component={this.getCommponent} />
         <Route path="/Contribute" component={this.getCommponent} />
         <Route path="/Button" component={this.getCommponent} />

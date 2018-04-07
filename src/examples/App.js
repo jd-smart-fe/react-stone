@@ -10,6 +10,7 @@ import Content from './views/content/Content.jsx';
 import iconfonts from '../components/Fonts/icofonts.css';
 
 import '../style/normalize.css';
+import './app.scss';
 
 class App extends Component {
   render() {
