@@ -6,10 +6,13 @@
 > A components library for React. 一个基于 React 的PC组件库
 
 
-## 说明
+## 前言
 
 目前这个组件库还处于开发阶段，组件数量比较少，欢迎大家提建议，贡献组件！/:rose
 
+## 官方文档
+
+[文档地址](https://jd-smart-fe.github.io/react-stone/build/index.html#/Intro)
 
 ## 安装
 
@@ -19,12 +22,13 @@ npm install --save react-stone
 
 ### 开始使用
 
-Import react-stone
-
 ```js
+// 引入你所需要的组件
 import { Button } from 'react-stone';
+// 引入样式文件
 import 'react-stone/build/static/css/main.css';
 
+// 使用你所引入的组件
 <Button className="delPic" icon="delete"></Button>
 
 ```
