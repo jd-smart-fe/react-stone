@@ -2,7 +2,7 @@
 
 ## 如何使用
 ```javascript
-import { Icon } from 'ceshi-stone';
+import { Icon } from 'react-stone';
 
 <Icon type='delete' />
 ```

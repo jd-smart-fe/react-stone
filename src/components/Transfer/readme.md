@@ -1,6 +1,6 @@
 # Transfer 穿梭组件
 
- -  分为‘操作区’和‘已选区’；‘操作区’选择后，显示为已选状态，同时右侧‘已选区’展示选中的项                                                                
+ -  分为‘操作区’和‘已选区’；‘操作区’选择后，显示为已选状态，同时右侧‘已选区’展示选中的项
 
 ## 何时使用
 
@@ -10,7 +10,7 @@
 ```javascript
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Transfer,CascaderSelection} from 'ceshi-stone';
+import { Transfer,CascaderSelection} from 'react-stone';
 
 class App extends Component {
   constructor(props) {
@@ -78,10 +78,10 @@ class App extends Component {
                     }]
                   },{
                     value: 'jianggan',
-                    label: '江干', 
+                    label: '江干',
                     children:[{
                         value: 'xiasha',
-                        label: '下沙',  
+                        label: '下沙',
                     }]
                   }],
                 },{
@@ -174,7 +174,7 @@ class App extends Component {
         <Transfer  key='skillId'
         onSelect  optionData={this.state.optionData}
         onSearch  searchEvent={this.searchSkills}
-        footer 
+        footer
         leftItemRender={this.leftItemRender}
         rightItemRender={this.rightItemRender}
         dataSource={this.state.dataSource}

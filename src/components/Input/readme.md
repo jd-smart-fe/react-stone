@@ -8,7 +8,7 @@
 ```javascript
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Input } from 'ceshi-stone';
+import { Input } from 'react-stone';
 
 class App extends Component {
   render(){

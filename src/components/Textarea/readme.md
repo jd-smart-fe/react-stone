@@ -7,7 +7,7 @@
 ```javascript
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Textarea } from 'ceshi-stone';
+import { Textarea } from 'react-stone';
 
 class App extends Component {
   render() {

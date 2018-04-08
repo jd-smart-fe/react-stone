@@ -13,7 +13,7 @@ Toast自动消失，是一种不打断用户操作的轻量级提示方式。
 ## How to use?
 
 ```javascript
-import { Toast } from 'ceshi-stone';
+import { Toast } from 'react-stone';
 
 不同的方法 toast出现和消失的效果不同
 - Toast.top('普通文字--从头渐出', 2000);
