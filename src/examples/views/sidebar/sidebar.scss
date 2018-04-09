@@ -30,6 +30,10 @@
             a {
               font-size: 14px;
               font-weight: 400;
+              &:hover {
+                background-color: #f5f7fa;
+                color: #3498db;
+              }
             }
           }
         }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  NavLink
 } from 'react-router-dom';
 import './sidebar.scss';
 
@@ -36,14 +36,20 @@ class SlideBar extends Component {
               <div className="nav-group__title">使用</div>
               <ul className="pure-menu-list">
                 <li className="nav-item">
-                  <Link to={{
-                    pathname: `/Intro`,
-                  }}>项目说明</Link>
+                  <NavLink
+                    to={{
+                      pathname: `/Intro`,
+                    }}
+                    activeStyle={{ color: '#3498db', backgroundColor: '#f5f7fa' }}
+                  >项目说明</NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to={{
+                  <NavLink
+                    to={{
                       pathname: `/Contribute`,
-                    }}>贡献指南</Link>
+                    }}
+                    activeStyle={{ color: '#3498db', backgroundColor: '#f5f7fa' }}
+                  >贡献指南</NavLink>
                 </li>
               </ul>
             </div>
@@ -56,9 +62,12 @@ class SlideBar extends Component {
                   componentsArr.map((item, index) => {
                     return (
                       <li className="nav-item" key={index}>
-                        <Link to={{
-                          pathname: `/${item}`,
-                        }}>{ item }</Link>
+                        <NavLink
+                          to={{
+                            pathname: `/${item}`,
+                          }}
+                          activeStyle={{ color: '#3498db', backgroundColor: '#f5f7fa' }}
+                        >{ item }</NavLink>
                       </li>
                     )
                   })
