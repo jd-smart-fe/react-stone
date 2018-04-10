@@ -11,7 +11,6 @@ import HtmltypeMd from './docs/htmltype.md';
 import IconMd from './docs/icon.md';
 import RadiusMd from './docs/radius.md';
 import ThemeMd from './docs/theme.md';
-
 import DemoWrap from '../../components/DemoWrap/DemoWrap';
 const ReactMarkdown = require('react-markdown');
 

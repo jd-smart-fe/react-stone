@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import Button from '../../../components/Button/Button';
 import Icon from '../../../components/Icon/Icon';
+import CodeBlock from '../../lib/code-block';
 import './demo-wrap.scss';
 const ReactMarkdown = require('react-markdown');
 
@@ -40,7 +41,9 @@ class DemoWrap extends Component {
         </div>
         {!this.state.closeStatus ?
           <div className="rsdoc-react-demo__code">
-            <ReactMarkdown source={this.props.code} />
+            <ReactMarkdown
+              source={this.props.code}
+              renderers={{code: CodeBlock}} />
           </div> : null
         }
       </div>
