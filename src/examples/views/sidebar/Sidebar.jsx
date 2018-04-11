@@ -25,7 +25,8 @@ class SlideBar extends Component {
       'Select',
       'Modal',
       'Pagination',
-      'Transfer'
+      'Transfer',
+      'Cascader'
     ];
     return (
       <aside className="side-nav">
