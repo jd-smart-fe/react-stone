@@ -16,19 +16,20 @@ class Cascader extends Component {
       // 展示在ul中的数据
       processOptions,
       // 被选中元素的数据
-      selectedValue: null,
+      selectedList: [],
     };
     this.togglePopup = this.togglePopup.bind(this);
     this.getCascadeData = this.getCascadeData.bind(this);
     this.GetInsertIndex = this.GetInsertIndex.bind(this);
+    this.findParent = this.findParent.bind(this);
+    this.addSlectedToProcessOptions = this.addSlectedToProcessOptions.bind(this);
+    this.setProcessOptionsSelectedFalse = this.setProcessOptionsSelectedFalse.bind(this);
   }
   /** 控制级联信息的显示隐藏 */
   togglePopup() {
-    const processOptions = [];
-    processOptions.push([...this.props.options]);
+    this.setProcessOptionsSelectedFalse();
     this.setState({
       popupVisible: !this.state.popupVisible,
-      processOptions,
     });
   }
   /** 获取级联数据 */
@@ -44,7 +45,9 @@ class Cascader extends Component {
     casProcessOptions.map((wrapItem, wrapIndex) => {
       wrapItem.map((item, index) => {
         if (itemValue === item.value) {
+          this.addSlectedToProcessOptions(wrapIndex, index);
           const nextWrapIndex = wrapIndex + 1;
+          // 切换
           if (casProcessOptions[nextWrapIndex]) {
             const deleteLen = casProcessOptions.length - wrapIndex - 1;
             casProcessOptions.splice(nextWrapIndex, deleteLen);
@@ -55,10 +58,10 @@ class Cascader extends Component {
               if (item.children) {
                 casProcessOptions.splice(posIndex, 1, item.children);
               } else {
+                const selectedList = this.findParent(this.state.options, item);
                 this.setState({
-                  selectedValue: itemValue,
+                  selectedList,
                   popupVisible: false,
-                  placeholder: '',
                 });
               }
               this.setState({
@@ -70,10 +73,11 @@ class Cascader extends Component {
             if (item.children) {
               casProcessOptions.splice(posIndex, 1, item.children);
             } else {
+              const selectedList = this.findParent(this.state.options, item);
+              console.log(selectedList);
               this.setState({
-                selectedValue: itemValue,
+                selectedList,
                 popupVisible: false,
-                placeholder: '',
               });
             }
             this.setState({
@@ -99,8 +103,55 @@ class Cascader extends Component {
     return posIndex;
   }
 
-  componentDidMount() {
-    console.log(this.state.processOptions);
+  /** 查找父节点: 知道子节点了，从而查找所有的父节点
+   */
+  findParent = (zNodes, node) => {
+    const parents = [];
+    let going = true;
+
+    const walker = (zcNodes, cnode) => {
+      zcNodes.forEach(item => {
+        if (!going) return;
+        const pushItem = {
+          label: item.label,
+          value: item.value,
+        };
+        parents.push(pushItem);
+        if (item.value === cnode.value) {
+          going = false;
+        } else if (item.children) {
+          walker(item.children, cnode);
+        } else {
+          parents.pop();
+        }
+      });
+      if (going) parents.pop();
+    };
+
+    walker(zNodes, node);
+
+    return parents;
+  }
+  /** 给processOptions 合适的位置添加selected */
+  addSlectedToProcessOptions(index, targetIndex) {
+    const { processOptions } = this.state;
+    console.log(processOptions[index]);
+    processOptions[index].map((item, i) => {
+      targetIndex === i ? item.selected = true : item.selected = false;
+    });
+  }
+  /** 所有processOptions 的设置的selected 设置为false */
+  setProcessOptionsSelectedFalse() {
+    const processOptions = [];
+    processOptions.push([...this.props.options]);
+    processOptions.map((wrapItem) => {
+      wrapItem.map((item) => {
+        item.selected = false;
+      });
+    });
+    this.setState({
+      processOptions,
+    });
   }
 
   render() {
@@ -119,11 +170,10 @@ class Cascader extends Component {
     return (
       <div>
         <span className="ant-cascader-picker" tabIndex="0" onClick={this.togglePopup}>
-          <span className="ant-cascader-picker-label">{this.state.placeholder}</span>
+          <span className="ant-cascader-picker-label">{this.state.selectedList && this.state.selectedList.length > 0 ? this.state.selectedList[this.state.selectedList.length - 1].label : this.state.placeholder}</span>
           <input
             type="text"
-            className="ant-input ant-cascader-input "
-            value={this.state.selectedValue ? this.state.selectedValue : ''}
+            className="ant-input ant-cascader-input"
             autoComplete="off"
           />
           <i className={arrowClass}></i>
@@ -133,14 +183,17 @@ class Cascader extends Component {
             <div
               className={optionPanelClass}>
               {this.state.processOptions.map((proItem) => {
-                console.log(this.state.processOptions);
                 return (
                   <ul
                     className="ant-cascader-menu"
                   >
                     {proItem.map((item) => {
+                      const liClass = classNames({
+                        'ant-cascader-menu-item': true,
+                        'ant-cascader-menu-item-active': item.selected ? true : false,
+                      });
                       let node = (<li
-                        className="ant-cascader-menu-item"
+                        className={liClass}
                         title={item.label}
                         value={item.value}
                         onClick={this.getCascadeData.bind(this, item.value)}
@@ -149,7 +202,7 @@ class Cascader extends Component {
                       </li>);
                       if (item.children && item.children.length) {
                         node = (<li
-                          className="ant-cascader-menu-item"
+                          className={liClass}
                           title={item.label}
                           value={item.value}
                           onClick={this.getCascadeData.bind(this, item.value)}
