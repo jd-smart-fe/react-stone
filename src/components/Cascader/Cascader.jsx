@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import './Cascader.scss';
 
 class Cascader extends Component {
@@ -82,15 +83,6 @@ class Cascader extends Component {
         }
       });
     });
-    // casProcessOptions[casProcessOptions.length - 1].map((item) => {
-    //   if (itemValue === item.value) {
-    //     const posIndex = this.GetInsertIndex(casProcessOptions, itemValue);
-    //     casProcessOptions.splice(posIndex, 1, item.children);
-    //     this.setState({
-    //       processOptions: casProcessOptions,
-    //     });
-    //   }
-    // });
   }
   /** 得到插入数据的位置 */
   GetInsertIndex(array, value) {
@@ -112,6 +104,18 @@ class Cascader extends Component {
   }
 
   render() {
+    const arrowClass = classNames({
+      anticon: true,
+      'icon-dowico': true,
+      'ant-cascader-picker-arrow': true,
+      'ant-cascader-picker-arrow-expand': this.state.popupVisible,
+    });
+    const optionPanelClass = classNames({
+      'ant-cascader-menus': true,
+      'ant-cascader-menus-placement-bottomLeft': true,
+      'ant-cascader-menus-hidden': !this.state.popupVisible,
+    });
+
     return (
       <div>
         <span className="ant-cascader-picker" tabIndex="0" onClick={this.togglePopup}>
@@ -122,45 +126,44 @@ class Cascader extends Component {
             value={this.state.selectedValue ? this.state.selectedValue : ''}
             autoComplete="off"
           />
-          <i className="anticon icon-dowico ant-cascader-picker-arrow"></i>
+          <i className={arrowClass}></i>
         </span>
         <div>
           <div>
-            {!this.state.popupVisible ? '' :
-              <div className="ant-cascader-menus ant-cascader-menus-placement-bottomLeft">
-                {this.state.processOptions.map((proItem) => {
-                  console.log(this.state.processOptions);
-                  return (
-                    <ul
-                      className="ant-cascader-menu"
-                    >
-                      {proItem.map((item) => {
-                        let node = (<li
+            <div
+              className={optionPanelClass}>
+              {this.state.processOptions.map((proItem) => {
+                console.log(this.state.processOptions);
+                return (
+                  <ul
+                    className="ant-cascader-menu"
+                  >
+                    {proItem.map((item) => {
+                      let node = (<li
+                        className="ant-cascader-menu-item"
+                        title={item.label}
+                        value={item.value}
+                        onClick={this.getCascadeData.bind(this, item.value)}
+                      >
+                        {item.label}
+                      </li>);
+                      if (item.children && item.children.length) {
+                        node = (<li
                           className="ant-cascader-menu-item"
                           title={item.label}
                           value={item.value}
                           onClick={this.getCascadeData.bind(this, item.value)}
                         >
                           {item.label}
+                          <i className="icon-dowico"></i>
                         </li>);
-                        if (item.children && item.children.length) {
-                          node = (<li
-                            className="ant-cascader-menu-item"
-                            title={item.label}
-                            value={item.value}
-                            onClick={this.getCascadeData.bind(this, item.value)}
-                          >
-                            {item.label}
-                            <i className="icon-dowico"></i>
-                          </li>);
-                        }
-                        return node;
-                      })}
-                    </ul>
-                  );
-                })}
-              </div>
-            }
+                      }
+                      return node;
+                    })}
+                  </ul>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
