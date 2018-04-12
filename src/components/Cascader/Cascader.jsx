@@ -10,8 +10,12 @@ class Cascader extends Component {
     this.state = {
       popupVisible: false,
       placeholder: this.props.placeholder,
+      // 原始的数据
       options: [...this.props.options],
+      // 展示在ul中的数据
       processOptions,
+      // 被选中元素的数据
+      selectedValue: null,
     };
     this.togglePopup = this.togglePopup.bind(this);
     this.getCascadeData = this.getCascadeData.bind(this);
@@ -28,22 +32,65 @@ class Cascader extends Component {
   }
   /** 获取级联数据 */
   getCascadeData(itemValue) {
-    const processOptions = [];
-    processOptions.push([...this.props.options]);
-    this.setState({
-      processOptions,
-    }, () => {
-      const casProcessOptions = this.state.processOptions;
-      casProcessOptions[casProcessOptions.length - 1].map((item) => {
+    const casProcessOptions = this.state.processOptions;
+    /**
+     * 循环数据 （这段逻辑让我很好的理解了什么是数据驱动啊！）
+     * 逻辑: 点击元素的时候，casProcessOptions 分为两种情况，
+     * 一种是itemValue 存在位置的下一位也就是casProcessOptions[wrapIndex+1]没有数据，这种情况就是顺序的增加，
+     * 一种是itemValue 下一位有数据，这种就是变化，需要把此位后的数据清空；
+     */
+    console.log(itemValue);
+    casProcessOptions.map((wrapItem, wrapIndex) => {
+      wrapItem.map((item, index) => {
         if (itemValue === item.value) {
-          const posIndex = this.GetInsertIndex(casProcessOptions, itemValue);
-          casProcessOptions.splice(posIndex, 1, item.children);
-          this.setState({
-            processOptions: casProcessOptions,
-          });
+          const nextWrapIndex = wrapIndex + 1;
+          if (casProcessOptions[nextWrapIndex]) {
+            const deleteLen = casProcessOptions.length - wrapIndex - 1;
+            casProcessOptions.splice(nextWrapIndex, deleteLen);
+            this.setState({
+              processOptions: casProcessOptions,
+            }, () => {
+              const posIndex = this.GetInsertIndex(casProcessOptions, itemValue);
+              if (item.children) {
+                casProcessOptions.splice(posIndex, 1, item.children);
+              } else {
+                this.setState({
+                  selectedValue: itemValue,
+                  popupVisible: false,
+                  placeholder: '',
+                });
+              }
+              this.setState({
+                processOptions: casProcessOptions,
+              });
+            });
+          } else {
+            const posIndex = this.GetInsertIndex(casProcessOptions, itemValue);
+            if (item.children) {
+              casProcessOptions.splice(posIndex, 1, item.children);
+            } else {
+              this.setState({
+                selectedValue: itemValue,
+                popupVisible: false,
+                placeholder: '',
+              });
+            }
+            this.setState({
+              processOptions: casProcessOptions,
+            });
+          }
         }
       });
     });
+    // casProcessOptions[casProcessOptions.length - 1].map((item) => {
+    //   if (itemValue === item.value) {
+    //     const posIndex = this.GetInsertIndex(casProcessOptions, itemValue);
+    //     casProcessOptions.splice(posIndex, 1, item.children);
+    //     this.setState({
+    //       processOptions: casProcessOptions,
+    //     });
+    //   }
+    // });
   }
   /** 得到插入数据的位置 */
   GetInsertIndex(array, value) {
@@ -69,7 +116,12 @@ class Cascader extends Component {
       <div>
         <span className="ant-cascader-picker" tabIndex="0" onClick={this.togglePopup}>
           <span className="ant-cascader-picker-label">{this.state.placeholder}</span>
-          <input type="text" className="ant-input ant-cascader-input " value="" autoComplete="off" />
+          <input
+            type="text"
+            className="ant-input ant-cascader-input "
+            value={this.state.selectedValue ? this.state.selectedValue : ''}
+            autoComplete="off"
+          />
           <i className="anticon icon-dowico ant-cascader-picker-arrow"></i>
         </span>
         <div>
@@ -77,24 +129,23 @@ class Cascader extends Component {
             {!this.state.popupVisible ? '' :
               <div className="ant-cascader-menus ant-cascader-menus-placement-bottomLeft">
                 {this.state.processOptions.map((proItem) => {
+                  console.log(this.state.processOptions);
                   return (
                     <ul
                       className="ant-cascader-menu"
-                      key={proItem.value}
                     >
                       {proItem.map((item) => {
                         let node = (<li
                           className="ant-cascader-menu-item"
                           title={item.label}
                           value={item.value}
-                          key={item.value}
+                          onClick={this.getCascadeData.bind(this, item.value)}
                         >
                           {item.label}
                         </li>);
                         if (item.children && item.children.length) {
                           node = (<li
                             className="ant-cascader-menu-item"
-                            key={item.value}
                             title={item.label}
                             value={item.value}
                             onClick={this.getCascadeData.bind(this, item.value)}
