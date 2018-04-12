@@ -39,6 +39,7 @@ module.exports = {
     "array-callback-return": 0,
     "class-methods-use-this": 0,
     "no-useless-return": 0,
+    "consistent-return": 0,
   },
   "env": {
       "browser": true
