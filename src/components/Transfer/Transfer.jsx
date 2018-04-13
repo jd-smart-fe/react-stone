@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import CascadeSelection from '../CascaderSelection/CascaderSelection.jsx';
 
-import './Transfer.scss';
+import './transfer.scss';
 
 class Transfer extends Component {
   constructor(props) {
@@ -251,7 +251,7 @@ class Transfer extends Component {
                 name='controlAll'
                 checked={this.state.leftAllChecked}
                 onChange={this.selectAll.bind(this)}
-              />全选
+              /> 全选
             </label>{' '}
             &nbsp;&nbsp;&nbsp;
             <label>
@@ -259,7 +259,7 @@ class Transfer extends Component {
                 type='radio'
                 name='controlAll'
                 onChange={this.selectReverse.bind(this)}
-              />反选
+              /> 反选
             </label>
           </div>
         </div>

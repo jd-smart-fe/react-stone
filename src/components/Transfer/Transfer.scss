@@ -14,7 +14,7 @@
     padding: 8px 0px 8px 8px;
     height: 230px;
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
   }
   .panel-footer {
     box-sizing: border-box;
@@ -92,7 +92,10 @@
     border-radius: 4px;
     border: 1px solid #d8d8d8;
   }
-
+.transfer-list-content{
+  width:100%;
+  height: auto;
+  padding: 0;
   .transfer-list-item {
     display: inline-block;
     position: relative;
@@ -104,11 +107,10 @@
     border: 1px solid #d8d8d8;
     border-radius: 4px;
     background: #ececec;
-    margin-bottom:4px;
     .right-list-checkbox {
       float: left;
       margin-left: 5px;
-      margin-top:10px;
+      margin-top:6px;
     }
     .right-item-content{
       float: left;
@@ -118,7 +120,7 @@
       width: 24px;
       height: 24px;
       border-radius: 4px;
-      margin: 4px 5px 4px 5px;
+      margin: 3px 5px;
     }
     .item-title {
       float: left;
@@ -136,4 +138,6 @@
       background-size: 15px 15px;
     }
   }
+}
+
 }
