@@ -7,7 +7,7 @@
 ```jsx
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from 'ceshi-stone';
+import { Button } from 'react-stone';
 
 class App extends Component {
   render(){

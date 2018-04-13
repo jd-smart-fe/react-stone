@@ -6,14 +6,14 @@
 
 ### 引用单独的raido
 ```javascript
-import { Radio } from 'ceshi-stone';
+import { Radio } from 'react-stone';
 
 <Radio value={'5'} checked={true} id="voiceTypezn" textname="硬件设备" />
 ```
 
 ### 引入按钮组
 ```javascript
-import { Radio, RadioGroup } from 'ceshi-stone';
+import { Radio, RadioGroup } from 'react-stone';
 
 <RadioGroup
   selectedValue={this.state.productType}

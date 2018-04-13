@@ -12,7 +12,7 @@
 ```javascript
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Pagination } from 'ceshi-stone';
+import { Pagination } from 'react-stone';
 
 class App extends Component {
   constructor(props) {

@@ -11,7 +11,7 @@
 ```javascript
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { CheckboxGroup } from from 'ceshi-stone';
+import { CheckboxGroup } from from 'react-stone';
 
 class App extends Component {
   constructor(props) {

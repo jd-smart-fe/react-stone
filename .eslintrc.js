@@ -35,7 +35,11 @@ module.exports = {
     "padded-blocks": 0,
     "prefer-const": 1,
     "linebreak-style":0,
-    "max-len":0
+    "max-len":0,
+    "array-callback-return": 0,
+    "class-methods-use-this": 0,
+    "no-useless-return": 0,
+    "consistent-return": 0,
   },
   "env": {
       "browser": true

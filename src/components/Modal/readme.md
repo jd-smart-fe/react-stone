@@ -9,7 +9,7 @@
 ```javascript
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Modal } from 'ceshi-stone';
+import { Modal } from 'react-stone';
 
 class App extends Component {
   constructor(props) {

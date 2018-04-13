@@ -12,7 +12,7 @@
 ```javascript
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Select } from 'ceshi-stone';
+import { Select } from 'react-stone';
 
 const saleVolumes = [
   {

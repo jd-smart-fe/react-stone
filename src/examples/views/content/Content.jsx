@@ -4,6 +4,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import ReadeMd from '../../../../README.md';
 import ContributeMd from '../../../../docs/contribute.md';
 // import ButtonMd from '../../../components/Button/readme.md';
@@ -21,6 +22,7 @@ import ButtonPage from '../../pages/button/ButtonPage.jsx';
 import CheckboxDev from '../../components-examples/CheckboxDev.js';
 import FormDev from '../../components-examples/FormDev.js';
 import InputDev from '../../components-examples/InputDev.js';
+import InputPage from '../../pages/input/InputPage.jsx';
 import ModalDev from '../../components-examples/ModalDev.js';
 import PaginationDev from '../../components-examples/PaginationDev.js';
 import RadioDev from '../../components-examples/RadioDev.js';
@@ -28,8 +30,8 @@ import SelectDev from '../../components-examples/SelectDev.js';
 import TextareaDev from '../../components-examples/TextareaDev.js';
 import ToastDev from '../../components-examples/ToastDev.js';
 import TransferDev from '../../components-examples/TransferDev.js';
+import Cascader from '../../components-examples/Cascader.js';
 import './content.scss';
-const ReactMarkdown = require('react-markdown');
 
 class Content extends Component {
   constructor(props) {
@@ -50,7 +52,7 @@ class Content extends Component {
         CommponentType = ButtonPage;
         break;
       case '/Input':
-        CommponentType = InputDev;
+        CommponentType = InputPage;
         break;
       case '/Textarea':
         CommponentType = TextareaDev;
@@ -76,6 +78,9 @@ class Content extends Component {
       case '/Transfer':
         CommponentType = TransferDev;
         break;
+      case '/Cascader':
+        CommponentType = Cascader;
+        break;
     }
     return <CommponentType />
   }
@@ -94,6 +99,7 @@ class Content extends Component {
         <Route path="/Modal" component={this.getCommponent} />
         <Route path="/Pagination" component={this.getCommponent} />
         <Route path="/Transfer" component={this.getCommponent} />
+        <Route path="/Cascader" component={this.getCommponent} />
       </div>
     )
   }

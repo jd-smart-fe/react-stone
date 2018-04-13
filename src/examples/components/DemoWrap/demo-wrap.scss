@@ -1,0 +1,45 @@
+.rsdoc-react-demo {
+  border: 1px solid #eaeefb;
+  border-radius: 4px;
+  margin: 20px;
+  .rsdoc-react-demo__preview {
+    padding: 40px;
+  }
+  .rsdoc-react-demo__bottom {
+    align-items: center;
+    background-color: #f5f7fa;
+    border-top: 1px solid #eaeefb;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    transition: background-color .3s ease;
+    user-select: none;
+    .rsdoc-react-demo__title {
+      color: #666;
+      flex: 1;
+      font-size: 14px;
+      margin-right: 20px;
+      min-height: 20px;
+    }
+  }
+  .rsdoc-react-demo__code {
+    border-top: 1px solid #eaeefb;
+    margin: 0;
+    background-color: #f5f7fa;
+    border-radius: 3px;
+    color: #455a64;
+    display: block;
+    font-family: Source Code Pro,Monaco,Inconsolata,monospace;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 22px;
+    overflow-x: auto;
+    padding: 18px 10px 18px 20px;
+    position: relative;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+}
