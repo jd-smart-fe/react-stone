@@ -1,11 +1,16 @@
-import React, { Component } from "react";
-import classNames from "classnames";
-import Transfer from "../../components/Transfer/Transfer.jsx";
+import React, { Component } from 'react';
+import ReactMarkdown from 'react-markdown';
+import Transfer from '../../../components/Transfer/Transfer.jsx';
 
-class App extends Component {
+import Button from '../../../components/Button/Button';
+import Icon from '../../../components/Icon/Icon';
+import * as code from './doc.js';
+import DemoWrap from '../../components/DemoWrap/DemoWrap';
+
+class TransferPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state={
       dataSource: [
         {
           skillId: "1",
@@ -49,101 +54,11 @@ class App extends Component {
           skillIcon:
             "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
         }
-      ],
-      optionData: [
-        {
-          value: "tiyu",
-          label: "体育",
-          children: [
-            {
-              value: "hangzhou",
-              label: "杭州",
-              children: [
-                {
-                  value: "xihu",
-                  label: "西湖"
-                },
-                {
-                  value: "xiaoshan",
-                  label: "萧山",
-                  children: [
-                    {
-                      value: "renminguanchang",
-                      label: "人民广场"
-                    }
-                  ]
-                },
-                {
-                  value: "jianggan",
-                  label: "江干",
-                  children: [
-                    {
-                      value: "xiasha",
-                      label: "下沙"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              value: "beijing",
-              label: "北京",
-              children: [
-                {
-                  value: "xichengqu",
-                  label: "西城区"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          value: "yinyue",
-          label: "音乐",
-          children: [
-            {
-              value: "nanjing",
-              label: "南宁",
-              children: [
-                {
-                  value: "zhonghuamen",
-                  label: "中华门"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          value: "caijing",
-          label: "财经"
-        },
-        {
-          value: "shenghuo",
-          label: "生活",
-          children: [
-            {
-              value: "chongzhi",
-              label: "充值",
-              children: [
-                {
-                  value: "ranqi",
-                  label: "燃气"
-                }
-              ]
-            }
-          ]
-        }
       ]
-    };
+    }
     this.getTransferValue=this.getTransferValue.bind(this);
-    this.searchSkills=this.searchSkills.bind(this);
-    this.leftItemRender=this.leftItemRender.bind(this);
-    this.rightItemRender=this.rightItemRender.bind(this);
   }
-  //搜索
-  searchSkills(val){
-
-  }
+  // 获取穿梭框选中的值
   getTransferValue(data){
     let transferSelectedList=[];
     data.forEach(item => {
@@ -151,6 +66,10 @@ class App extends Component {
     });
     console.log('transferSelectedList——>',transferSelectedList);
     return transferSelectedList;
+  }
+  //搜索
+  searchSkills(val){
+
   }
   //穿梭框列表项渲染
   leftItemRender(record){
@@ -168,7 +87,7 @@ class App extends Component {
     return(
       <div className='right-item-content'>
         <img className='item-img' src={record.skillIcon} alt='' />
-        <div className='right-item-title'>
+        <div className='item-title'>
           {record.skillName}
         </div>
       </div>
@@ -176,14 +95,48 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-      <br/>
-        <Transfer
+      <div className="markdown">
+        <ReactMarkdown source={code.desc} />
+        <h2>代码示例</h2>
+        <DemoWrap desc="基础用法，最基础的穿梭框" code={code.base}>
+
+          <Transfer
           name="skillIdList"
           dataKey="skillId"
           title="skillName"
           rightTitle="技能"
-          /*onSelect optionData={this.state.optionData}*/
+          footer
+          placeholder="没有找到相关的技能"
+          dataSource={this.state.dataSource}
+          onChange={this.getTransferValue}
+          />
+
+        </DemoWrap>
+
+        <DemoWrap desc="带有搜索框的穿梭框" code={code.onSearch}>
+
+          <Transfer
+          name="skillIdList"
+          dataKey="skillId"
+          title="skillName"
+          rightTitle="技能"
+          onSearch
+          searchEvent={this.searchSkills}
+          footer
+          placeholder="没有找到相关的技能"
+          dataSource={this.state.dataSource}
+          onChange={this.getTransferValue}
+          />
+
+        </DemoWrap>
+
+        <DemoWrap desc="自定义列表样式，可以单独定制一侧的样式" code={code.itemRender}>
+
+          <Transfer
+          name="skillIdList"
+          dataKey="skillId"
+          title="skillName"
+          rightTitle="技能"
           onSearch
           searchEvent={this.searchSkills}
           footer
@@ -192,10 +145,14 @@ class App extends Component {
           rightItemRender={this.rightItemRender}
           dataSource={this.state.dataSource}
           onChange={this.getTransferValue}
-        />
+          />
+
+        </DemoWrap>
+
+        <ReactMarkdown source={code.api} />
       </div>
     );
   }
 }
 
-export default App;
+export default TransferPage;

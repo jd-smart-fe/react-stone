@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-// import CascadeSelection from '../CascaderSelection/CascaderSelection.jsx';
-
+import CascadeSelection from '../CascaderSelection/CascaderSelection.jsx';
+import Toast from '../Toast/toast.jsx';
 import './transfer.scss';
 
 class Transfer extends Component {
@@ -11,6 +10,8 @@ class Transfer extends Component {
       list: [],
       rightList: [],
       leftAllChecked: false,
+      btnDisbaled: true,
+      isReversed: false,
     };
   }
   componentDidMount() {
@@ -22,13 +23,25 @@ class Transfer extends Component {
     this.setState(
       {
         list: dataList,
+        checkDisbaled: dataList.length > 0 ? false : true,
       },
       () => {
         console.log(this.state);
       },
     );
   }
-  /* 点击左侧列表项 */
+  componentWillReceiveProps(nextProps) {
+    const dataList = nextProps.dataSource;
+    dataList.forEach(item => {
+      item.id = item[this.props.dataKey];
+      item.title = item[this.props.title];
+    });
+    this.setState({
+      list: dataList,
+      checkDisbaled: dataList.length > 0 ? false : true,
+    });
+  }
+  // 点击左侧列表项
   clickLeftItem(data, index) {
     // 左侧列表项选中状态变化
     data.checked = !data.checked;
@@ -50,6 +63,7 @@ class Transfer extends Component {
     this.setState({
       leftAllChecked,
       list: allList,
+      isReversed: false,
     });
     // 右侧列表
     const rightList = this.state.rightList || [];
@@ -58,6 +72,7 @@ class Transfer extends Component {
       this.setState(
         {
           rightList,
+          btnDisbaled: rightList.length > 0 ? false : true,
         },
         () => {
           console.log(this.state);
@@ -65,15 +80,16 @@ class Transfer extends Component {
         },
       );
     } else {
-      rightList.forEach((item, i) => {
+      rightList.forEach((item, idx) => {
         if (item.id === data.id) {
           item.rightChecked = false;
-          rightList.splice(i, 1);
+          rightList.splice(idx, 1);
         }
       });
       this.setState(
         {
           rightList,
+          btnDisbaled: rightList.length > 0 ? false : true,
         },
         () => {
           console.log(this.state);
@@ -97,6 +113,8 @@ class Transfer extends Component {
           list: allList,
           rightList: rList,
           leftAllChecked: true,
+          isReversed: false,
+          btnDisbaled: rList.length > 0 ? false : true,
         },
         () => {
           console.log(this.state);
@@ -122,6 +140,8 @@ class Transfer extends Component {
           list: allList,
           rightList,
           leftAllChecked: false,
+          isReversed: true,
+          btnDisbaled: rightList.length > 0 ? false : true,
         },
         () => {
           console.log(this.state);
@@ -140,6 +160,7 @@ class Transfer extends Component {
     this.setState(
       {
         rightList,
+        btnDisbaled: rightList.length > 0 ? false : true,
       },
       () => {
         console.log(this.state);
@@ -149,24 +170,30 @@ class Transfer extends Component {
   }
   // 右侧面板  移除
   remove() {
-    const rList = [...this.state.rightList];
-    const leftList = [...this.state.list];
+    const rList = this.state.rightList;
+    const leftList = this.state.list;
+    let rightItemsCheckedCount = 0;
     console.log(leftList);
     console.log(rList);
 
     leftList.forEach(item => {
       rList.forEach(ele => {
         if (ele.rightChecked) {
+          rightItemsCheckedCount += 1;
           if (item.id === ele.id) {
             item.checked = false;
           }
         }
       });
     });
-    for (let i = 0; i < rList.length; i += 1) {
-      if (rList[i].rightChecked) {
-        rList.splice(i, 1);
-        i -= 1;
+    if (!rightItemsCheckedCount) {
+      Toast.middle(`请选择需要移除的${this.props.rightTitle}`, 2000);
+    } else {
+      for (let i = 0; i < rList.length; i += 1) {
+        if (rList[i].rightChecked) {
+          rList.splice(i, 1);
+          i -= 1;
+        }
       }
     }
     this.setState(
@@ -174,6 +201,7 @@ class Transfer extends Component {
         list: leftList,
         rightList: rList,
         leftAllChecked: false,
+        btnDisbaled: rList.length > 0 ? false : true,
       },
       () => {
         console.log(this.state);
@@ -183,7 +211,7 @@ class Transfer extends Component {
   }
   // 全部清除
   cleanUp() {
-    let leftList = this.state.list;
+    const leftList = this.state.list;
     leftList.forEach(item => {
       item.checked = false;
     });
@@ -192,6 +220,8 @@ class Transfer extends Component {
         rightList: [],
         list: leftList,
         leftAllChecked: false,
+        isReversed: false,
+        btnDisbaled: true,
       },
       () => {
         this.props.onChange(this.state.rightList);
@@ -219,7 +249,7 @@ class Transfer extends Component {
                     placeholder='请输入关键词'
                     onChange={this.inputChange.bind(this)}
                   />
-                  <span className='search-icon' />
+                  <span className='icon-search' />
                 </div>
               ) : null}
             </div>
@@ -237,11 +267,14 @@ class Transfer extends Component {
                   ) : (
                     <div>
                       <div className='item-title'>{item.title}</div>
-                      {item.checked ? <span className='choosen' /> : null}
+                      {item.checked ? <span className='icon'><i className='icon-check'></i></span> : null}
                     </div>
                   )}
                 </li>
               ))}
+              {this.state.list.length ? null : (
+                <div>{this.props.placeholder}</div>
+              )}
             </ul>
           </div>
           <div className='panel-footer'>
@@ -251,6 +284,7 @@ class Transfer extends Component {
                 name='controlAll'
                 checked={this.state.leftAllChecked}
                 onChange={this.selectAll.bind(this)}
+                disabled={this.state.checkDisbaled}
               /> 全选
             </label>{' '}
             &nbsp;&nbsp;&nbsp;
@@ -258,14 +292,16 @@ class Transfer extends Component {
               <input
                 type='radio'
                 name='controlAll'
+                checked={this.state.isReversed}
                 onChange={this.selectReverse.bind(this)}
+                disabled={this.state.checkDisbaled}
               /> 反选
             </label>
           </div>
         </div>
         <div className='right-panel'>
           <div className='panel-title'>
-            {this.props.rightTitle}({this.state.rightList.length}个)
+            已添加的{this.props.rightTitle}({this.state.rightList.length}个)
           </div>
           <div className='panel-content'>
             <ul className='transfer-list-content'>
@@ -281,21 +317,21 @@ class Transfer extends Component {
                   {this.props.rightItemRender ? (
                     this.props.rightItemRender(item)
                   ) : (
-                    <div className='right-item-content'>
-                      <span className='item-title'>{item.title}</span>
-                    </div>
+                    <span>
+                      <div className='right-item-content'>{item.title}</div>
+                    </span>
                   )}
                 </li>
               ))}
             </ul>
           </div>
           <div className='panel-footer'>
-            <span className='remove' onClick={this.remove.bind(this)}>
+            <button className='remove' disabled={this.state.btnDisbaled} onClick={this.remove.bind(this)}>
               移除
-            </span>
-            <span className='clean-up' onClick={this.cleanUp.bind(this)}>
+            </button>
+            <button className='clean-up' disabled={this.state.btnDisbaled} onClick={this.cleanUp.bind(this)}>
               全部清空
-            </span>
+            </button>
           </div>
         </div>
       </div>

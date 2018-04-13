@@ -30,6 +30,7 @@ import SelectDev from '../../components-examples/SelectDev.js';
 import TextareaDev from '../../components-examples/TextareaDev.js';
 import ToastDev from '../../components-examples/ToastDev.js';
 import TransferDev from '../../components-examples/TransferDev.js';
+import TransferPage from '../../pages/transfer/TransferPage.jsx'
 import Cascader from '../../components-examples/Cascader.js';
 import './content.scss';
 
@@ -76,7 +77,7 @@ class Content extends Component {
         CommponentType = PaginationDev;
         break;
       case '/Transfer':
-        CommponentType = TransferDev;
+        CommponentType = TransferPage;
         break;
       case '/Cascader':
         CommponentType = Cascader;

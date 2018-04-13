@@ -1,5 +1,11 @@
 .transfer-wrapper {
-
+  &:after{
+    display: block;
+    content:'';
+    height: 0;
+    clear: both;
+    zoom: 1;
+  }
   .panel-title {
     box-sizing: border-box;
     padding: 2px 10px;
@@ -30,11 +36,15 @@
     .remove {
       color: #4b8de5;
       cursor: pointer;
+      border:none;
+      font-size: 14px;
     }
     .clean-up {
       color: #4b8de5;
       float: right;
       cursor: pointer;
+      border:none;
+      font-size: 14px;
     }
   }
   .left-panel {
@@ -68,19 +78,16 @@
         border-radius: 4px;
         transition: all 0.3s;
       }
-      .search-icon {
+      .icon-search {
         display: block;
         position: absolute;
         height: 14px;
         width: 14px;
         top: 50%;
         right: 7px;
-        transform: translateY(-50%);
         z-index: 2;
         line-height: 0;
         color: rgba(0, 0, 0, 0.65);
-        background: url("./search.png");
-        background-size: 15px 15px;
       }
     }
   }
@@ -107,13 +114,17 @@
     border: 1px solid #d8d8d8;
     border-radius: 4px;
     background: #ececec;
+    padding:0 8px;
     .right-list-checkbox {
-      float: left;
-      margin-left: 5px;
-      margin-top:6px;
+      position: absolute;
+      top:50%;
+      transform: translateY(-50%);
+      left: 8px;
     }
     .right-item-content{
       float: left;
+      margin-left: 20px;
+      font-size: 12px;
     }
     .item-img {
       float: left;
@@ -136,6 +147,17 @@
       bottom: 5px;
       background: url("./checked.png");
       background-size: 15px 15px;
+    }
+    .icon-check {
+      display: block;
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      right: 5px;
+      bottom: 5px;
+      background: url('./checked.png');
+      background-size: 15px 15px;
+      color: #269a49;
     }
   }
 }
