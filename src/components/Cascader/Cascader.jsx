@@ -7,12 +7,12 @@ class Cascader extends Component {
   constructor(props) {
     super(props);
     const processOptions = [];
-    processOptions.push([...this.props.options]);
+    processOptions.push([...this.props.optionData]);
     this.state = {
       popupVisible: false,
       placeholder: this.props.placeholder,
       // 原始的数据
-      options: [...this.props.options],
+      options: [...this.props.optionData],
       // 展示在ul中的数据
       processOptions,
       // 被选中元素的数据
@@ -143,7 +143,7 @@ class Cascader extends Component {
   /** 所有processOptions 的设置的selected 设置为false */
   setProcessOptionsSelectedFalse() {
     const processOptions = [];
-    processOptions.push([...this.props.options]);
+    processOptions.push([...this.props.optionData]);
     processOptions.map((wrapItem) => {
       wrapItem.map((item) => {
         item.selected = false;
@@ -226,12 +226,12 @@ class Cascader extends Component {
 
 Cascader.defaultProps = {
   placeholder: '请选择',
-  options: [],
+  optionData: [],
 };
 
 Cascader.propTypes = {
   placeholder: PropTypes.string,
-  options: PropTypes.array,
+  optionData: PropTypes.array,
 };
 
 export default Cascader;

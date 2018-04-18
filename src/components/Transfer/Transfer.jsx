@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CascadeSelection from '../CascaderSelection/CascaderSelection.jsx';
 import Toast from '../Toast/toast.jsx';
-import './transfer.scss';
+import './Transfer.scss';
 
 class Transfer extends Component {
   constructor(props) {

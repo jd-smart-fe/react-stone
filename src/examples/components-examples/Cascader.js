@@ -34,7 +34,7 @@ class App extends Component {
   render(){
     return (
       <div>
-      <Cascader options={options}/>
+      <Cascader optionData={options}/>
       </div>
     )
   }
