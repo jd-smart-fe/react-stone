@@ -11,7 +11,139 @@ class TransferPage extends Component {
   constructor(props) {
     super(props);
     this.state={
-      dataSource: [
+      dataSource1: [
+        {
+          skillId: "1",
+          skillName: "京东购物",
+          skillIcon:
+            "http://img30.360buyimg.com/smart/jfs/t16234/93/1784364089/52704/88fca460/5a618b84Nc4024ba4.png"
+        },
+        {
+          skillId: "2",
+          skillName: "叮咚音响",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "3",
+          skillName: "京东到家",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "4",
+          skillName: "智能服务",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "5",
+          skillName: "智能家居",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "6",
+          skillName: "上门维修",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "7",
+          skillName: "家居控制",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        }
+      ],
+      dataSource2: [
+        {
+          skillId: "1",
+          skillName: "京东购物",
+          skillIcon:
+            "http://img30.360buyimg.com/smart/jfs/t16234/93/1784364089/52704/88fca460/5a618b84Nc4024ba4.png"
+        },
+        {
+          skillId: "2",
+          skillName: "叮咚音响",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "3",
+          skillName: "京东到家",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "4",
+          skillName: "智能服务",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "5",
+          skillName: "智能家居",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "6",
+          skillName: "上门维修",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "7",
+          skillName: "家居控制",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        }
+      ],
+      dataSource3: [
+        {
+          skillId: "1",
+          skillName: "京东购物",
+          skillIcon:
+            "http://img30.360buyimg.com/smart/jfs/t16234/93/1784364089/52704/88fca460/5a618b84Nc4024ba4.png"
+        },
+        {
+          skillId: "2",
+          skillName: "叮咚音响",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "3",
+          skillName: "京东到家",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "4",
+          skillName: "智能服务",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "5",
+          skillName: "智能家居",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "6",
+          skillName: "上门维修",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        },
+        {
+          skillId: "7",
+          skillName: "家居控制",
+          skillIcon:
+            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+        }
+      ],
+      dataSource4: [
         {
           skillId: "1",
           skillName: "京东购物",
@@ -67,10 +199,7 @@ class TransferPage extends Component {
     console.log('transferSelectedList——>',transferSelectedList);
     return transferSelectedList;
   }
-  //搜索
-  searchSkills(val){
 
-  }
   //穿梭框列表项渲染
   leftItemRender(record){
     return(
@@ -79,7 +208,7 @@ class TransferPage extends Component {
         <div className='item-title'>
           {record.skillName}
         </div>
-        {record.checked?<span className='icon-check'></span>:null}
+        {record.checked?<span className='icon-check-mark'></span>:null}
       </div>
     );
   }
@@ -107,7 +236,7 @@ class TransferPage extends Component {
           rightTitle="技能"
           footer
           placeholder="没有找到相关的技能"
-          dataSource={this.state.dataSource}
+          dataSource={this.state.dataSource1}
           onChange={this.getTransferValue}
           />
 
@@ -121,10 +250,9 @@ class TransferPage extends Component {
           title="skillName"
           rightTitle="技能"
           onSearch
-          searchEvent={this.searchSkills}
           footer
           placeholder="没有找到相关的技能"
-          dataSource={this.state.dataSource}
+          dataSource={this.state.dataSource2}
           onChange={this.getTransferValue}
           />
 
@@ -143,7 +271,7 @@ class TransferPage extends Component {
           placeholder="没有找到相关的技能"
           leftItemRender={this.leftItemRender}
           rightItemRender={this.rightItemRender}
-          dataSource={this.state.dataSource}
+          dataSource={this.state.dataSource3}
           onChange={this.getTransferValue}
           />
 

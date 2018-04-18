@@ -11,7 +11,7 @@
     padding: 2px 10px;
     border-bottom: 1px solid #d8d8d8;
     border-radius: 4px;
-    background: #ececec;
+    background: #f8f9f9;
     height: 40px;
     line-height: 38px;
   }
@@ -38,6 +38,8 @@
       cursor: pointer;
       border:none;
       font-size: 14px;
+      height: 23px;
+      padding:1px 7px 2px 7px;
     }
     .clean-up {
       color: #4b8de5;
@@ -45,6 +47,7 @@
       cursor: pointer;
       border:none;
       font-size: 14px;
+      padding-top: 3px;
     }
   }
   .left-panel {
@@ -113,7 +116,7 @@
     margin-right: 8px;
     border: 1px solid #d8d8d8;
     border-radius: 4px;
-    background: #ececec;
+    background: #f8f9f9;
     padding:0 8px;
     .right-list-checkbox {
       position: absolute;
@@ -148,15 +151,12 @@
       background: url("./checked.png");
       background-size: 15px 15px;
     }
-    .icon-check {
+    .icon-check-mark {
       display: block;
       position: absolute;
-      width: 15px;
-      height: 15px;
+      font-size: 14px;
       right: 5px;
       bottom: 5px;
-      background: url('./checked.png');
-      background-size: 15px 15px;
       color: #269a49;
     }
   }

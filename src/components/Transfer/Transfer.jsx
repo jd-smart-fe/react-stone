@@ -7,6 +7,7 @@ class Transfer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      originList: [],
       list: [],
       rightList: [],
       leftAllChecked: false,
@@ -182,6 +183,7 @@ class Transfer extends Component {
           rightItemsCheckedCount += 1;
           if (item.id === ele.id) {
             item.checked = false;
+            item.rightChecked = false;
           }
         }
       });
@@ -214,6 +216,7 @@ class Transfer extends Component {
     const leftList = this.state.list;
     leftList.forEach(item => {
       item.checked = false;
+      item.rightChecked = false;
     });
     this.setState(
       {
@@ -228,10 +231,19 @@ class Transfer extends Component {
       },
     );
   }
+
   // 搜索
-  inputChange(e) {
-    const val = e.target.value;
-    this.props.searchEvent(val);
+  searchItem() {
+    const val = this.searchinput.value;
+    const leftList = this.state.originList;
+    const searchRes = leftList.filter((ele) => {
+      return ele.title.includes(val);
+    });
+    this.setState({
+      list: searchRes,
+    }, () => {
+      console.log(this.state);
+    });
   }
   render() {
     return (
@@ -245,11 +257,11 @@ class Transfer extends Component {
               {this.props.onSearch ? (
                 <div className='transfer-search-wraper'>
                   <input
-                    className='transfer-search'
-                    placeholder='请输入关键词'
-                    onChange={this.inputChange.bind(this)}
+                  className="transfer-search"
+                  placeholder="请输入关键词"
+                  ref={input => { this.searchinput = input; }}
                   />
-                  <span className='icon-search' />
+                  <span className="icon-search" onClick={this.searchItem.bind(this)} />
                 </div>
               ) : null}
             </div>
@@ -267,7 +279,7 @@ class Transfer extends Component {
                   ) : (
                     <div>
                       <div className='item-title'>{item.title}</div>
-                      {item.checked ? <span className='icon'><i className='icon-check'></i></span> : null}
+                      {item.checked ? <span className='icon'><i className='icon-check-mark'></i></span> : null}
                     </div>
                   )}
                 </li>
@@ -326,10 +338,8 @@ class Transfer extends Component {
             </ul>
           </div>
           <div className='panel-footer'>
-            <button className='remove' disabled={this.state.btnDisbaled} onClick={this.remove.bind(this)}>
-              移除
-            </button>
-            <button className='clean-up' disabled={this.state.btnDisbaled} onClick={this.cleanUp.bind(this)}>
+            <input type="button" className="remove" disabled={this.state.btnDisbaled} onClick={this.remove.bind(this)} value="移除" />
+            <button type="button" className='clean-up' disabled={this.state.btnDisbaled} onClick={this.cleanUp.bind(this)}>
               全部清空
             </button>
           </div>

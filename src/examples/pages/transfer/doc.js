@@ -146,7 +146,6 @@ class App extends Component {
       ]
     };
     this.getTransferValue=this.getTransferValue.bind(this);
-    this.searchSkills=this.searchSkills.bind(this);
   }
 
   getTransferValue(data){
@@ -168,7 +167,6 @@ class App extends Component {
           title="skillName"
           rightTitle="技能"
           onSearch
-          searchEvent={this.searchSkills}
           footer
           placeholder="没有找到相关的技能"
           dataSource={this.state.dataSource}
@@ -239,12 +237,7 @@ class App extends Component {
       ]
     };
     this.getTransferValue=this.getTransferValue.bind(this);
-    this.searchSkills=this.searchSkills.bind(this);
     this.leftItemRender=this.leftItemRender.bind(this);
-  }
-  //搜索
-  searchSkills(val){
-
   }
   getTransferValue(data){
     let transferSelectedList=[];
@@ -262,7 +255,7 @@ class App extends Component {
         <div className='item-title'>
           {record.skillName}
         </div>
-        {record.checked?<span className='icon-check'></span>:null}
+        {record.checked?<span className='icon-check-mark'></span>:null}
       </div>
     );
   }
@@ -286,7 +279,6 @@ class App extends Component {
           title="skillName"
           rightTitle="技能"
           onSearch
-          searchEvent={this.searchSkills}
           footer
           placeholder="没有找到相关的技能"
           leftItemRender={this.leftItemRender}
@@ -320,7 +312,6 @@ footer   | 无 | null | 是否显示  全选 反选 移除 全部清除按钮
 ## Events
 方法名称   |    说明    |    参数    |
 ----    | ----      | ----        |
-searchEvent | 搜索框值改变的回调 | 参数是搜索框的值
 leftItemRender | 操作区列表项自定义渲染 | 参数是每一条列表项的数据
 rightItemRender | 已选区列表项自定义渲染 | 参数是每一条列表项的数据
 onChange       |  已选数据改变的回调 | 参数是选中的数组
