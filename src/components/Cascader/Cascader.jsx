@@ -23,11 +23,11 @@ class Cascader extends Component {
     this.GetInsertIndex = this.GetInsertIndex.bind(this);
     this.findParent = this.findParent.bind(this);
     this.addSlectedToProcessOptions = this.addSlectedToProcessOptions.bind(this);
-    this.setProcessOptionsSelectedFalse = this.setProcessOptionsSelectedFalse.bind(this);
+    this.clearInput = this.clearInput.bind(this);
   }
+
   /** 控制级联信息的显示隐藏 */
-  togglePopup() {
-    this.setProcessOptionsSelectedFalse();
+  togglePopup(e) {
     this.setState({
       popupVisible: !this.state.popupVisible,
     });
@@ -80,6 +80,7 @@ class Cascader extends Component {
                 popupVisible: false,
               });
             }
+            // FIXME: 出现了一个奇葩的问题，我点击的时候，props.optionData 中的数据也会跟着改变，下次修复
             this.setState({
               processOptions: casProcessOptions,
             });
@@ -104,6 +105,7 @@ class Cascader extends Component {
   }
 
   /** 查找父节点: 知道子节点了，从而查找所有的父节点
+   *  返回的数据格式：[{label:'zhejiang', value: 'zhejaing'}]
    */
   findParent = (zNodes, node) => {
     const parents = [];
@@ -132,7 +134,8 @@ class Cascader extends Component {
 
     return parents;
   }
-  /** 给processOptions 合适的位置添加selected */
+
+  /** 给processOptions 设置selected字段 */
   addSlectedToProcessOptions(index, targetIndex) {
     const { processOptions } = this.state;
     console.log(processOptions[index]);
@@ -140,8 +143,9 @@ class Cascader extends Component {
       targetIndex === i ? item.selected = true : item.selected = false;
     });
   }
-  /** 所有processOptions 的设置的selected 设置为false */
-  setProcessOptionsSelectedFalse() {
+  /** 清空数据 */
+  clearInput(e) {
+    e.stopPropagation();
     const processOptions = [];
     processOptions.push([...this.props.optionData]);
     processOptions.map((wrapItem) => {
@@ -151,6 +155,8 @@ class Cascader extends Component {
     });
     this.setState({
       processOptions,
+      selectedList: [],
+      popupVisible: false,
     });
   }
 
@@ -160,6 +166,11 @@ class Cascader extends Component {
       'icon-dowico': true,
       'ant-cascader-picker-arrow': true,
       'ant-cascader-picker-arrow-expand': this.state.popupVisible,
+    });
+    const clearClass = classNames({
+      anticon: true,
+      'icon-close': true,
+      'ant-cascader-picker-clear': true,
     });
     const optionPanelClass = classNames({
       'ant-cascader-menus': true,
@@ -176,23 +187,26 @@ class Cascader extends Component {
             className="ant-input ant-cascader-input"
             autoComplete="off"
           />
+          {this.props.allowClear && this.state.selectedList.length > 0 ? <i className={clearClass} onClick={this.clearInput}></i> : null}
           <i className={arrowClass}></i>
         </span>
         <div>
           <div>
             <div
               className={optionPanelClass}>
-              {this.state.processOptions.map((proItem) => {
+              {this.state.processOptions.map((proItem, ulIndex) => {
                 return (
                   <ul
+                    key={ulIndex}
                     className="ant-cascader-menu"
                   >
-                    {proItem.map((item) => {
+                    {proItem.map((item, index) => {
                       const liClass = classNames({
                         'ant-cascader-menu-item': true,
                         'ant-cascader-menu-item-active': item.selected ? true : false,
                       });
                       let node = (<li
+                        key={index}
                         className={liClass}
                         title={item.label}
                         value={item.value}
@@ -202,6 +216,7 @@ class Cascader extends Component {
                       </li>);
                       if (item.children && item.children.length) {
                         node = (<li
+                          key={index}
                           className={liClass}
                           title={item.label}
                           value={item.value}
@@ -227,11 +242,13 @@ class Cascader extends Component {
 Cascader.defaultProps = {
   placeholder: '请选择',
   optionData: [],
+  allowClear: true,
 };
 
 Cascader.propTypes = {
   placeholder: PropTypes.string,
   optionData: PropTypes.array,
+  allowClear: PropTypes.bool,
 };
 
 export default Cascader;

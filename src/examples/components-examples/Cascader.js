@@ -34,7 +34,10 @@ class App extends Component {
   render(){
     return (
       <div>
-      <Cascader optionData={options}/>
+      <Cascader
+       optionData={options}
+       allowClear = {true}
+      />
       </div>
     )
   }
