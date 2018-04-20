@@ -190,6 +190,7 @@ class TransferPage extends Component {
       initialKeys:["1","2","3","4"]
     }
     this.getTransferValue=this.getTransferValue.bind(this);
+
   }
   // 获取穿梭框选中的值
   getTransferValue(data){
@@ -267,11 +268,10 @@ class TransferPage extends Component {
           title="skillName"
           rightTitle="技能"
           onSearch
-          searchEvent={this.searchSkills}
           footer
           placeholder="没有找到相关的技能"
-          leftItemRender={this.leftItemRender}
-          rightItemRender={this.rightItemRender}
+          leftItemRender={this.leftItemRender.bind(this)}
+          rightItemRender={this.rightItemRender.bind(this)}
           dataSource={this.state.dataSource3}
           onChange={this.getTransferValue}
           />
@@ -285,11 +285,10 @@ class TransferPage extends Component {
           title="skillName"
           rightTitle="技能"
           onSearch
-          searchEvent={this.searchSkills}
           footer
           placeholder="没有找到相关的技能"
-          leftItemRender={this.leftItemRender}
-          rightItemRender={this.rightItemRender}
+          leftItemRender={this.leftItemRender.bind(this)}
+          rightItemRender={this.rightItemRender.bind(this)}
           dataSource={this.state.dataSource3}
           initialKeys={this.state.initialKeys}
           onChange={this.getTransferValue}

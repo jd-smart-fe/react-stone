@@ -58,7 +58,7 @@ const base = `
           }
         ]
       };
-      this.getTransferValue=this.getTransferValue.bind(this);
+      this.getTransferValue = this.getTransferValue.bind(this);
     }
     getTransferValue(data){
       let transferSelectedList=[];
@@ -145,7 +145,7 @@ class App extends Component {
         }
       ]
     };
-    this.getTransferValue=this.getTransferValue.bind(this);
+    this.getTransferValue = this.getTransferValue.bind(this);
   }
 
   getTransferValue(data){
@@ -236,8 +236,9 @@ class App extends Component {
         }
       ]
     };
-    this.getTransferValue=this.getTransferValue.bind(this);
-    this.leftItemRender=this.leftItemRender.bind(this);
+    this.getTransferValue = this.getTransferValue.bind(this);
+    this.leftItemRender =  this.leftItemRender.bind(this);
+    this.rightItemRende = this.rightItemRender.bind(this);
   }
   getTransferValue(data){
     let transferSelectedList=[];
@@ -351,8 +352,9 @@ class App extends Component {
         }
       ]
     };
-    this.getTransferValue=this.getTransferValue.bind(this);
-    this.leftItemRender=this.leftItemRender.bind(this);
+    this.getTransferValue  = this.getTransferValue.bind(this);
+    this.leftItemRende = this.leftItemRender.bind(this);
+    this.rightItemRender = this.rightItemRender.bind(this);
   }
   getTransferValue(data){
     let transferSelectedList=[];
@@ -418,8 +420,8 @@ const api = `
 ----    | ----    | ----    | ----    |
 dataKey  | string  | 无 |  列表项的唯一标示，必填属性
 title  | string  | 无 |  列表项的标题
+placeholder | string | 无 | 列表无内容或未搜索到相关内容时的展示文字
 onSearch | 无 | null | 是否在操作区显示搜索框
-onSelect | 无 | null | 是否在操作区显示类目筛选
 footer   | 无 | null | 是否显示  全选 反选 移除 全部清除按钮
 initialKeys | array | 无 | 右侧选中key值的数组
 
