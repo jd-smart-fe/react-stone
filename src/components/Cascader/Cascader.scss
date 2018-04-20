@@ -13,6 +13,15 @@
   background-color: #fff;
   border-radius: 4px;
   outline: 0;
+  .ant-cascader-picker-clear {
+    opacity: 0;
+  }
+  &:hover,{
+    .ant-cascader-picker-clear {
+      opacity: 1;
+    }
+  }
+
   .ant-cascader-picker-label{
     position: absolute;
     left: 0;
@@ -28,6 +37,11 @@
   }
   .ant-cascader-input{
     &.ant-input {
+      &:hover,
+      &:focus{
+        border-color: #40a9ff;
+        outline: none;
+      }
       background-color: transparent!important;
       cursor: pointer;
       width: 100%;
@@ -62,8 +76,6 @@
     line-height: 1;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-  }
-  .ant-cascader-picker-arrow{
     position: absolute;
     z-index: 1;
     top: 50%;
@@ -73,10 +85,22 @@
     font-size: 12px;
     margin-top: -6px;
     line-height: 12px;
-    color: rgba(0,0,0,.25);
-    transition: transform 0.5s;
-    &.ant-cascader-picker-arrow-expand{
-      transform: rotate(180deg);
+    cursor: pointer;
+    &.ant-cascader-picker-arrow{
+      transition: transform 0.5s;
+      color: rgba(0,0,0,.25);
+      &.ant-cascader-picker-arrow-expand{
+        transform: rotate(180deg);
+      }
+    }
+    &.ant-cascader-picker-clear{
+      border-radius: 50%;
+      background-color: #666;
+      font-size: 6px;
+      font-weight: bold;
+      color: #fff;
+      z-index: 10;
+      transition: color .3s ease,opacity .15s ease;
     }
   }
 }

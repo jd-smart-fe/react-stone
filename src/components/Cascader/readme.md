@@ -1,3 +1,11 @@
+# Cascader 级联选择
+级联选择框
+
+
+
+## How to use?
+
+```jsx
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Cascader from '../../components/Cascader/Cascader.jsx';
@@ -44,3 +52,15 @@ class App extends Component {
 }
 
 export default App;
+
+```
+
+## Options
+
+属性名   |    类型   |     默认值     |     说明
+----    | ----    | ----    | ----    |
+optionData  | Object  | - |  数据源
+allowClear  | boolean  | true  |  是否支持清除
+placeholder | String | '请选择' |  输入框占位文本'
+
+*尚在开发中……*
