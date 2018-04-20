@@ -186,7 +186,8 @@ class TransferPage extends Component {
           skillIcon:
             "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
         }
-      ]
+      ],
+      initialKeys:["1","2","3","4"]
     }
     this.getTransferValue=this.getTransferValue.bind(this);
   }
@@ -272,6 +273,25 @@ class TransferPage extends Component {
           leftItemRender={this.leftItemRender}
           rightItemRender={this.rightItemRender}
           dataSource={this.state.dataSource3}
+          onChange={this.getTransferValue}
+          />
+
+        </DemoWrap>
+        <DemoWrap desc="有默认值的穿梭框" code={code.initialKeys}>
+
+          <Transfer
+          name="skillIdList"
+          dataKey="skillId"
+          title="skillName"
+          rightTitle="技能"
+          onSearch
+          searchEvent={this.searchSkills}
+          footer
+          placeholder="没有找到相关的技能"
+          leftItemRender={this.leftItemRender}
+          rightItemRender={this.rightItemRender}
+          dataSource={this.state.dataSource3}
+          initialKeys={this.state.initialKeys}
           onChange={this.getTransferValue}
           />
 

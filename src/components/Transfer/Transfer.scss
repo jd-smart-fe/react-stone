@@ -18,7 +18,7 @@
   .panel-content {
     box-sizing: border-box;
     padding: 8px 0px 8px 8px;
-    height: 230px;
+    height: 225px;
     width: 100%;
     overflow: hidden;
   }
@@ -105,7 +105,9 @@
 .transfer-list-content{
   width:100%;
   height: auto;
+  overflow: auto;
   padding: 0;
+  margin: 0;
   .transfer-list-item {
     display: inline-block;
     position: relative;

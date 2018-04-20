@@ -17,13 +17,23 @@ class Transfer extends Component {
   }
   componentDidMount() {
     const dataList = this.props.dataSource;
+    const initialKeys = this.props.initialKeys || [];
+    const rightList = [];
     dataList.forEach(item => {
       item.id = item[this.props.dataKey];
       item.title = item[this.props.title];
+      initialKeys.forEach(ele => {
+        if (item.id === ele) {
+          item.checked = true;
+          rightList.push(item);
+        }
+      });
     });
     this.setState(
       {
         list: dataList,
+        originList: JSON.parse(JSON.stringify(dataList)),
+        rightList,
         checkDisbaled: dataList.length > 0 ? false : true,
       },
       () => {
@@ -33,12 +43,22 @@ class Transfer extends Component {
   }
   componentWillReceiveProps(nextProps) {
     const dataList = nextProps.dataSource;
+    const initialKeys = this.props.initialKeys || [];
+    const rightList = [];
     dataList.forEach(item => {
       item.id = item[this.props.dataKey];
       item.title = item[this.props.title];
+      initialKeys.forEach(ele => {
+        if (item.id === ele) {
+          item.checked = true;
+          rightList.push(item);
+        }
+      });
     });
     this.setState({
       list: dataList,
+      originList: JSON.parse(JSON.stringify(dataList)),
+      rightList,
       checkDisbaled: dataList.length > 0 ? false : true,
     });
   }
@@ -64,6 +84,7 @@ class Transfer extends Component {
     this.setState({
       leftAllChecked,
       list: allList,
+      originList: JSON.parse(JSON.stringify(allList)),
       isReversed: false,
     });
     // 右侧列表
@@ -102,8 +123,8 @@ class Transfer extends Component {
   // 全选
   selectAll(e) {
     const val = e.target.checked;
-    const allList = [...this.state.list];
-    const rList = [...this.state.list];
+    const allList = this.state.list;
+    const rList = this.state.list;
     console.log(val);
     if (val) {
       allList.forEach(item => {
@@ -112,6 +133,7 @@ class Transfer extends Component {
       this.setState(
         {
           list: allList,
+          originList: JSON.parse(JSON.stringify(allList)),
           rightList: rList,
           leftAllChecked: true,
           isReversed: false,
@@ -129,7 +151,7 @@ class Transfer extends Component {
     const val = e.target.checked;
     const rightList = [];
     if (val) {
-      const allList = [...this.state.list];
+      const allList = this.state.list;
       allList.forEach(item => {
         item.checked = !item.checked;
         if (item.checked) {
@@ -201,6 +223,7 @@ class Transfer extends Component {
     this.setState(
       {
         list: leftList,
+        originList: JSON.parse(JSON.stringify(leftList)),
         rightList: rList,
         leftAllChecked: false,
         btnDisbaled: rList.length > 0 ? false : true,
@@ -222,6 +245,7 @@ class Transfer extends Component {
       {
         rightList: [],
         list: leftList,
+        originList: JSON.parse(JSON.stringify(leftList)),
         leftAllChecked: false,
         isReversed: false,
         btnDisbaled: true,
@@ -232,11 +256,12 @@ class Transfer extends Component {
     );
   }
 
+
   // 搜索
   searchItem() {
     const val = this.searchinput.value;
-    const leftList = this.state.originList;
-    const searchRes = leftList.filter((ele) => {
+    const originList = this.state.originList || [];
+    const searchRes = originList.filter((ele) => {
       return ele.title.includes(val);
     });
     this.setState({
