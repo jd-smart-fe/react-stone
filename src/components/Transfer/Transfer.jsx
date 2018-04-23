@@ -84,6 +84,7 @@ class Transfer extends Component {
     // 左侧列表项选中状态变化
     data.checked = !data.checked;
     const allList = this.state.list;
+    const originList = [...this.state.originList];
     allList.splice(index, 1, data);
     // 标记是否为全选状态
     let checkedCount = 0;
@@ -93,7 +94,7 @@ class Transfer extends Component {
       }
     });
     let leftAllChecked = false;
-    if (checkedCount === allList.length) {
+    if (checkedCount === originList.length) {
       leftAllChecked = true;
     } else {
       leftAllChecked = false;
@@ -101,6 +102,7 @@ class Transfer extends Component {
     this.setState({
       leftAllChecked,
       list: allList,
+      originList: deepClone(allList),
       isReversed: false,
     });
     // 右侧列表
