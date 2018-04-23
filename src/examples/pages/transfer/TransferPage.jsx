@@ -15,176 +15,148 @@ class TransferPage extends Component {
         {
           skillId: "1",
           skillName: "京东购物",
-          skillIcon:
-            "http://img30.360buyimg.com/smart/jfs/t16234/93/1784364089/52704/88fca460/5a618b84Nc4024ba4.png"
+          skillIcon:"https://img11.360buyimg.com/mobilecms/s100x100_jfs/t19042/89/1851156357/101817/543744f8/5ada7544N4f5d29c4.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "2",
           skillName: "叮咚音响",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "3",
           skillName: "京东到家",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img11.360buyimg.com/mobilecms/s110x110_jfs/t2845/298/913943688/163967/67d97501/572afe6eNee22d7af.jpg!q90!cc_110x110.webp"
         },
         {
           skillId: "4",
           skillName: "智能服务",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "5",
           skillName: "智能家居",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "6",
           skillName: "上门维修",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon: "https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "7",
           skillName: "家居控制",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon: "https://img11.360buyimg.com/mobilecms/s110x110_jfs/t7201/279/464293159/18613/50a6642e/5980a9c3Nda96a26a.jpg!q90!cc_110x110.webp"
         }
       ],
       dataSource2: [
         {
           skillId: "1",
           skillName: "京东购物",
-          skillIcon:
-            "http://img30.360buyimg.com/smart/jfs/t16234/93/1784364089/52704/88fca460/5a618b84Nc4024ba4.png"
+          skillIcon:"https://img11.360buyimg.com/mobilecms/s100x100_jfs/t19042/89/1851156357/101817/543744f8/5ada7544N4f5d29c4.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "2",
           skillName: "叮咚音响",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "3",
           skillName: "京东到家",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img11.360buyimg.com/mobilecms/s110x110_jfs/t2845/298/913943688/163967/67d97501/572afe6eNee22d7af.jpg!q90!cc_110x110.webp"
         },
         {
           skillId: "4",
           skillName: "智能服务",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "5",
           skillName: "智能家居",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "6",
           skillName: "上门维修",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon: "https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "7",
           skillName: "家居控制",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon: "https://img11.360buyimg.com/mobilecms/s110x110_jfs/t7201/279/464293159/18613/50a6642e/5980a9c3Nda96a26a.jpg!q90!cc_110x110.webp"
         }
       ],
       dataSource3: [
         {
           skillId: "1",
           skillName: "京东购物",
-          skillIcon:
-            "http://img30.360buyimg.com/smart/jfs/t16234/93/1784364089/52704/88fca460/5a618b84Nc4024ba4.png"
+          skillIcon:"https://img11.360buyimg.com/mobilecms/s100x100_jfs/t19042/89/1851156357/101817/543744f8/5ada7544N4f5d29c4.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "2",
           skillName: "叮咚音响",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "3",
           skillName: "京东到家",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img11.360buyimg.com/mobilecms/s110x110_jfs/t2845/298/913943688/163967/67d97501/572afe6eNee22d7af.jpg!q90!cc_110x110.webp"
         },
         {
           skillId: "4",
           skillName: "智能服务",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "5",
           skillName: "智能家居",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "6",
           skillName: "上门维修",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon: "https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "7",
           skillName: "家居控制",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon: "https://img11.360buyimg.com/mobilecms/s110x110_jfs/t7201/279/464293159/18613/50a6642e/5980a9c3Nda96a26a.jpg!q90!cc_110x110.webp"
         }
       ],
       dataSource4: [
         {
           skillId: "1",
           skillName: "京东购物",
-          skillIcon:
-            "http://img30.360buyimg.com/smart/jfs/t16234/93/1784364089/52704/88fca460/5a618b84Nc4024ba4.png"
+          skillIcon:"https://img11.360buyimg.com/mobilecms/s100x100_jfs/t19042/89/1851156357/101817/543744f8/5ada7544N4f5d29c4.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "2",
           skillName: "叮咚音响",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "3",
           skillName: "京东到家",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img11.360buyimg.com/mobilecms/s110x110_jfs/t2845/298/913943688/163967/67d97501/572afe6eNee22d7af.jpg!q90!cc_110x110.webp"
         },
         {
           skillId: "4",
           skillName: "智能服务",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "5",
           skillName: "智能家居",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon:"https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "6",
           skillName: "上门维修",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon: "https://img10.360buyimg.com/mobilecms/s100x100_jfs/t15562/8/2555492666/108362/5017e718/5ab3ad15N754775ee.jpg!q90!cc_100x100.webp"
         },
         {
           skillId: "7",
           skillName: "家居控制",
-          skillIcon:
-            "https://img30.360buyimg.com/smart/jfs/t14995/315/2061932288/95015/41340b31/5a66f5f4N648bc962.png"
+          skillIcon: "https://img11.360buyimg.com/mobilecms/s110x110_jfs/t7201/279/464293159/18613/50a6642e/5980a9c3Nda96a26a.jpg!q90!cc_110x110.webp"
         }
       ],
       initialKeys:["1","2","3","4"]

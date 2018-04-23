@@ -47,6 +47,7 @@ react-stone 组件库提供了下述组件，每个组件都带有详细的文�
 - [Modal](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Modal)
 - [Pagination](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Pagination)
 - [Cascader](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Cascader)
+- [Transfer](https://github.com/jd-smart-fe/react-stone/tree/master/src/components/Transfer)
 
 ## TodoList
 
