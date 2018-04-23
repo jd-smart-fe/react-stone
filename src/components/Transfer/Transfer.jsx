@@ -3,6 +3,23 @@ import CascadeSelection from '../CascaderSelection/CascaderSelection.jsx';
 import Toast from '../Toast/toast.jsx';
 import './transfer.scss';
 
+function deepClone(source) {
+  if (!source || typeof source !== 'object') {
+    return false;
+  }
+  let targetObj = source.constructor === Array ? [] : {};
+  const keys = Object.keys(source);
+  for (let i = 0; i < keys.length; i += 1) {
+    if (typeof source[keys[i]] === 'object') {
+      targetObj[keys[i]] = source[keys[i]].constructor === Array ? [] : {};
+      targetObj[keys[i]] = deepClone(source[keys[i]]);
+    } else {
+      targetObj[keys[i]] = source[keys[i]];
+    }
+  }
+  return targetObj;
+}
+
 class Transfer extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +49,7 @@ class Transfer extends Component {
     this.setState(
       {
         list: dataList,
-        originList: JSON.parse(JSON.stringify(dataList)),
+        originList: deepClone(dataList),
         rightList,
         checkDisbaled: dataList.length > 0 ? false : true,
       },
@@ -57,7 +74,7 @@ class Transfer extends Component {
     });
     this.setState({
       list: dataList,
-      originList: JSON.parse(JSON.stringify(dataList)),
+      originList: deepClone(dataList),
       rightList,
       checkDisbaled: dataList.length > 0 ? false : true,
     });
@@ -84,7 +101,6 @@ class Transfer extends Component {
     this.setState({
       leftAllChecked,
       list: allList,
-      originList: JSON.parse(JSON.stringify(allList)),
       isReversed: false,
     });
     // 右侧列表
@@ -133,7 +149,7 @@ class Transfer extends Component {
       this.setState(
         {
           list: allList,
-          originList: JSON.parse(JSON.stringify(allList)),
+          originList: deepClone(allList),
           rightList: rList,
           leftAllChecked: true,
           isReversed: false,
@@ -187,13 +203,12 @@ class Transfer extends Component {
       },
       () => {
         console.log(this.state);
-        this.props.onChange(this.state.rightList);
       },
     );
   }
   // 右侧面板  移除
-  remove() {
-    const rList = this.state.rightList;
+  removeRightItem() {
+    const rList = deepClone(this.state.rightList);
     const leftList = this.state.list;
     let rightItemsCheckedCount = 0;
     console.log(leftList);
@@ -223,7 +238,7 @@ class Transfer extends Component {
     this.setState(
       {
         list: leftList,
-        originList: JSON.parse(JSON.stringify(leftList)),
+        originList: deepClone(leftList),
         rightList: rList,
         leftAllChecked: false,
         btnDisbaled: rList.length > 0 ? false : true,
@@ -245,7 +260,7 @@ class Transfer extends Component {
       {
         rightList: [],
         list: leftList,
-        originList: JSON.parse(JSON.stringify(leftList)),
+        originList: deepClone(leftList),
         leftAllChecked: false,
         isReversed: false,
         btnDisbaled: true,
@@ -346,7 +361,6 @@ class Transfer extends Component {
                 <li className='transfer-list-item' key={item.id}>
                   <input
                     type='checkbox'
-                    name='mm'
                     className='right-list-checkbox'
                     checked={item.rightChecked}
                     onChange={this.checkRightItem.bind(this, item, index)}
@@ -363,7 +377,7 @@ class Transfer extends Component {
             </ul>
           </div>
           <div className='panel-footer'>
-            <input type="button" className="remove" disabled={this.state.btnDisbaled} onClick={this.remove.bind(this)} value="移除" />
+            <input type="button" className="remove" disabled={this.state.btnDisbaled} onClick={this.removeRightItem.bind(this)} value="移除" />
             <button type="button" className='clean-up' disabled={this.state.btnDisbaled} onClick={this.cleanUp.bind(this)}>
               全部清空
             </button>
