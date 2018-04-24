@@ -86,6 +86,11 @@ class Transfer extends Component {
     const allList = this.state.list;
     const originList = [...this.state.originList];
     allList.splice(index, 1, data);
+    originList.forEach((oItem) => {
+      if (oItem.id === data.id) {
+        oItem.checked = data.checked;
+      }
+    });
     // 标记是否为全选状态
     let checkedCount = 0;
     allList.forEach(item => {
@@ -101,8 +106,8 @@ class Transfer extends Component {
     }
     this.setState({
       leftAllChecked,
+      originList,
       list: allList,
-      originList: deepClone(allList),
       isReversed: false,
     });
     // 右侧列表
