@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import './sidebar.scss';
 
-class SlideBar extends Component {
+class Sidebar extends Component {
 
   constructor(props) {
     super(props);
@@ -26,7 +26,8 @@ class SlideBar extends Component {
       'Modal',
       'Pagination',
       'Transfer',
-      'Cascader'
+      'Cascader',
+      'CascaderSelector'
     ];
     return (
       <aside className="side-nav">
@@ -62,7 +63,7 @@ class SlideBar extends Component {
                 {
                   componentsArr.map((item, index) => {
                     return (
-                      <li className="nav-item" key={index}>
+                      <li className="nav-item" key={item}>
                         <NavLink
                           to={{
                             pathname: `/${item}`,
@@ -82,4 +83,4 @@ class SlideBar extends Component {
   }
 };
 
-export default SlideBar;
+export default Sidebar;

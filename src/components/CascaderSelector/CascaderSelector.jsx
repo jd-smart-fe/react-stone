@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import './CascaderSelection.scss';
+import propTypes from 'prop-types';
+import './cascaderSelector.scss';
 
-class CascadeSelection extends React.Component {
+class CascadeSelector extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +15,14 @@ class CascadeSelection extends React.Component {
     this.closePanel = this.closePanel.bind(this);
     this.selectData = this.selectData.bind(this);
   }
-  showPanel() {
+  componentDidMount() {
+    document.addEventListener('click', this.closePanel);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('click', this.closePanel);
+  }
+  showPanel(e) {
+    e.nativeEvent.stopImmediatePropagation();
     this.setState(prevState => ({
       cascadePanelShow: !prevState.cascadePanelShow,
     }));
@@ -26,7 +34,7 @@ class CascadeSelection extends React.Component {
   }
   selectData(data) {
     this.setState({ selectedData: data }, () => {
-      this.props.cascaderSelect(this.state.selectedData);
+      this.props.onChange(this.state.selectedData);
     });
   }
   render() {
@@ -73,7 +81,8 @@ class CascadePanel extends React.Component {
     this.props.closePanel();
   }
   // 点击某一类别下的项
-  updateChildren(item) {
+  updateChildren(item, e) {
+    e.nativeEvent.stopImmediatePropagation();
     item.parent = this.state.currentOptionClass;
     let existSelectedCategoryArr = this.state.selectedCategoryArr;
     existSelectedCategoryArr.forEach((ele, index) => {
@@ -109,6 +118,8 @@ class CascadePanel extends React.Component {
         selectedValue += `${ele.value}/`;
         selectedLabel += `${ele.label}/`;
       });
+      selectedValue = selectedValue.replace(/\/$/, '');
+      selectedLabel = selectedLabel.replace(/\/$/, '');
       this.setState(
         {
           selectedData: { value: selectedValue, label: selectedLabel },
@@ -122,12 +133,14 @@ class CascadePanel extends React.Component {
     }
   }
   // 点击全部 选中整个大类
-  selectCurrentOptionClass() {
+  selectCurrentOptionClass(e) {
+    e.nativeEvent.stopImmediatePropagation();
     this.props.updateSelectedData(this.state.currentOptionClass);
     this.props.closePanel();
   }
   // 点击分类Tab切换类别
-  tabOptionClass(data) {
+  tabOptionClass(data, e) {
+    e.nativeEvent.stopImmediatePropagation();
     const allOptionData = this.props.optionData;
     this.setState({ currentOptionClass: data });
     this.traversalAllOptionData(allOptionData, data);
@@ -150,7 +163,7 @@ class CascadePanel extends React.Component {
     }
   }
   // 选择‘全部类目’
-  selecteAll() {
+  selecteAll(e) {
     this.setState(
       {
         optionData: this.props.optionData,
@@ -217,5 +230,9 @@ class CascadePanel extends React.Component {
     );
   }
 }
+CascadeSelector.PropTypes = {
+  optionData: propTypes.array,
+  cascadePanelShow: propTypes.bool,
+};
 
-export default CascadeSelection;
+export default CascadeSelector;

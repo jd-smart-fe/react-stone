@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CascadeSelection from '../CascaderSelection/CascaderSelection.jsx';
+import CascadeSelection from '../CascaderSelector/CascaderSelector.jsx';
 import Toast from '../Toast/toast.jsx';
 import './transfer.scss';
 
@@ -7,7 +7,7 @@ function deepClone(source) {
   if (!source || typeof source !== 'object') {
     return false;
   }
-  let targetObj = source.constructor === Array ? [] : {};
+  const targetObj = source.constructor === Array ? [] : {};
   const keys = Object.keys(source);
   for (let i = 0; i < keys.length; i += 1) {
     if (typeof source[keys[i]] === 'object') {
@@ -33,6 +33,7 @@ class Transfer extends Component {
     };
   }
   componentDidMount() {
+    console.log(this.props);
     const dataList = this.props.dataSource;
     const initialKeys = this.props.initialKeys || [];
     const rightList = [];
@@ -157,7 +158,7 @@ class Transfer extends Component {
         {
           list: allList,
           originList: deepClone(allList),
-          rightList: rList,
+          rightList: deepClone(rList),
           leftAllChecked: true,
           isReversed: false,
           btnDisbaled: rList.length > 0 ? false : true,
@@ -299,7 +300,7 @@ class Transfer extends Component {
           {this.props.onSelect || this.props.onSearch ? (
             <div className='panel-title'>
               {this.props.onSelect ? (
-                <CascadeSelection optionData={this.props.optionData} />
+                <CascaderSelector optionData={this.props.optionData} />
               ) : null}
               {this.props.onSearch ? (
                 <div className='transfer-search-wraper'>

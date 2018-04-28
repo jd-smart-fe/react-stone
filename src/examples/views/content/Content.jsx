@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import ReadeMd from '../../../../README.md';
 import ContributeMd from '../../../../docs/contribute.md';
@@ -32,6 +28,7 @@ import ToastDev from '../../components-examples/ToastDev.js';
 import TransferDev from '../../components-examples/TransferDev.js';
 import TransferPage from '../../pages/transfer/TransferPage.jsx'
 import Cascader from '../../components-examples/Cascader.js';
+import CascaderSelectorPage from '../../pages/cascaderSelector/CascaderSelectorPage.jsx';
 import './content.scss';
 
 class Content extends Component {
@@ -41,46 +38,49 @@ class Content extends Component {
   }
   getCommponent = ({ match }) => {
     let CommponentType;
-    switch (match.path)
+    switch (match.params.name)
     {
-      case '/Intro':
+      case 'Intro':
         CommponentType = ReadeMd;
         return (<ReactMarkdown source={CommponentType} />)
-      case '/Contribute':
+      case 'Contribute':
         CommponentType = ContributeMd;
         return (<ReactMarkdown source={CommponentType} />)
-      case '/Button':
+      case 'Button':
         CommponentType = ButtonPage;
         break;
-      case '/Input':
+      case 'Input':
         CommponentType = InputPage;
         break;
-      case '/Textarea':
+      case 'Textarea':
         CommponentType = TextareaDev;
         break;
-      case '/Radio':
+      case 'Radio':
         CommponentType = RadioDev;
         break;
-      case '/Checkbox':
+      case 'Checkbox':
         CommponentType = CheckboxDev;
         break;
-      case '/Toast':
+      case 'Toast':
         CommponentType = ToastDev;
         break;
-      case '/Select':
+      case 'Select':
         CommponentType = SelectDev;
         break;
-      case '/Modal':
+      case 'Modal':
         CommponentType = ModalDev;
         break;
-      case '/Pagination':
+      case 'Pagination':
         CommponentType = PaginationDev;
         break;
-      case '/Transfer':
+      case 'Transfer':
         CommponentType = TransferPage;
         break;
-      case '/Cascader':
+      case 'Cascader':
         CommponentType = Cascader;
+        break;
+      case 'CascaderSelector':
+        CommponentType = CascaderSelectorPage;
         break;
     }
     return <CommponentType />
@@ -88,19 +88,7 @@ class Content extends Component {
   render() {
     return (
       <div className="content-wrap markdown-body" id="content">
-        <Route path="/Intro" component={this.getCommponent} />
-        <Route path="/Contribute" component={this.getCommponent} />
-        <Route path="/Button" component={this.getCommponent} />
-        <Route path="/Input" component={this.getCommponent} />
-        <Route path="/Textarea" component={this.getCommponent} />
-        <Route path="/Radio" component={this.getCommponent} />
-        <Route path="/Checkbox" component={this.getCommponent} />
-        <Route path="/Toast" component={this.getCommponent} />
-        <Route path="/Select" component={this.getCommponent} />
-        <Route path="/Modal" component={this.getCommponent} />
-        <Route path="/Pagination" component={this.getCommponent} />
-        <Route path="/Transfer" component={this.getCommponent} />
-        <Route path="/Cascader" component={this.getCommponent} />
+        <Route path="/:name" render = { this.getCommponent } />
       </div>
     )
   }

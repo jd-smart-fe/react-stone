@@ -10,7 +10,7 @@
 ```javascript
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Transfer,CascaderSelection} from 'react-stone';
+import { Transfer} from 'react-stone';
 
 class App extends Component {
   constructor(props) {

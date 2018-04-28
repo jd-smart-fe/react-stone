@@ -5,7 +5,7 @@ import {
   Link
 } from 'react-router-dom';
 import Header from './views/header/Header.jsx';
-import SlideBar from './views/sidebar/Sidebar.jsx';
+import Sidebar from './views/sidebar/Sidebar.jsx';
 import Content from './views/content/Content.jsx';
 import iconfonts from '../components/Fonts/icofonts.css';
 
@@ -21,7 +21,7 @@ class App extends Component {
           <div style={{
             display: 'flex'
           }}>
-            <SlideBar />
+            <Sidebar />
             <Content />
           </div>
         </div>
