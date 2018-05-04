@@ -1,10 +1,21 @@
-## 级联选择
-##  支持属性
-1. dataSource:obj 选择器的数据源
- CascaderSelector 嵌套数组 如：
-  dataSource:[
+## CascaderSelector级联选择器
+## 何时使用
+- 任何类目筛选的场景
+## How to use?
+
+```jsx
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { CascaderSelector } from 'react-stone';
+
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      dataSource:[
         {
-          value: ' television',
+          value: 'television',
           label: '电视',
           children: [{
             value: 'curveScreen',
@@ -42,7 +53,7 @@
             }],
           },
           {
-            value: 'samrtFridge',
+            value: 'smartFridge',
             label: '智能冰箱',
             children: [{
               value: 'voice',
@@ -62,7 +73,55 @@
             }],
           }],
         }
-      ]
+      ],
+      initialValue:['television','curveScreen','smart']
+    }
+    this.cascaderSelect = this.cascaderSelect.bind(this);
+  }
+  cascaderSelect(data){
+    console.log('CascaderSelector value:--->' ,data);
+  }
+  render() {
+    return (
+      <div className="markdown">
+        <ReactMarkdown source={code.desc} />
+        <h2>代码示例</h2>
+        <DemoWrap desc="基础用法，最基础的级联选择器" code={code.base}>
+          <CascaderSelector
+            optionData={this.state.dataSource}
+            onChange={this.cascaderSelect}
+          />
+          <br/>
+        </DemoWrap>
+        <DemoWrap desc="有初始值得级联选择器" code={code.initialValue}>
+          <CascaderSelector
+            optionData={this.state.dataSource}
+            onChange={this.cascaderSelect}
+            initialValue = {this.state.initialValue}
+          />
+          <br/>
+        </DemoWrap>
+       <ReactMarkdown source={code.api} />
+      </div>
+    );
+  }
+}
 
-##  支持事件
-1. onChange:选中其中的某一项
+ReactDOM.render(<App />, document.getElementById('root'));
+
+
+```
+## Options
+
+属性名   |    类型   |     默认值     |     说明
+----    | ----    | ----    | ----    |
+optionData  | array  | 无 |   数据源
+initialValue | array | 无 | 默认值、初始值
+
+
+
+
+## Events
+方法名称   |    说明    |    参数    |
+----    | ----      | ----        |
+onChange       |  已选数据改变的回调 | 参数是选中的数据
