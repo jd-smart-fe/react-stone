@@ -76,7 +76,7 @@ class CascadeSelector extends React.Component {
     return (
       <div className='cascade-wrap'>
         <div className='cascade-control' onClick={this.showPanel}>
-          <span className='select-arrow icon-dowico' />
+          <span className={classNames({ 'select-arrow icon-dowico': true, open: this.state.cascadePanelShow })} />
           <span className='selected-label' title={selectedOptionLabel}>
             {selectedOptionLabel}
           </span>
