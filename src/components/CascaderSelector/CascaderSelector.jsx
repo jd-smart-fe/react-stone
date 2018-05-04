@@ -154,6 +154,7 @@ class CascadePanel extends React.Component {
     parent = parent ? parent : { value: 'all', label: '全部类目' };
     return parent;
   }
+  // 找到默认值的父级关系并设置激活状态，找到导航栏的数据，
   getDefaultOption(originArr, arr, data) {
     const { selectedCategoryArr } = this.state;
     arr.forEach((ele, index) => {
@@ -175,7 +176,7 @@ class CascadePanel extends React.Component {
     });
     console.log(originArr);
     console.log(this.state);
-    this.getDefaultChildren(originArr, data);
+    this.getDefaultChildren(originArr, data);// 获取选中值、导航栏数据、当前选中类别
   }
   getDefaultChildren(arr, data) {
     arr.forEach((ele, index) => {
