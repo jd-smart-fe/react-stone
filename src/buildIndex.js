@@ -9,6 +9,7 @@ import Modal from './components/Modal/modal.jsx';
 import Pagination from './components/Pagination/Pagination.jsx';
 import DragSort from './components/DragSort/DragSort.jsx';
 import Transfer from './components/Transfer/Transfer.jsx';
+import CascaderSelector from './components/CascaderSelector/CascaderSelector.jsx';
 import iconfonts from './components/Fonts/icofonts.css';
 
 export {
@@ -25,4 +26,5 @@ export {
   Pagination,
   DragSort,
   Transfer,
+  CascaderSelector,
 };
