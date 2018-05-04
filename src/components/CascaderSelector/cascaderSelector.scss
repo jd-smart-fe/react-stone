@@ -32,7 +32,7 @@ li {
       width: 16px;
       height: 16px;
       line-height: 16px;
-      font-size: 12px;
+      font-size: 14px;
       top: 10px;
       right: 5px;
       color: #333;
@@ -81,6 +81,10 @@ li {
       top: 14px;
       right: 14px;
       font-size: 12px;
+      transition: transform .2s ease;
+      &:hover{
+        transform: rotate(90deg);
+      }
     }
     .option-title {
       height: 36px;
@@ -89,15 +93,20 @@ li {
       padding: 0 10px;
       .option-class {
         display: inline-block;
+        line-height: 26px;
         margin-right: 20px;
         vertical-align: middle;
         cursor: pointer;
         position: relative;
+        &.active{
+          background: #f6f6f6;
+          padding: 3px;
+        }
         &.choose:after {
           display: block;
           content: "";
           position: absolute;
-          top: 30px;
+          top: 25px;
           left: 50%;
           transform: translateX(-48%) rotate(45deg);
           height: 8px;
@@ -106,18 +115,21 @@ li {
           border-width: 0px 1px 1px 0px;
           background: #fff;
         }
+        .icon-dowico{
+          font-size: 12px;
+        }
       }
     }
     .option-panel {
       padding: 10px 0 10px 10px;
       .option {
         display: inline-block;
-        margin-right: 10px;
-        padding: 3px;
+        margin-right: 6px;
+        padding: 0px 8px;
         cursor: pointer;
         border-radius: 3px;
-        &:hover {
-          background: #f8f9f9;
+        &:hover,&.active {
+          background: #f6f6f6;
         }
       }
     }

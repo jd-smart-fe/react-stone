@@ -12,7 +12,7 @@ class CascaderSelectorPage extends Component {
     this.state={
       dataSource:[
         {
-          value: ' television',
+          value: 'television',
           label: '电视',
           children: [{
             value: 'curveScreen',
@@ -50,7 +50,7 @@ class CascaderSelectorPage extends Component {
             }],
           },
           {
-            value: 'samrtFridge',
+            value: 'smartFridge',
             label: '智能冰箱',
             children: [{
               value: 'voice',
@@ -70,7 +70,8 @@ class CascaderSelectorPage extends Component {
             }],
           }],
         }
-      ]
+      ],
+      initialValue:['television','curveScreen','smart']
     }
     this.cascaderSelect = this.cascaderSelect.bind(this);
   }
@@ -87,10 +88,18 @@ class CascaderSelectorPage extends Component {
       <div className="markdown">
         <ReactMarkdown source={code.desc} />
         <h2>代码示例</h2>
-        <DemoWrap desc="基础用法，最基础的级联选择" code={code.base}>
+        <DemoWrap desc="基础用法，最基础的级联选择器" code={code.base}>
           <CascaderSelector
             optionData={this.state.dataSource}
             onChange={this.cascaderSelect}
+          />
+          <br/>
+        </DemoWrap>
+        <DemoWrap desc="有初始值得级联选择器" code={code.initialValue}>
+          <CascaderSelector
+            optionData={this.state.dataSource}
+            onChange={this.cascaderSelect}
+            initialValue = {this.state.initialValue}
           />
           <br/>
         </DemoWrap>
