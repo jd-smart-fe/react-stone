@@ -25,9 +25,10 @@ class Sidebar extends Component {
       'Select',
       'Modal',
       'Pagination',
-      'Transfer',
+      // 'Transfer',
       'Cascader',
-      'CascaderSelector'
+      'CascaderSelector',
+      'Table'
     ];
     return (
       <aside className="side-nav">

@@ -25,11 +25,13 @@ import RadioDev from '../../components-examples/RadioDev.js';
 import SelectDev from '../../components-examples/SelectDev.js';
 import TextareaDev from '../../components-examples/TextareaDev.js';
 import ToastDev from '../../components-examples/ToastDev.js';
-import TransferDev from '../../components-examples/TransferDev.js';
-import TransferPage from '../../pages/transfer/TransferPage.jsx'
+// import TransferDev from '../../components-examples/TransferDev.js';
+// import TransferPage from '../../pages/transfer/TransferPage.jsx'
 import Cascader from '../../components-examples/Cascader.js';
 import CascaderSelectorPage from '../../pages/cascaderSelector/CascaderSelectorPage.jsx';
+import TableDev from '../../components/TableDev.js';
 import './content.scss';
+// const input = '# This is a header\n\nAnd this is a paragraph'
 
 class Content extends Component {
   constructor(props) {
@@ -73,14 +75,16 @@ class Content extends Component {
       case 'Pagination':
         CommponentType = PaginationDev;
         break;
-      case 'Transfer':
-        CommponentType = TransferPage;
-        break;
+      // case 'Transfer':
+      //   CommponentType = TransferPage;
+      //   break;
       case 'Cascader':
         CommponentType = Cascader;
         break;
       case 'CascaderSelector':
         CommponentType = CascaderSelectorPage;
+      case 'Table':
+        CommponentType = TableDev;
         break;
     }
     return <CommponentType />
