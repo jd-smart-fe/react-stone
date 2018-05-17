@@ -52,7 +52,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "version": "npm run build && git add -A dist",
+    "version": "npm run build && git add -A build",
     "postversion": "npm publish && git push",
     "release:beta": "npm version prerelease",
     "release:patch": "npm version patch",
