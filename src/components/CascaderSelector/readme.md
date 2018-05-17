@@ -83,26 +83,11 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="markdown">
-        <ReactMarkdown source={code.desc} />
-        <h2>代码示例</h2>
-        <DemoWrap desc="基础用法，最基础的级联选择器" code={code.base}>
-          <CascaderSelector
-            optionData={this.state.dataSource}
-            onChange={this.cascaderSelect}
-          />
-          <br/>
-        </DemoWrap>
-        <DemoWrap desc="有初始值得级联选择器" code={code.initialValue}>
-          <CascaderSelector
-            optionData={this.state.dataSource}
-            onChange={this.cascaderSelect}
-            initialValue = {this.state.initialValue}
-          />
-          <br/>
-        </DemoWrap>
-       <ReactMarkdown source={code.api} />
-      </div>
+      <CascaderSelector
+        optionData={this.state.dataSource}
+        onChange={this.cascaderSelect}
+        initialValue = {this.state.initialValue}
+      />
     );
   }
 }
