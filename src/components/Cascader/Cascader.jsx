@@ -26,10 +26,18 @@ class Cascader extends Component {
     this.clearInput = this.clearInput.bind(this);
   }
 
+  componentDidMount() {
+    if (this.props.defaultValue && this.props.defaultValue.length > 0) {
+      this.props.defaultValue.map((item, inddex) => {
+        this.getCascadeData(item);
+      });
+    }
+  }
+
   /** 控制级联信息的显示隐藏 */
   togglePopup(e) {
     this.setState({
-      popupVisible: !this.state.popupVisible,
+      popupVisible: !this.state.popupVisible && !this.props.disabled,
     });
   }
   /** 获取级联数据 */
@@ -41,7 +49,6 @@ class Cascader extends Component {
      * 一种是itemValue 存在位置的下一位也就是casProcessOptions[wrapIndex+1]没有数据，这种情况就是顺序的增加，
      * 一种是itemValue 下一位有数据，这种就是变化，需要把此位后的数据清空；
      */
-    console.log(itemValue);
     casProcessOptions.map((wrapItem, wrapIndex) => {
       wrapItem.map((item, index) => {
         if (itemValue === item.value) {
@@ -74,7 +81,6 @@ class Cascader extends Component {
               casProcessOptions.splice(posIndex, 1, item.children);
             } else {
               const selectedList = this.findParent(this.state.options, item);
-              console.log(selectedList);
               this.setState({
                 selectedList,
                 popupVisible: false,
@@ -140,9 +146,16 @@ class Cascader extends Component {
     const { processOptions } = this.state;
     console.log(processOptions[index]);
     processOptions[index].map((item, i) => {
+      if (targetIndex === i && this.props.changeOnSelect) {
+        const selectedList = this.findParent(this.state.options, item);
+        this.setState({
+          selectedList,
+        });
+      }
       targetIndex === i ? item.selected = true : item.selected = false;
     });
   }
+
   /** 清空数据 */
   clearInput(e) {
     e.stopPropagation();
@@ -178,14 +191,20 @@ class Cascader extends Component {
       'ant-cascader-menus-hidden': !this.state.popupVisible,
     });
 
+    const selectBoxClass = classNames({
+      'ant-cascader-picker': true,
+      'ant-cascader-picker-disabled': this.props.disabled,
+    });
+
     return (
       <div>
-        <span className="ant-cascader-picker" tabIndex="0" onClick={this.togglePopup}>
+        <span className={selectBoxClass} tabIndex="0" onClick={this.togglePopup}>
           <span className="ant-cascader-picker-label">{this.state.selectedList && this.state.selectedList.length > 0 ? this.state.selectedList[this.state.selectedList.length - 1].label : this.state.placeholder}</span>
           <input
             type="text"
             className="ant-input ant-cascader-input"
             autoComplete="off"
+            disabled = {this.props.disabled}
           />
           {this.props.allowClear && this.state.selectedList.length > 0 ? <i className={clearClass} onClick={this.clearInput}></i> : null}
           <i className={arrowClass}></i>
@@ -243,12 +262,19 @@ Cascader.defaultProps = {
   placeholder: '请选择',
   optionData: [],
   allowClear: true,
+  changeOnSelect: false,
+  disabled: false,
+  defaultValue: [],
 };
 
 Cascader.propTypes = {
   placeholder: PropTypes.string,
   optionData: PropTypes.array,
   allowClear: PropTypes.bool,
+  defaultValue: PropTypes.array,
+  changeOnSelect: PropTypes.bool,
+  disabled: PropTypes.bool,
+  popupVisible: PropTypes.bool,
 };
 
 export default Cascader;
