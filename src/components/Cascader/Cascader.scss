@@ -13,6 +13,11 @@
   background-color: #fff;
   border-radius: 4px;
   outline: 0;
+  &.ant-cascader-picker-disabled {
+    cursor: not-allowed;
+    background: #f5f5f5;
+    color: rgba(0, 0, 0, 0.25);
+  }
   .ant-cascader-picker-clear {
     opacity: 0;
   }

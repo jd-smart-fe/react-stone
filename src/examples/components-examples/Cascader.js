@@ -37,6 +37,9 @@ class App extends Component {
       <Cascader
        optionData={options}
        allowClear = {true}
+       changeOnSelect = {true}
+       disabled = {false}
+       defaultValue={['zhejiang', 'hangzhou', 'xihu']}
       />
       </div>
     )
