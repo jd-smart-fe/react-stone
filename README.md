@@ -52,7 +52,18 @@ react-stone 组件库提供了下述组件，每个组件都带有详细的文�
 
 ## TodoList
 
-[项目进度](https://github.com/orgs/jd-smart-fe/projects/6)
+ #### 组件示例及补充
+ - Textarea
+ - Checkbox
+ - Cascader
+ - Modal
+ - Pagination
+ - Radio
+ - Select
+ - Table
+ - Toast
+
+#### [项目进度](https://github.com/orgs/jd-smart-fe/projects/6)
 
 ## 贡献指南
 
