@@ -58,7 +58,9 @@
     "release:beta": "npm version prerelease",
     "release:patch": "npm version patch",
     "release:minor": "npm version minor",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [
