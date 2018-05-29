@@ -33,7 +33,7 @@ class Transfer extends Component {
     };
   }
   componentDidMount() {
-    console.log(this.props);
+    // console.log(this.props);
     const dataList = this.props.dataSource;
     const initialKeys = this.props.initialKeys || [];
     const rightList = [];
@@ -55,7 +55,7 @@ class Transfer extends Component {
         checkDisbaled: dataList.length > 0 ? false : true,
       },
       () => {
-        console.log(this.state);
+        // console.log(this.state);
       },
     );
   }
@@ -121,7 +121,7 @@ class Transfer extends Component {
           btnDisbaled: rightList.length > 0 ? false : true,
         },
         () => {
-          console.log(this.state);
+          // console.log(this.state);
           this.props.onChange(this.state.rightList);
         },
       );
@@ -138,7 +138,7 @@ class Transfer extends Component {
           btnDisbaled: rightList.length > 0 ? false : true,
         },
         () => {
-          console.log(this.state);
+          // console.log(this.state);
           this.props.onChange(this.state.rightList);
         },
       );
@@ -149,7 +149,7 @@ class Transfer extends Component {
     const val = e.target.checked;
     const allList = this.state.list;
     const rList = this.state.list;
-    console.log(val);
+    // console.log(val);
     if (val) {
       allList.forEach(item => {
         item.checked = true;
@@ -164,7 +164,7 @@ class Transfer extends Component {
           btnDisbaled: rList.length > 0 ? false : true,
         },
         () => {
-          console.log(this.state);
+          // console.log(this.state);
           this.props.onChange(this.state.rightList);
         },
       );
@@ -191,7 +191,7 @@ class Transfer extends Component {
           btnDisbaled: rightList.length > 0 ? false : true,
         },
         () => {
-          console.log(this.state);
+          // console.log(this.state);
           this.props.onChange(this.state.rightList);
         },
       );
@@ -203,14 +203,14 @@ class Transfer extends Component {
     item.rightChecked = value;
     const rightList = [...this.state.rightList];
     rightList.splice(index, 1, item);
-    console.log(rightList);
+    // console.log(rightList);
     this.setState(
       {
         rightList,
         btnDisbaled: rightList.length > 0 ? false : true,
       },
       () => {
-        console.log(this.state);
+        // console.log(this.state);
       },
     );
   }
@@ -219,8 +219,8 @@ class Transfer extends Component {
     const rList = deepClone(this.state.rightList);
     const leftList = this.state.list;
     let rightItemsCheckedCount = 0;
-    console.log(leftList);
-    console.log(rList);
+    // console.log(leftList);
+    // console.log(rList);
 
     leftList.forEach(item => {
       rList.forEach(ele => {
@@ -252,7 +252,7 @@ class Transfer extends Component {
         btnDisbaled: rList.length > 0 ? false : true,
       },
       () => {
-        console.log(this.state);
+        // console.log(this.state);
         this.props.onChange(this.state.rightList);
       },
     );
@@ -290,7 +290,7 @@ class Transfer extends Component {
     this.setState({
       list: searchRes,
     }, () => {
-      console.log(this.state);
+      // console.log(this.state);
     });
   }
   render() {

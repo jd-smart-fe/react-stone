@@ -29,8 +29,8 @@ class CascadeSelector extends React.Component {
     const tar = e.target;
     const root = findDOMNode(this);
     const popupDom = findDOMNode(this.popupComponent);
-    console.log(root);
-    console.log(popupDom);
+    // console.log(root);
+    // console.log(popupDom);
     if (!contains(root, tar) && !contains(popupDom, tar)) {
       this.setState({
         cascadePanelShow: false,
@@ -174,8 +174,8 @@ class CascadePanel extends React.Component {
         }
       });
     });
-    console.log(originArr);
-    console.log(this.state);
+    // console.log(originArr);
+    // console.log(this.state);
     this.getDefaultChildren(originArr, data);// 获取选中值、导航栏数据、当前选中类别
   }
   getDefaultChildren(arr, data) {
@@ -225,14 +225,11 @@ class CascadePanel extends React.Component {
     });
     if (item.children) {
       // 存在下级类目时，更新显示的类别项
-      this.setState(
-        {
-          optionData: item.children,
-          currentOptionClass: item,
-          selectedCategoryArr: newSelectedCategoryArr, // 添加Tab
-        },
-        () => console.log(this.state),
-      );
+      this.setState({
+        optionData: item.children,
+        currentOptionClass: item,
+        selectedCategoryArr: newSelectedCategoryArr, // 添加Tab
+      });
     } else {
       this.setState(
         {
@@ -241,7 +238,7 @@ class CascadePanel extends React.Component {
         () => {
           this.props.updateSelectedData(this.state.selectedData); // 更新父组件中显示的选中项
           this.props.closePanel();
-          console.log(this.state);
+          // console.log(this.state);
         },
       );
     }

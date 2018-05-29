@@ -39,7 +39,6 @@ class Content extends Component {
     this.state = {};
   }
   getCommponent = ({ match }) => {
-    console.log(match);
     switch (match.params.name)
     {
       case 'Intro':
