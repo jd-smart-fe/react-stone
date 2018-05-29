@@ -17,18 +17,18 @@ class Sidebar extends Component {
     // 如果需要添加组件导航，请在该数组添加对应的导航名称。
     const componentsArr = [
       'Button',
-      'Input',
-      'Textarea',
-      'Radio',
       'Checkbox',
-      'Toast',
-      'Select',
-      'Modal',
-      'Pagination',
-      'Transfer',
       'Cascader',
       'CascaderSelector',
-      'Table'
+      'Input',
+      'Modal',
+      'Pagination',
+      'Radio',
+      'Select',
+      'Table',
+      'Textarea',
+      'Toast',
+      'Transfer'
     ];
     return (
       <aside className="side-nav">

@@ -58,6 +58,8 @@ class Content extends Component {
         return <CheckboxDev/>;
       case 'Toast':
         return <ToastDev/>;
+      case 'Table':
+        return <TableDev/>;
       case 'Select':
         return <SelectDev/>;
       case 'Modal':
@@ -70,8 +72,6 @@ class Content extends Component {
         return <Cascader/>;
       case 'CascaderSelector':
         return <CascaderSelectorPage/>;
-      case 'Table':
-        return <TableDev/>;
     }
   }
   render() {

@@ -2,7 +2,7 @@
   "name": "react-stone",
   "version": "0.1.25",
   "main": "/build/static/js/main.js",
-  "homepage":"//jd-smart-fe.github.io/react-stone/build/",
+  "homepage": "//jd-smart-fe.github.io/react-stone/build/",
   "dependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
@@ -105,6 +105,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "gh-pages": "^1.1.0",
     "node-sass": "^4.8.3",
     "react-for-markdown-loader": "^1.1.0",
     "react-markdown": "^3.3.0",
