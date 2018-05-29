@@ -25,7 +25,7 @@ class Sidebar extends Component {
       'Select',
       'Modal',
       'Pagination',
-      // 'Transfer',
+      'Transfer',
       'Cascader',
       'CascaderSelector',
       'Table'
@@ -65,7 +65,7 @@ class Sidebar extends Component {
                   componentsArr.map((item, index) => {
                     return (
                       <li className="nav-item" key={item}>
-                        <NavLink
+                        <NavLink exact
                           to={{
                             pathname: `/${item}`,
                           }}

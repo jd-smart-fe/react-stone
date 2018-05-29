@@ -25,8 +25,8 @@ import RadioDev from '../../components-examples/RadioDev.js';
 import SelectDev from '../../components-examples/SelectDev.js';
 import TextareaDev from '../../components-examples/TextareaDev.js';
 import ToastDev from '../../components-examples/ToastDev.js';
-// import TransferDev from '../../components-examples/TransferDev.js';
-// import TransferPage from '../../pages/transfer/TransferPage.jsx'
+import TransferDev from '../../components-examples/TransferDev.js';
+import TransferPage from '../../pages/transfer/TransferPage.jsx'
 import Cascader from '../../components-examples/Cascader.js';
 import CascaderSelectorPage from '../../pages/cascaderSelector/CascaderSelectorPage.jsx';
 import TableDev from '../../components/TableDev.js';
@@ -39,55 +39,40 @@ class Content extends Component {
     this.state = {};
   }
   getCommponent = ({ match }) => {
-    let CommponentType;
+    console.log(match);
     switch (match.params.name)
     {
       case 'Intro':
-        CommponentType = ReadeMd;
-        return (<ReactMarkdown source={CommponentType} />)
+        return (<ReactMarkdown source={ReadeMd} />)
       case 'Contribute':
-        CommponentType = ContributeMd;
-        return (<ReactMarkdown source={CommponentType} />)
+        return (<ReactMarkdown source={ContributeMd} />)
       case 'Button':
-        CommponentType = ButtonPage;
-        break;
+        return <ButtonPage/>;
       case 'Input':
-        CommponentType = InputPage;
-        break;
+        return <InputPage/>;
       case 'Textarea':
-        CommponentType = TextareaDev;
-        break;
+        return <TextareaDev/>;
       case 'Radio':
-        CommponentType = RadioDev;
-        break;
+        return <RadioDev/>;
       case 'Checkbox':
-        CommponentType = CheckboxDev;
-        break;
+        return <CheckboxDev/>;
       case 'Toast':
-        CommponentType = ToastDev;
-        break;
+        return <ToastDev/>;
       case 'Select':
-        CommponentType = SelectDev;
-        break;
+        return <SelectDev/>;
       case 'Modal':
-        CommponentType = ModalDev;
-        break;
+        return <ModalDev/>;
       case 'Pagination':
-        CommponentType = PaginationDev;
-        break;
-      // case 'Transfer':
-      //   CommponentType = TransferPage;
-      //   break;
+        return <PaginationDev/>;
+      case 'Transfer':
+        return <TransferPage/>;
       case 'Cascader':
-        CommponentType = Cascader;
-        break;
+        return <Cascader/>;
       case 'CascaderSelector':
-        CommponentType = CascaderSelectorPage;
+        return <CascaderSelectorPage/>;
       case 'Table':
-        CommponentType = TableDev;
-        break;
+        return <TableDev/>;
     }
-    return <CommponentType />
   }
   render() {
     return (
