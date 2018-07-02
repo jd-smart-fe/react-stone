@@ -16,6 +16,7 @@ import ContributeMd from '../../../../docs/contribute.md';
 import ButtonDev from '../../components-examples/ButtonDev.js';
 import ButtonPage from '../../pages/button/ButtonPage.jsx';
 import CheckboxDev from '../../components-examples/CheckboxDev.js';
+import CheckboxPage from '../../pages/checkbox/index.jsx';
 import FormDev from '../../components-examples/FormDev.js';
 import InputDev from '../../components-examples/InputDev.js';
 import InputPage from '../../pages/input/InputPage.jsx';
@@ -54,7 +55,7 @@ class Content extends Component {
       case 'Radio':
         return <RadioDev/>;
       case 'Checkbox':
-        return <CheckboxDev/>;
+        return <CheckboxPage/>;
       case 'Toast':
         return <ToastDev/>;
       case 'Table':

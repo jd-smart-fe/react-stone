@@ -17,8 +17,8 @@ class CheckboxGroup extends Component {
     }
   }
   onChange = (e) => {
-    let arr = this.state.value;
-    let index = this.state.value.indexOf(e.target.id);
+    const arr = this.state.value;
+    const index = this.state.value.indexOf(e.target.id);
     if (index === -1) {
       arr.push(e.target.id);
     } else {
@@ -40,11 +40,12 @@ class CheckboxGroup extends Component {
     }
   }
   render() {
-    const { options, defaultValue, onChange } = this.props;
-    let checkboxArr = options.map((option, index) => {
+    const { options, onChange } = this.props;
+    const checkboxArr = options.map((option, index) => {
       return (<span key={index}>
         <input
           type="checkbox"
+          disabled={option.disabled}
           className="magic magic-checkbox"
           id={option.value}
           onChange={this.onChange}
