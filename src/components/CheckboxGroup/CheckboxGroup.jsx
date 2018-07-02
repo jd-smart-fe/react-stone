@@ -50,7 +50,9 @@ class CheckboxGroup extends Component {
           id={option.value}
           onChange={this.onChange}
           checked={this.state.value.indexOf(option.value) !== -1} />
-        <label htmlFor={option.value}>{option.label}</label>
+        <label htmlFor={option.value} style={{
+          color: option.disabled ? 'gray' : 'black',
+        }}>{option.label}</label>
       </span>);
     });
     return (<div>{checkboxArr}</div>);
