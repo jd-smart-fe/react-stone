@@ -42,6 +42,45 @@ const base = `
   \`\`\`
 `;
 
+const defaultvalue = `
+  \`\`\`jsx
+  import React, { Component } from 'react';
+  import ReactDOM from 'react-dom';
+  import { CheckboxGroup } from 'react-stone';
+
+  class App extends Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        options: [
+          { label: '肯德基', value: '肯德基' },
+          { label: '麦当劳', value: '麦当劳' },
+          { label: '德克士', value: '德克士' },
+        ],
+        checkedBox: [
+          'Pear'
+        ]
+      }
+    }
+    checkedBoxChange = (checkedList, targetValue) => {
+      console.log(checkedList);
+      console.log(targetValue);
+    }
+    render(){
+      return (
+        <CheckboxGroup
+          options={this.state.options}
+          onChange={this.checkedBoxChange}
+          defaultValue={['肯德基']}
+          value={this.state.checkedBox}/>
+      )
+    }
+  }
+
+  ReactDOM.render(<App />, document.getElementById('root'));
+  \`\`\`
+`;
+
 const disabled = `
   \`\`\`jsx
   import React, { Component } from 'react';
@@ -98,6 +137,7 @@ const api = `
 export {
   desc,
   base,
+  defaultvalue,
   disabled,
   api,
 };

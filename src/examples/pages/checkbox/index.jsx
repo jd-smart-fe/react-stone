@@ -15,7 +15,15 @@ class ButtonPage extends Component {
         { label: 'Orange', value: 'Orange' },
       ],
       BaseCheckedBox: [
-        'Pear'
+        'Pear', 'Apple'
+      ],
+      DefaultOptions: [
+        { label: '肯德基', value: '肯德基' },
+        { label: '麦当劳', value: '麦当劳' },
+        { label: '德克士', value: '德克士' },
+      ],
+      DefaultCheckedBox: [
+        '麦当劳'
       ],
       DisabledOptions: [
         { label: '耐克', value: 'Nike', disabled: true },
@@ -27,6 +35,10 @@ class ButtonPage extends Component {
     }
   }
   BaseCheckedChange = (checkedList, targetValue) => {
+    console.log(checkedList);
+    console.log(targetValue);
+  }
+  DefaultCheckedChange = (checkedList, targetValue) => {
     console.log(checkedList);
     console.log(targetValue);
   }
@@ -43,8 +55,14 @@ class ButtonPage extends Component {
           <CheckboxGroup
             options={this.state.BaseOptions}
             onChange={this.BaseCheckedChange}
-            defaultValue={['Apple']}
             value={this.state.BaseCheckedBox}/>
+        </DemoWrap>
+        <DemoWrap desc="有默认选中项" code={code.defaultvalue}>
+          <CheckboxGroup
+            options={this.state.DefaultOptions}
+            onChange={this.DefaultCheckedChange}
+            defaultValue={['肯德基']}
+            value={this.state.DefaultCheckedBox}/>
         </DemoWrap>
         <DemoWrap desc="不可选择" code={code.disabled}>
           <CheckboxGroup
