@@ -25,13 +25,14 @@ export class Radio extends Component {
         optional.onChange = onChange.bind(null, this.props);
       }
     }
-
+    console.log(this.props);
     return (
       <span>
         <input
           {...this.props}
           type="radio"
           name={name}
+          disabled={this.props.disabled}
           className="magic magic-radio"
           {...optional} />
         <label htmlFor={this.props.id}>{this.props.textname}</label>

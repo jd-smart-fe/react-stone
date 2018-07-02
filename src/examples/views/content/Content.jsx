@@ -23,7 +23,9 @@ import InputPage from '../../pages/input/InputPage.jsx';
 import ModalDev from '../../components-examples/ModalDev.js';
 import ModalPage from '../../pages/modal/index.jsx';
 import PaginationDev from '../../components-examples/PaginationDev.js';
+import PaginationPage from '../../pages/pagination/index.jsx';
 import RadioDev from '../../components-examples/RadioDev.js';
+import RadioPage from '../../pages/radio/index.jsx';
 import SelectDev from '../../components-examples/SelectDev.js';
 import TextareaDev from '../../components-examples/TextareaDev.js';
 import ToastDev from '../../components-examples/ToastDev.js';
@@ -54,7 +56,7 @@ class Content extends Component {
       case 'Textarea':
         return <TextareaDev/>;
       case 'Radio':
-        return <RadioDev/>;
+        return <RadioPage/>;
       case 'Checkbox':
         return <CheckboxPage/>;
       case 'Toast':
@@ -66,7 +68,7 @@ class Content extends Component {
       case 'Modal':
         return <ModalPage/>;
       case 'Pagination':
-        return <PaginationDev/>;
+        return <PaginationPage/>;
       case 'Transfer':
         return <TransferPage/>;
       case 'Cascader':

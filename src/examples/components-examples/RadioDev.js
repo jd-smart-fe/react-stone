@@ -8,7 +8,7 @@ class ButtonDev extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productType: 1,
+      productType: 2,
     };
   }
   productTypeChange = (val) => {
@@ -20,9 +20,12 @@ class ButtonDev extends Component {
     return (
       <div>
         <Radio value={'5'} checked={true} id="voiceTypezn" textname="硬件设备" />
-        <RadioGroup name="device-type" selectedValue={this.state.productType} onChange={this.productTypeChange}>
-          <Radio value={1} id="productType1" textname="硬件设备"></Radio>
-          <Radio value={2} id="productType2" textname="软件应用"></Radio>
+        <RadioGroup
+          value={this.state.productType}
+          onChange={this.productTypeChange}
+          name="device-type">
+          <Radio value={1} id="productType1" textname="硬件设备1"></Radio>
+          <Radio value={2} id="productType2" textname="软件应用2"></Radio>
         </RadioGroup>
       </div>
     );

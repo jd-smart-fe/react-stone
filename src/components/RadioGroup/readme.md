@@ -16,7 +16,7 @@ import { Radio } from 'react-stone';
 import { Radio, RadioGroup } from 'react-stone';
 
 <RadioGroup
-  selectedValue={this.state.productType}
+  value={this.state.productType}
   onChange={this.productTypeChange}
   name="device-type">
   <Radio value={1} id="productType1" textname="硬件设备"></Radio>
@@ -40,7 +40,6 @@ textname  | String  | ''  |  必填，定义按钮的文字。
 属性名   |    类型   |     默认值     |     说明
 ----    | ----    | ----    | ----    |
 name | String | 无 | RadioGroup 下所有 input[type="radio"] 的 name 属性
-selectedValue | Any | 无 | 默认选中的值
 value | String | 无 | 必填，用于设置当前选中的值
 
 
