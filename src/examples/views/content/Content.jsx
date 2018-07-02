@@ -28,6 +28,7 @@ import RadioDev from '../../components-examples/RadioDev.js';
 import RadioPage from '../../pages/radio/index.jsx';
 import SelectDev from '../../components-examples/SelectDev.js';
 import TextareaDev from '../../components-examples/TextareaDev.js';
+import TextareaPage from '../../pages/textarea/index.jsx';
 import ToastDev from '../../components-examples/ToastDev.js';
 import ToastPage from '../../pages/toast/index.jsx';
 import TransferDev from '../../components-examples/TransferDev.js';
@@ -55,7 +56,7 @@ class Content extends Component {
       case 'Input':
         return <InputPage/>;
       case 'Textarea':
-        return <TextareaDev/>;
+        return <TextareaPage/>;
       case 'Radio':
         return <RadioPage/>;
       case 'Checkbox':
