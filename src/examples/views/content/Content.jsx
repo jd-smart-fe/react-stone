@@ -21,6 +21,7 @@ import FormDev from '../../components-examples/FormDev.js';
 import InputDev from '../../components-examples/InputDev.js';
 import InputPage from '../../pages/input/InputPage.jsx';
 import ModalDev from '../../components-examples/ModalDev.js';
+import ModalPage from '../../pages/modal/index.jsx';
 import PaginationDev from '../../components-examples/PaginationDev.js';
 import RadioDev from '../../components-examples/RadioDev.js';
 import SelectDev from '../../components-examples/SelectDev.js';
@@ -63,7 +64,7 @@ class Content extends Component {
       case 'Select':
         return <SelectDev/>;
       case 'Modal':
-        return <ModalDev/>;
+        return <ModalPage/>;
       case 'Pagination':
         return <PaginationDev/>;
       case 'Transfer':
