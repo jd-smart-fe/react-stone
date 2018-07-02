@@ -1,6 +1,6 @@
 const desc = `
-  # Modal
-  模态对话框。
+  # Radio
+  - 用于在多个备选项中选中单个状态。
 `;
 
 const base = `
