@@ -29,6 +29,7 @@ import RadioPage from '../../pages/radio/index.jsx';
 import SelectDev from '../../components-examples/SelectDev.js';
 import TextareaDev from '../../components-examples/TextareaDev.js';
 import ToastDev from '../../components-examples/ToastDev.js';
+import ToastPage from '../../pages/toast/index.jsx';
 import TransferDev from '../../components-examples/TransferDev.js';
 import TransferPage from '../../pages/transfer/TransferPage.jsx'
 import Cascader from '../../components-examples/Cascader.js';
@@ -60,7 +61,7 @@ class Content extends Component {
       case 'Checkbox':
         return <CheckboxPage/>;
       case 'Toast':
-        return <ToastDev/>;
+        return <ToastPage/>;
       case 'Table':
         return <TableDev/>;
       case 'Select':

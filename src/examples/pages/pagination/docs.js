@@ -7,7 +7,7 @@ const base = `
   \`\`\`jsx
   import React, { Component } from 'react';
   import ReactDOM from 'react-dom';
-  import { Modal } from 'react-stone';
+  import { Pagination } from 'react-stone';
 
   class App extends Component {
     constructor(props) {

@@ -7,7 +7,7 @@ const base = `
   \`\`\`jsx
   import React, { Component } from 'react';
   import ReactDOM from 'react-dom';
-  import { Modal } from 'react-stone';
+  import { Radio, RadioGroup } from 'react-stone';
 
   class App extends Component {
     render(){
@@ -27,7 +27,7 @@ const checked = `
   \`\`\`jsx
   import React, { Component } from 'react';
   import ReactDOM from 'react-dom';
-  import { Modal } from 'react-stone';
+  import { Radio, RadioGroup } from 'react-stone';
 
   class App extends Component {
     render(){
@@ -47,7 +47,7 @@ const disabled = `
   \`\`\`jsx
   import React, { Component } from 'react';
   import ReactDOM from 'react-dom';
-  import { Modal } from 'react-stone';
+  import { Radio, RadioGroup } from 'react-stone';
 
   class App extends Component {
     render(){
@@ -67,7 +67,7 @@ const group = `
   \`\`\`jsx
   import React, { Component } from 'react';
   import ReactDOM from 'react-dom';
-  import { Modal } from 'react-stone';
+  import { Radio, RadioGroup } from 'react-stone';
 
   class App extends Component {
     constructor(props) {

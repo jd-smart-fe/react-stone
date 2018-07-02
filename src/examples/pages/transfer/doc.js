@@ -7,7 +7,7 @@ const base = `
   \`\`\`jsx
   import React, { Component } from "react";
   import classNames from "classnames";
-  import Transfer from "../../components/Transfer/Transfer.jsx";
+  import { Transfer } from "react-stone";
 
   class App extends Component {
     constructor(props) {
