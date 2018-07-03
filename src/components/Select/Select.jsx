@@ -27,18 +27,20 @@ class OptionPanel extends Component {
     const optionArr = [];
     this.props.optionData.forEach((option) => {
       const itemClass = classNames({
-        'option-item': true,
+        'rs-option-item': true,
         active: option.active,
       });
       optionArr.push(<li className={itemClass} key={option.value} value={option.value} onClick={this.handleClick.bind(this, option)}>{option.label}</li>);
     });
+    console.log(this.props);
     const optionPanelClass = classNames({
-      'option-panel': true,
-      'option-panel-show': !this.props.closeStatus,
+      'rs-option-panel': true,
+      'rs-option-panel-show': !this.props.closeStatus,
+      [`select-${this.props.size}`]: this.props.size,
     });
     return (
       <div className={optionPanelClass}>
-        <ul className="option-panel-content">
+        <ul className="rs-option-panel-content">
           {optionArr}
         </ul>
       </div>
@@ -79,6 +81,7 @@ class Select extends Component {
           ReactDOM.render(
           <OptionPanel optionData={this.props.optionData}
             onSelect={this.selectSomeOne}
+            size={this.props.size}
             closeStatus={this.state.closeStatus}
             placeholder={this.props.placeholder} />,
           dom,
@@ -92,6 +95,7 @@ class Select extends Component {
           ReactDOM.render(
           <OptionPanel optionData={this.props.optionData}
             onSelect={this.selectSomeOne}
+            size={this.props.size}
             closeStatus={this.state.closeStatus}
             placeholder={this.props.placeholder} />,
           dom,
@@ -114,6 +118,7 @@ class Select extends Component {
         ReactDOM.render(
         <OptionPanel optionData={this.props.optionData}
           onSelect={this.selectSomeOne}
+          size={this.props.size}
           closeStatus={this.state.closeStatus}
           placeholder={this.props.placeholder} />,
         dom,
@@ -127,10 +132,11 @@ class Select extends Component {
       selectedItem: selectedOption,
       closeStatus: true,
     }), () => {
-      let dom = document.getElementById('optionPanelWrap');
+      const dom = document.getElementById('optionPanelWrap');
       ReactDOM.render(
         <OptionPanel optionData={this.props.optionData}
           onSelect={this.selectSomeOne}
+          size={this.props.size}
           closeStatus={this.state.closeStatus}
           placeholder={this.props.placeholder} />,
         dom,
@@ -190,6 +196,7 @@ class Select extends Component {
           ReactDOM.render(
           <OptionPanel optionData={this.props.optionData}
             onSelect={this.selectSomeOne}
+            size={this.props.size}
             closeStatus={this.state.closeStatus}
             placeholder={this.props.placeholder} />,
           dom,
@@ -209,11 +216,11 @@ class Select extends Component {
       upico: !this.state.closeStatus,
     });
     const selectControlClass = classNames({
-      'select-control': true,
-      [`select-control-${this.props.size}`]: this.props.size,
+      'rs-select-control': true,
+      [`select-${this.props.size}`]: this.props.size,
     });
     return (
-      <div className="select" id={this.props.name} ref={(select) => { this.select = select; }}>
+      <div className="rs-select" id={this.props.name} ref={(select) => { this.select = select; }}>
         <div className={selectControlClass} onClick={this.showOptionPanel} >
           {this.state.selectedItem.label}
           <span className={iconClass}></span>
