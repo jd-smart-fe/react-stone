@@ -27,6 +27,7 @@ import PaginationPage from '../../pages/pagination/index.jsx';
 import RadioDev from '../../components-examples/RadioDev.js';
 import RadioPage from '../../pages/radio/index.jsx';
 import SelectDev from '../../components-examples/SelectDev.js';
+import SelectPage from '../../pages/select/index.jsx';
 import TextareaDev from '../../components-examples/TextareaDev.js';
 import TextareaPage from '../../pages/textarea/index.jsx';
 import ToastDev from '../../components-examples/ToastDev.js';
@@ -66,7 +67,7 @@ class Content extends Component {
       case 'Table':
         return <TableDev/>;
       case 'Select':
-        return <SelectDev/>;
+        return <SelectPage/>;
       case 'Modal':
         return <ModalPage/>;
       case 'Pagination':

@@ -55,12 +55,6 @@ const selectChange2 = (params) => {
   console.log(params);
 }
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      currentPage: 5
-    }
-  }
   render(){
     return (
       <div>
