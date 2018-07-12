@@ -66,7 +66,6 @@ class FieldForm extends React.Component {
   }
   formSubmit = (e) => {
     e.preventDefault();
-    this.props.rsForm.resetFieldsValue()
     this.props.rsForm.validateForm(true, () => {
       if (this.props.rsForm.isValid()) {
         console.log('Yes！表单通过');
