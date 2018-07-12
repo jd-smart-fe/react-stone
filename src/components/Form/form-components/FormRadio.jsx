@@ -5,7 +5,7 @@ import getControlGroup from '../getControlGroup.jsx';
 class RadioGroupWrap extends Component {
   render() {
     const { type = 'radio', ...rest } = this.props;
-    return <RadioGroup {...rest} type={type} />;
+    return <RadioGroup {...this.props}/>;
   }
 }
 

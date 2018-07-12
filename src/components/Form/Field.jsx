@@ -20,7 +20,6 @@ class Field extends Component {
       _initialValue: props.value,
       _validationError: [],
       _externalError: null,
-      _asyncValidated: false,
     };
     this._name = props.name;
     this._validations = props.validations || {};
@@ -88,12 +87,12 @@ class Field extends Component {
 
     if (!preventSetValue) {
       this.setValue(newValue, validateOnBlur);
-      if (asyncValidation) {
-        this.context.zentForm.asyncValidate(this, newValue).catch(error => {
-          // eslint-disable-next-line
-          console.log(error);
-        });
-      }
+      // if (asyncValidation) {
+      //   this.context.zentForm.asyncValidate(this, newValue).catch(error => {
+      //     // eslint-disable-next-line
+      //     console.log(error);
+      //   });
+      // }
     }
   };
   isValid = () => {

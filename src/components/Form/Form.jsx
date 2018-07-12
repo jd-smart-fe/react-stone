@@ -15,6 +15,15 @@ class Form extends Component {
     disableEnterSubmit: true,
   };
 
+  onKeyDown = event => {
+    console.log(123);
+    console.log(this.props);
+    // 默认禁止输入框回车触发表单提交事件
+    const isFromInput = event.target.tagName === 'INPUT';
+    if (isFromInput && this.props.disableEnterSubmit && event.keyCode === 13) {
+      event.preventDefault();
+    }
+  };
   render() {
     const {
       onSubmit,
@@ -23,6 +32,7 @@ class Form extends Component {
     return (
       <form
         onSubmit={onSubmit}
+        onKeyDown={this.onKeyDown}
       >
         {this.props.children}
       </form>

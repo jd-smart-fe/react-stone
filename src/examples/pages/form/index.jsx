@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Button from '../../components/Button/Button.jsx';
-import { Radio } from '../../components/RadioGroup/RadioGroup.jsx';
-import Form from '../../components/Form/index.js';
+import ReactMarkdown from 'react-markdown';
+import CheckboxGroup from '../../../components/CheckboxGroup/CheckboxGroup';
+import Button from '../../../components/Button/Button.jsx';
+import { Radio } from '../../../components/RadioGroup/RadioGroup.jsx';
+import Form from '../../../components/Form/index.js';
+import Modal from '../../../components/Modal/modal';
+import * as code from './docs.js';
+import DemoWrap from '../../components/DemoWrap/DemoWrap';
 
 const {
   CreateForm,
@@ -14,6 +17,39 @@ const {
   FieldTextarea,
 } = Form;
 
+const getContentComponent = (data) => {
+  return (
+    <p>{data}</p>
+  )
+}
+
+const saleVolumes = [
+  {
+    label: '<1000',
+    value: 1
+  },
+  {
+    label: '1001~10000',
+    value: 2
+  },
+  {
+    label: '10001~100000',
+    value: 3
+  },
+  {
+    label: '100001~1000000',
+    value: 4
+  },
+  {
+    label: '>1000000',
+    value: 5
+  }
+];
+
+const selectChange = (val) => {
+  console.log(val);
+}
+
 class FieldForm extends React.Component {
   constructor(props) {
     super(props);
@@ -23,17 +59,22 @@ class FieldForm extends React.Component {
         { label: 'Pear', value: 'Pear' },
         { label: 'Orange', value: 'Orange' },
       ],
-      checkedBoxValue: [
-],
+      checkedBoxValue: [],
       formDate: {},
       productTypexs: null
     }
   }
   formSubmit = (e) => {
     e.preventDefault();
+    this.props.rsForm.resetFieldsValue()
     this.props.rsForm.validateForm(true, () => {
       if (this.props.rsForm.isValid()) {
         console.log('Yes！表单通过');
+        Modal.open({
+          "size": 'sm',
+          "title": '提示',
+          "template": getContentComponent(('校验通过！！！你要提交的表单数据是：' + JSON.stringify(this.props.rsForm.getFormValues()))),
+        });
         console.log('可以提交的表单：',this.props.rsForm.getFormValues())
       } else {
         console.log('No！表单校验不通过')
@@ -42,7 +83,6 @@ class FieldForm extends React.Component {
     })
   }
   productTypeChangexs = (val) => {
-    console.log(val);
     this.setState({
       productType: val.value
     })
@@ -65,10 +105,10 @@ class FieldForm extends React.Component {
           label="邮箱"/>
         <FieldInput
           name="地址"
-          label="dizhi"/>
+          label="地址"/>
         <FieldSelect
           name="select"
-          label="slect"
+          label="数量"
           placeholder="请选择"
           optionData={saleVolumes}
           onChange={selectChange}/>
@@ -99,7 +139,15 @@ class FieldForm extends React.Component {
             }
           }}
           validationErrors={{ isMore: '不能低于两项' }}/>
-        <Button htmlType="submit">提交</Button>
+        <div style={{
+          marginLeft: '120px',
+          width: '150px',
+          display: 'flex',
+          justifyContent: 'space-between'
+        }}>
+          <Button theme='gray'>取消</Button>
+          <Button htmlType="submit">提交</Button>
+        </div>
       </Form>
     );
   }
@@ -107,7 +155,7 @@ class FieldForm extends React.Component {
 
 const WrappedForm = CreateForm()(FieldForm);
 
-class ButtonDev extends Component {
+class FormBase extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -119,31 +167,24 @@ class ButtonDev extends Component {
     );
   }
 }
-
-const saleVolumes = [
-  {
-    label: '<1000',
-    value: 1
-  },
-  {
-    label: '1001~10000',
-    value: 2
-  },
-  {
-    label: '10001~100000',
-    value: 3
-  },
-  {
-    label: '100001~1000000',
-    value: 4
-  },
-  {
-    label: '>1000000',
-    value: 5
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+    }
   }
-];
-const selectChange = (val) => {
-  console.log(val);
+  render() {
+    return (
+      <div className="markdown">
+        <ReactMarkdown source={code.desc} />
+        <h2>代码示例</h2>
+        <DemoWrap desc="基础用法" code={code.base}>
+          <FormBase />
+        </DemoWrap>
+        <ReactMarkdown source={code.api} />
+      </div>
+    );
+  }
 }
 
-export default ButtonDev;
+export default App;

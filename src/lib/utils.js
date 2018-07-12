@@ -16,6 +16,7 @@ const getSelectedValues = options => {
   return result;
 };
 
+// 判断是否是原生事件
 const isEvent = candidate =>
   !!(candidate && candidate.stopPropagation && candidate.preventDefault);
 
@@ -62,11 +63,14 @@ export function getCurrentValue(changedValue, prevValue) {
 }
 
 export function getDisplayName(Component) {
+  console.log(Component.name);
   return Component.displayName || Component.name || 'Component';
 }
 
+// 如果是原生事件的话，取消该事件的默认行为，比如取消submit的自动跳转
 export function silenceEvent(event) {
   const is = isEvent(event);
+  console.log(is);
   if (is) {
     event.preventDefault();
   }

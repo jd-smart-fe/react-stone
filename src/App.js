@@ -211,12 +211,6 @@ class App extends Component {
     return (
       <div className="App">
           <WrappedForm ref={ref => { this.wrapForm = ref }}/>
-          {/* <DragSort type="table" onDragEnd={this.handleDragEnd} onChange={this.handleDragMove}>
-            <div key>list1</div>
-            <div>list2</div>
-            <div>list3</div>
-            <div>list4</div>
-          </DragSort> */}
           <Button icon="delete" onClick={this.openModal}>Open Modal</Button>
           <Pagination total={218} pageSize={10} current={this.state.currentPage} onChange={this.pageChange} />
           <br/>

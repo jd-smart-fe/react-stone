@@ -25,7 +25,6 @@ export class Radio extends Component {
         optional.onChange = onChange.bind(null, this.props);
       }
     }
-    console.log(this.props);
     return (
       <span>
         <input
@@ -57,7 +56,7 @@ export class RadioGroup extends React.Component {
 
   render() {
     const {
-      Tag, name, value, onChange, children, ...rest
+      Tag, name, value, onChange, children, isValid, ...rest
     } = this.props;
     return <Tag {...rest}>{children}</Tag>;
   }

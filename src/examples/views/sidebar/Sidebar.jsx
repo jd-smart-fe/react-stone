@@ -24,6 +24,7 @@ class Sidebar extends Component {
       'Modal',
       'Pagination',
       'Radio',
+      'Form',
       'Select',
       'Table',
       'Textarea',

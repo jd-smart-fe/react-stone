@@ -11,18 +11,13 @@ import PropTypes from 'prop-types';
 
 import {
   getDisplayName,
-  silenceEvent,
-  silenceEvents,
 } from '../../lib/utils.js';
 import rules from '../../lib/validationRules';
 
-const emptyArray = [];
 const createForm = (config = {}) => {
   const {
     formValidations,
     onChange,
-    onSubmitSuccess,
-    onSubmitFail,
     scrollToError,
   } = config;
   const validationRules = assign({}, rules, formValidations);
@@ -46,10 +41,8 @@ const createForm = (config = {}) => {
 
       static propTypes = {
         onSubmit: PropTypes.func,
-        onSubmitSuccess: PropTypes.func,
-        onSubmitFail: PropTypes.func,
-        onValid: PropTypes.func, // 暂时未对外
-        onInvalid: PropTypes.func, // 暂时未对外
+        onValid: PropTypes.func,
+        onInvalid: PropTypes.func,
         onChange: PropTypes.func,
         validationErrors: PropTypes.object,
         scrollToError: PropTypes.bool,
@@ -57,8 +50,6 @@ const createForm = (config = {}) => {
 
       static defaultProps = {
         onSubmit: noop,
-        onSubmitSuccess: onSubmitSuccess || noop,
-        onSubmitFail: onSubmitFail || noop,
         onValid: noop,
         onInvalid: noop,
         onChange: onChange || noop,
@@ -76,7 +67,6 @@ const createForm = (config = {}) => {
             attachToForm: this.attachToForm,
             detachFromForm: this.detachFromForm,
             validate: this.validate,
-            asyncValidate: this.asyncValidate,
             getFormValues: this.getFormValues,
             getFieldError: this.getFieldError,
             isValidValue: this.isValidValue,
@@ -87,7 +77,6 @@ const createForm = (config = {}) => {
             isValid: this.isValid,
             isSubmitting: this.isSubmitting,
             validateForm: this.validateForm,
-            asyncValidateForm: this.asyncValidateForm,
             isFormSubmitFail: this.isFormSubmitFail,
             isFormSubmitSuccess: this.isFormSubmitSuccess,
             updateFormSubmitStatus: this.updateFormSubmitStatus,
@@ -140,34 +129,6 @@ const createForm = (config = {}) => {
         this.submitPromise = promise;
         console.log(promise)
         return promise.then(this.submitCompleted, this.submitFailed);
-      };
-
-      submit = submitOrEvent => {
-        const { onSubmit } = this.props;
-        console.log(submitOrEvent);
-        submitOrEvent(this.getFormValues() , true);
-        return false;
-        // 在表单中手动调用handleSubmit或者把handleSubmit赋值给表单的onSubmit回调
-        // handleSubmit赋值给表单的onSubmit时，submitOrEvent是一个event对象
-        // handleSubmit的参数必须是function
-        // if (!submitOrEvent || silenceEvent(submitOrEvent)) {
-        //   if (!this.submitPromise) {
-        //     // 调用props传入的onSubmit方法
-        //     return this.listenToSubmit(
-        //       handleSubmit(checkSubmit(onSubmit), this)
-        //     );
-        //   }
-        // } else {
-        //   // submitOrEvent是一个自定义submit函数，返回一个promise对象
-        //   console.log(!this.submitPromise);
-        //   return silenceEvents(
-        //     () =>
-        //       !this.submitPromise &&
-        //       this.listenToSubmit(
-        //         handleSubmit(checkSubmit(submitOrEvent), this)
-        //       )
-        //   );
-        // }
       };
 
       isSubmitting = () => {
@@ -291,6 +252,7 @@ const createForm = (config = {}) => {
           this.fields,
           component => component.getName() === name
         );
+        console.log(field.getErrorMessage());
         if (!field) return '';
         return field.getErrorMessage();
       };
@@ -433,9 +395,6 @@ const createForm = (config = {}) => {
       };
 
       runRules = (value, currentValues, validations = []) => {
-        console.log(value);
-        console.log(currentValues);
-        console.log(validations);
         const results = {
           errors: [],
           failed: [],
@@ -478,7 +437,6 @@ const createForm = (config = {}) => {
             updateResults(validation, validationMethod);
           }
         });
-        console.log(results)
         return results;
       };
 
@@ -497,61 +455,6 @@ const createForm = (config = {}) => {
           },
           () => this.validateForm(false, null, field.props.relatedFields)
         );
-      };
-
-      asyncValidate = (field, value) => {
-        const { asyncValidation } = field.props;
-        const values = this.getFormValues();
-
-        if (!asyncValidation || field.state._validationError.length) return;
-
-        field.setState({
-          _isValidating: true,
-        });
-
-        const promise = asyncValidation(values, value);
-        // if (!isPromise(promise)) {
-        //   throw new Error('asyncValidation function must return a promise');
-        // }
-
-        const handleResult = rejected => error => {
-          field.setState({
-            _isValidating: false,
-            _isValid: !rejected && field.state._validationError.length === 0,
-            _externalError: error ? [error] : null,
-            _asyncValidated: true,
-          });
-
-          if (rejected) {
-            this.setState({
-              isFormValid: false,
-            });
-            throw new Error(error);
-          }
-        };
-
-        return promise.then(handleResult(false), handleResult(true));
-      };
-
-      isFormAsyncValidated = () => {
-        const allIsAsyncValid = this.fields.every(field => {
-          return field.isAsyncValidated() || !field.props.asyncValidation;
-        });
-
-        return allIsAsyncValid;
-      };
-
-      asyncValidateForm = (resolve, reject) => {
-        const asyncValidations = map(this.fields, field => {
-          return this.asyncValidate(field, field.getValue());
-        });
-        Promise.all(asyncValidations)
-          .then(() => {
-            resolve && resolve();
-          })
-          .catch(error => {
-            reject && reject(error);
-          });
       };
 
       validateForm = (forceValidate = false, callback, relatedFields) => {
@@ -638,7 +541,6 @@ const createForm = (config = {}) => {
           ref: ref => {
             this.wrappedForm = ref;
           },
-          handleSubmit: this.submit.bind(this),
           rsForm: {
             getFormValues: this.getFormValues,
             getFieldError: this.getFieldError,
@@ -654,9 +556,7 @@ const createForm = (config = {}) => {
             isValid: this.isValid,
             isValidating: this.isValidating,
             isSubmitting: this.isSubmitting,
-            isFormAsyncValidated: this.isFormAsyncValidated,
             validateForm: this.validateForm,
-            asyncValidateForm: this.asyncValidateForm,
             isFormSubmitFail: this.isFormSubmitFail,
             isFormSubmitSuccess: this.isFormSubmitSuccess,
             updateFormSubmitStatus: this.updateFormSubmitStatus,

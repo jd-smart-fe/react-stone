@@ -18,6 +18,7 @@ import ButtonPage from '../../pages/button/ButtonPage.jsx';
 import CheckboxDev from '../../components-examples/CheckboxDev.js';
 import CheckboxPage from '../../pages/checkbox/index.jsx';
 import FormDev from '../../components-examples/FormDev.js';
+import FormPage from '../../pages/form/index.jsx';
 import InputDev from '../../components-examples/InputDev.js';
 import InputPage from '../../pages/input/InputPage.jsx';
 import ModalDev from '../../components-examples/ModalDev.js';
@@ -78,6 +79,8 @@ class Content extends Component {
         return <Cascader/>;
       case 'CascaderSelector':
         return <CascaderSelectorPage/>;
+      case 'Form':
+        return <FormPage/>
     }
   }
   render() {
